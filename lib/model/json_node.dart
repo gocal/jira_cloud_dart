@@ -43,16 +43,16 @@ abstract class JsonNode implements Built<JsonNode, JsonNodeBuilder> {
   bool get floatingPointNumber;
 
   @nullable
-  @BuiltValueField(wireName: r'int')
-  bool get int;
+  @BuiltValueField(wireName: r'intArg')
+  bool get intArg;
 
   @nullable
-  @BuiltValueField(wireName: r'long')
-  bool get long;
+  @BuiltValueField(wireName: r'longArg')
+  bool get longArg;
 
   @nullable
-  @BuiltValueField(wireName: r'double')
-  bool get double;
+  @BuiltValueField(wireName: r'doubleArg')
+  bool get doubleArg;
 
   @nullable
   @BuiltValueField(wireName: r'bigDecimal')

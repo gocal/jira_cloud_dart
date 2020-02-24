@@ -31028,13 +31028,13 @@
                     "floatingPointNumber": {
                         "type": "boolean"
                     },
-                    "int": {
+                    "intArg": {
                         "type": "boolean"
                     },
-                    "long": {
+                    "longArg": {
                         "type": "boolean"
                     },
-                    "double": {
+                    "doubleArg": {
                         "type": "boolean"
                     },
                     "bigDecimal": {
