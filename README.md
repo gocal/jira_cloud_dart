@@ -4,6 +4,8 @@
 
 based on https://community.atlassian.com/t5/Jira-articles/Generating-a-REST-client-for-Jira-Cloud/ba-p/1307133
 
+cd tools
+
 ## Get Dependencies
 
 wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.16/swagger-codegen-cli-3.0.16.jar -O swagger-codegen-cli.jar
@@ -17,8 +19,10 @@ java -jar openapi-generator-cli.jar config-help -g dart-dio
 
 ## Generate
 
-java -jar openapi-generator-cli.jar generate -i swagger-v3.v3.json -g dart-dio -o ../build/jira_cloud -c config.json 
+java -jar openapi-generator-cli.jar generate -i swagger-v3.v3.json -g dart-dio -o ../build/jira_cloud -c config.json && rm -rf ../lib/ && mv ../build/jira_cloud/lib ../lib
 
-flutter packages pub run build_runner build --delete-conflicting-outputs
+cd ..
 
-dartfmt -w
+pub run build_runner build --delete-conflicting-outputs
+
+dartfmt -w ../lib
