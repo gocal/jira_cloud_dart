@@ -17,12 +17,15 @@ whet https://developer.atlassian.com/cloud/jira/platform/swagger-v3.v3.json
 java -jar openapi-generator-cli.jar config-help -g dart-dio
 
 
-## Generate
+## Generate Dio
 
 java -jar openapi-generator-cli.jar generate -i swagger-v3.v3.json -g dart-dio -o ../build/jira_cloud -c config.json && rm -rf ../lib/ && mv ../build/jira_cloud/lib ../lib && rm -rf ../build/jira_cloud/
 
 cd .. && pub run build_runner build --delete-conflicting-outputs && dartfmt -w lib
 
+# Generate regular dart
+
+java -jar openapi-generator-cli.jar generate -i swagger-v3.v3.json -g dart -o ../build/jira_cloud -c config.json && rm -rf ../lib/ && mv ../build/jira_cloud/lib ../lib && rm -rf ../build/jira_cloud/ && cd .. && dartfmt -w lib
 
 # other notes / fixes for swagger format
 - rename toString to toStringArg
