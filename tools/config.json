@@ -1,8 +1,5 @@
 {
-    "modelPackage": "com.atlassian.jira.rest.client.model",
-    "apiPackage": "com.atlassian.jira.rest.client.api",
-    "invokerPackage": "com.atlassian.jira.rest.client",
-    "library": "jersey2",
-    "groupId": "com.atlassian.jira.rest",
-    "artifactId": "client"
+    "pubAuthor": "Marek Gocał",
+    "pubName": "jira_cloud",
+    "sourceFolder": "../../"
 }
