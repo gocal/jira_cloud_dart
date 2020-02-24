@@ -31,8 +31,8 @@ abstract class ChangeDetails
   String get to;
   /* The details of the new value as a string. */
   @nullable
-  @BuiltValueField(wireName: r'toString')
-  String get toString;
+  @BuiltValueField(wireName: r'toStringArg')
+  String get toStringArg;
 
   // Boilerplate code needed to wire-up generated code
   ChangeDetails._();

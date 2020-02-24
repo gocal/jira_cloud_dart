@@ -55,10 +55,10 @@ class _$ChangeDetailsSerializer implements StructuredSerializer<ChangeDetails> {
         ..add(serializers.serialize(object.to,
             specifiedType: const FullType(String)));
     }
-    if (object.toString != null) {
+    if (object.toStringArg != null) {
       result
-        ..add('toString')
-        ..add(serializers.serialize(object.toString,
+        ..add('toStringArg')
+        ..add(serializers.serialize(object.toStringArg,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -100,8 +100,8 @@ class _$ChangeDetailsSerializer implements StructuredSerializer<ChangeDetails> {
           result.to = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'toString':
-          result.toString = serializers.deserialize(value,
+        case 'toStringArg':
+          result.toStringArg = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -125,7 +125,7 @@ class _$ChangeDetails extends ChangeDetails {
   @override
   final String to;
   @override
-  final String toString;
+  final String toStringArg;
 
   factory _$ChangeDetails([void Function(ChangeDetailsBuilder) updates]) =>
       (new ChangeDetailsBuilder()..update(updates)).build();
@@ -137,7 +137,7 @@ class _$ChangeDetails extends ChangeDetails {
       this.from,
       this.fromString,
       this.to,
-      this.toString})
+      this.toStringArg})
       : super._();
 
   @override
@@ -157,7 +157,7 @@ class _$ChangeDetails extends ChangeDetails {
         from == other.from &&
         fromString == other.fromString &&
         to == other.to &&
-        toString == other.toString;
+        toStringArg == other.toStringArg;
   }
 
   @override
@@ -171,7 +171,7 @@ class _$ChangeDetails extends ChangeDetails {
                     from.hashCode),
                 fromString.hashCode),
             to.hashCode),
-        toString.hashCode));
+        toStringArg.hashCode));
   }
 
   @override
@@ -183,7 +183,7 @@ class _$ChangeDetails extends ChangeDetails {
           ..add('from', from)
           ..add('fromString', fromString)
           ..add('to', to)
-          ..add('toString', toString))
+          ..add('toStringArg', toStringArg))
         .toString();
   }
 }
@@ -216,9 +216,9 @@ class ChangeDetailsBuilder
   String get to => _$this._to;
   set to(String to) => _$this._to = to;
 
-  String _toString;
-  String get toString => _$this._toString;
-  set toString(String toString) => _$this._toString = toString;
+  String _toStringArg;
+  String get toStringArg => _$this._toStringArg;
+  set toStringArg(String toStringArg) => _$this._toStringArg = toStringArg;
 
   ChangeDetailsBuilder();
 
@@ -230,7 +230,7 @@ class ChangeDetailsBuilder
       _from = _$v.from;
       _fromString = _$v.fromString;
       _to = _$v.to;
-      _toString = _$v.toString;
+      _toStringArg = _$v.toStringArg;
       _$v = null;
     }
     return this;
@@ -259,7 +259,7 @@ class ChangeDetailsBuilder
             from: from,
             fromString: fromString,
             to: to,
-            toString: toString);
+            toStringArg: toStringArg);
     replace(_$result);
     return _$result;
   }

@@ -43,7 +43,7 @@ class DynamicModulesApi {
             cancelToken: cancelToken,
             ).then((response) {
 
-        var serializer = _serializers.serializerForType(Map<String, List<Object>>);
+        var serializer = _serializers.serializerForType(Map);
         var data = _serializers.deserializeWith<Map<String, List<Object>>>(serializer, response.data);
 
             return Response<Map<String, List<Object>>>(

@@ -21,11 +21,7 @@ java -jar openapi-generator-cli.jar config-help -g dart-dio
 
 java -jar openapi-generator-cli.jar generate -i swagger-v3.v3.json -g dart-dio -o ../build/jira_cloud -c config.json && rm -rf ../lib/ && mv ../build/jira_cloud/lib ../lib && rm -rf ../build/jira_cloud/
 
-cd ..
-
-pub run build_runner build --delete-conflicting-outputs
-
-dartfmt -w ../lib
+cd .. && pub run build_runner build --delete-conflicting-outputs && dartfmt -w lib
 
 
 # other notes / fixes for swagger format
