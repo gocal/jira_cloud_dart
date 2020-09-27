@@ -14,7 +14,7 @@ abstract class Votes implements Built<Votes, VotesBuilder> {
   @nullable
   @BuiltValueField(wireName: r'votes')
   int get votes;
-  /* Indicates whether the user making this request has voted on the issue. */
+  /* Whether the user making this request has voted on the issue. */
   @nullable
   @BuiltValueField(wireName: r'hasVoted')
   bool get hasVoted;

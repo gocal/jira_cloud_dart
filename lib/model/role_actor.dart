@@ -1,5 +1,5 @@
-import 'package:jira_cloud/model/project_role_user_bean.dart';
-import 'package:jira_cloud/model/project_role_group_bean.dart';
+import 'package:jira_cloud/model/project_role_group.dart';
+import 'package:jira_cloud/model/project_role_user.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -30,11 +30,11 @@ abstract class RoleActor implements Built<RoleActor, RoleActorBuilder> {
 
   @nullable
   @BuiltValueField(wireName: r'actorUser')
-  ProjectRoleUserBean get actorUser;
+  ProjectRoleUser get actorUser;
 
   @nullable
   @BuiltValueField(wireName: r'actorGroup')
-  ProjectRoleGroupBean get actorGroup;
+  ProjectRoleGroup get actorGroup;
 
   // Boilerplate code needed to wire-up generated code
   RoleActor._();

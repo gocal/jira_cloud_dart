@@ -41,7 +41,7 @@ class _$ScreenSchemeSerializer implements StructuredSerializer<ScreenScheme> {
       result
         ..add('screens')
         ..add(serializers.serialize(object.screens,
-            specifiedType: const FullType(ScreenTypeIDsBean)));
+            specifiedType: const FullType(ScreenTypes)));
     }
     return result;
   }
@@ -71,8 +71,7 @@ class _$ScreenSchemeSerializer implements StructuredSerializer<ScreenScheme> {
           break;
         case 'screens':
           result.screens.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(ScreenTypeIDsBean))
-              as ScreenTypeIDsBean);
+              specifiedType: const FullType(ScreenTypes)) as ScreenTypes);
           break;
       }
     }
@@ -89,7 +88,7 @@ class _$ScreenScheme extends ScreenScheme {
   @override
   final String description;
   @override
-  final ScreenTypeIDsBean screens;
+  final ScreenTypes screens;
 
   factory _$ScreenScheme([void Function(ScreenSchemeBuilder) updates]) =>
       (new ScreenSchemeBuilder()..update(updates)).build();
@@ -148,10 +147,10 @@ class ScreenSchemeBuilder
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
-  ScreenTypeIDsBeanBuilder _screens;
-  ScreenTypeIDsBeanBuilder get screens =>
-      _$this._screens ??= new ScreenTypeIDsBeanBuilder();
-  set screens(ScreenTypeIDsBeanBuilder screens) => _$this._screens = screens;
+  ScreenTypesBuilder _screens;
+  ScreenTypesBuilder get screens =>
+      _$this._screens ??= new ScreenTypesBuilder();
+  set screens(ScreenTypesBuilder screens) => _$this._screens = screens;
 
   ScreenSchemeBuilder();
 

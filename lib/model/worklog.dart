@@ -2,7 +2,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:jira_cloud/model/visibility.dart';
 import 'package:jira_cloud/model/user_details.dart';
 import 'package:jira_cloud/model/entity_property.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,10 +20,10 @@ abstract class Worklog implements Built<Worklog, WorklogBuilder> {
   @nullable
   @BuiltValueField(wireName: r'updateAuthor')
   UserDetails get updateAuthor;
-  /* A comment about the worklog in [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/). Optional when creating or updating a worklog. */
+  /* A comment about the worklog. Optional when creating or updating a worklog. */
   @nullable
   @BuiltValueField(wireName: r'comment')
-  JsonObject get comment;
+  String get comment;
   /* The datetime on which the worklog was created. */
   @nullable
   @BuiltValueField(wireName: r'created')

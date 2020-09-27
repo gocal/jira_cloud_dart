@@ -5,7 +5,7 @@ import 'package:built_value/serializer.dart';
 part 'status.g.dart';
 
 abstract class Status implements Built<Status, StatusBuilder> {
-  /* Indicates whether the item is resolved. If set to \"true\", the link to the issue is displayed in a strikethrough font, otherwise the link displays in normal font. */
+  /* Whether the item is resolved. If set to \"true\", the link to the issue is displayed in a strikethrough font, otherwise the link displays in normal font. */
   @nullable
   @BuiltValueField(wireName: r'resolved')
   bool get resolved;

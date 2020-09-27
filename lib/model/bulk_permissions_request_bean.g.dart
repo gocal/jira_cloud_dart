@@ -38,6 +38,12 @@ class _$BulkPermissionsRequestBeanSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    if (object.accountId != null) {
+      result
+        ..add('accountId')
+        ..add(serializers.serialize(object.accountId,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -65,6 +71,10 @@ class _$BulkPermissionsRequestBeanSerializer
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<dynamic>);
           break;
+        case 'accountId':
+          result.accountId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -77,13 +87,15 @@ class _$BulkPermissionsRequestBean extends BulkPermissionsRequestBean {
   final BuiltList<BulkProjectPermissions> projectPermissions;
   @override
   final BuiltList<String> globalPermissions;
+  @override
+  final String accountId;
 
   factory _$BulkPermissionsRequestBean(
           [void Function(BulkPermissionsRequestBeanBuilder) updates]) =>
       (new BulkPermissionsRequestBeanBuilder()..update(updates)).build();
 
   _$BulkPermissionsRequestBean._(
-      {this.projectPermissions, this.globalPermissions})
+      {this.projectPermissions, this.globalPermissions, this.accountId})
       : super._();
 
   @override
@@ -100,20 +112,23 @@ class _$BulkPermissionsRequestBean extends BulkPermissionsRequestBean {
     if (identical(other, this)) return true;
     return other is BulkPermissionsRequestBean &&
         projectPermissions == other.projectPermissions &&
-        globalPermissions == other.globalPermissions;
+        globalPermissions == other.globalPermissions &&
+        accountId == other.accountId;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc(0, projectPermissions.hashCode), globalPermissions.hashCode));
+    return $jf($jc(
+        $jc($jc(0, projectPermissions.hashCode), globalPermissions.hashCode),
+        accountId.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('BulkPermissionsRequestBean')
           ..add('projectPermissions', projectPermissions)
-          ..add('globalPermissions', globalPermissions))
+          ..add('globalPermissions', globalPermissions)
+          ..add('accountId', accountId))
         .toString();
   }
 }
@@ -136,12 +151,17 @@ class BulkPermissionsRequestBeanBuilder
   set globalPermissions(ListBuilder<String> globalPermissions) =>
       _$this._globalPermissions = globalPermissions;
 
+  String _accountId;
+  String get accountId => _$this._accountId;
+  set accountId(String accountId) => _$this._accountId = accountId;
+
   BulkPermissionsRequestBeanBuilder();
 
   BulkPermissionsRequestBeanBuilder get _$this {
     if (_$v != null) {
       _projectPermissions = _$v.projectPermissions?.toBuilder();
       _globalPermissions = _$v.globalPermissions?.toBuilder();
+      _accountId = _$v.accountId;
       _$v = null;
     }
     return this;
@@ -167,7 +187,8 @@ class BulkPermissionsRequestBeanBuilder
       _$result = _$v ??
           new _$BulkPermissionsRequestBean._(
               projectPermissions: _projectPermissions?.build(),
-              globalPermissions: _globalPermissions?.build());
+              globalPermissions: _globalPermissions?.build(),
+              accountId: accountId);
     } catch (_) {
       String _$failedField;
       try {

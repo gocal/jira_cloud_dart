@@ -20,19 +20,19 @@ abstract class FieldDetails
   @nullable
   @BuiltValueField(wireName: r'name')
   String get name;
-  /* Indicates whether the field is a custom field. */
+  /* Whether the field is a custom field. */
   @nullable
   @BuiltValueField(wireName: r'custom')
   bool get custom;
-  /* Indicates whether the content of the field can be used to order lists. */
+  /* Whether the content of the field can be used to order lists. */
   @nullable
   @BuiltValueField(wireName: r'orderable')
   bool get orderable;
-  /* Indicates whether the field can be used as a column on the issue navigator. */
+  /* Whether the field can be used as a column on the issue navigator. */
   @nullable
   @BuiltValueField(wireName: r'navigable')
   bool get navigable;
-  /* Indicates whether the content of the field can be searched. */
+  /* Whether the content of the field can be searched. */
   @nullable
   @BuiltValueField(wireName: r'searchable')
   bool get searchable;

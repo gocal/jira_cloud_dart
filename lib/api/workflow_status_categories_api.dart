@@ -16,12 +16,11 @@ class WorkflowStatusCategoriesApi {
   /// Get all status categories
   ///
   /// Returns a list of all status categories.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<List<StatusCategory>>>
-      comAtlassianJiraRestV2IssueStatusCategoryResourceGetStatusCategoriesGet({
+  Future<Response<List<StatusCategory>>> getStatusCategories({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/statuscategory";
+    String _path = "/rest/api/2/statuscategory";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -66,14 +65,13 @@ class WorkflowStatusCategoriesApi {
 
   /// Get status category
   ///
-  /// Returns a status category. Status categories provided a mechanism for categorizing [statuses](#api-rest-api-3-status-idOrName-get).  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<StatusCategory>>
-      comAtlassianJiraRestV2IssueStatusCategoryResourceGetStatusCategoryGet(
+  /// Returns a status category. Status categories provided a mechanism for categorizing [statuses](#api-rest-api-2-status-idOrName-get).  **[Permissions](#permissions) required:** Permission to access Jira.
+  Future<Response<StatusCategory>> getStatusCategory(
     String idOrKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/statuscategory/{idOrKey}"
+    String _path = "/rest/api/2/statuscategory/{idOrKey}"
         .replaceAll("{" r'idOrKey' "}", idOrKey.toString());
 
     Map<String, dynamic> queryParams = {};

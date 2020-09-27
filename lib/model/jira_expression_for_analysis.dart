@@ -11,6 +11,10 @@ abstract class JiraExpressionForAnalysis
   @nullable
   @BuiltValueField(wireName: r'expressions')
   BuiltList<String> get expressions;
+  /* Context variables and their types. The type checker assumes that [common context variables](https://developer.atlassian.com/cloud/jira/platform/jira-expressions/#context-variables), such as `issue` or `project`, are available in context and sets their type. Use this property to override the default types or provide details of new variables. */
+  @nullable
+  @BuiltValueField(wireName: r'contextVariables')
+  BuiltMap<String, String> get contextVariables;
 
   // Boilerplate code needed to wire-up generated code
   JiraExpressionForAnalysis._();

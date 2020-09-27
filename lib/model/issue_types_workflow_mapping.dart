@@ -15,11 +15,11 @@ abstract class IssueTypesWorkflowMapping
   @nullable
   @BuiltValueField(wireName: r'issueTypes')
   BuiltList<String> get issueTypes;
-  /* Indicates whether the workflow is the default workflow for the workflow scheme. */
+  /* Whether the workflow is the default workflow for the workflow scheme. */
   @nullable
   @BuiltValueField(wireName: r'defaultMapping')
   bool get defaultMapping;
-  /* Indicates whether a draft workflow scheme is created or updated when updating an active workflow scheme. The draft is updated with the new workflow-issue types mapping. Defaults to `false`. */
+  /* Whether a draft workflow scheme is created or updated when updating an active workflow scheme. The draft is updated with the new workflow-issue types mapping. Defaults to `false`. */
   @nullable
   @BuiltValueField(wireName: r'updateDraftIfNeeded')
   bool get updateDraftIfNeeded;

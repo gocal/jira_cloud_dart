@@ -27,7 +27,7 @@ abstract class PageBeanChangelog
   @nullable
   @BuiltValueField(wireName: r'total')
   int get total;
-  /* Indicates whether this is the last page. */
+  /* Whether this is the last page. */
   @nullable
   @BuiltValueField(wireName: r'isLast')
   bool get isLast;

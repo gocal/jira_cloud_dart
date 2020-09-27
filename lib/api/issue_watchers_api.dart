@@ -16,14 +16,13 @@ class IssueWatchersApi {
   /// Add watcher
   ///
   /// Adds a user as a watcher of an issue by passing the account ID of the user. For example, &#x60;\&quot;5b10ac8d82e05b22cc7d4ef5\&quot;&#x60;. If no user is specified the calling user is added.  This operation requires the **Allow users to watch issues** option to be *ON*. This option is set in General configuration for Jira. See [Configuring Jira application options](https://confluence.atlassian.com/x/uYXKM) for details.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  To add users other than themselves to the watchlist, *Manage watcher list* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueIssueResourceAddWatcherPost(
+  Future<Response<Object>> addWatcher(
     String issueIdOrKey,
     String body, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/watchers"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/watchers"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -72,13 +71,12 @@ class IssueWatchersApi {
   /// Get issue watchers
   ///
   /// Returns the watchers for an issue.  This operation requires the **Allow users to watch issues** option to be *ON*. This option is set in General configuration for Jira. See [Configuring Jira application options](https://confluence.atlassian.com/x/uYXKM) for details.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is ini  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  To see details of users on the watchlist other than themselves, *View voters and watchers* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.
-  Future<Response<Watchers>>
-      comAtlassianJiraRestV2IssueIssueResourceGetIssueWatchersGet(
+  Future<Response<Watchers>> getIssueWatchers(
     String issueIdOrKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/watchers"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/watchers"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -123,14 +121,14 @@ class IssueWatchersApi {
   /// Delete watcher
   ///
   /// Deletes a user as a watcher of an issue.  This operation requires the **Allow users to watch issues** option to be *ON*. This option is set in General configuration for Jira. See [Configuring Jira application options](https://confluence.atlassian.com/x/uYXKM) for details.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  To remove users other than themselves from the watchlist, *Manage watcher list* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.
-  Future<Response> comAtlassianJiraRestV2IssueIssueResourceRemoveWatcherDelete(
+  Future<Response> removeWatcher(
     String issueIdOrKey, {
     String username,
     String accountId,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/watchers"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/watchers"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};

@@ -16,14 +16,13 @@ class IssueSecuritySchemesApi {
 
   /// Get issue security scheme
   ///
-  /// Returns an issue security scheme along with its security levels.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).  *  *Administer Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for a project that uses the requested issue security scheme.
-  Future<Response<SecurityScheme>>
-      comAtlassianJiraRestV2IssueIssueSecuritySchemeResourceGetIssueSecuritySchemeGet(
+  /// Returns an issue security scheme along with its security levels.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).  *  *Administer Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for a project that uses the requested issue security scheme.
+  Future<Response<SecurityScheme>> getIssueSecurityScheme(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issuesecurityschemes/{id}"
+    String _path = "/rest/api/2/issuesecurityschemes/{id}"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -67,13 +66,12 @@ class IssueSecuritySchemesApi {
 
   /// Get issue security schemes
   ///
-  /// Returns all [issue security schemes](https://confluence.atlassian.com/x/J4lKLg).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<SecuritySchemes>>
-      comAtlassianJiraRestV2IssueIssueSecuritySchemeResourceGetIssueSecuritySchemesGet({
+  /// Returns all [issue security schemes](https://confluence.atlassian.com/x/J4lKLg).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+  Future<Response<SecuritySchemes>> getIssueSecuritySchemes({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issuesecurityschemes";
+    String _path = "/rest/api/2/issuesecurityschemes";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

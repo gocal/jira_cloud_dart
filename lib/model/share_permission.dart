@@ -17,7 +17,7 @@ abstract class SharePermission
   @BuiltValueField(wireName: r'type')
   String get type;
   //enum typeEnum {  group,  project,  projectRole,  global,  loggedin,  authenticated,  project-unknown,  };
-  /* The project that the filter is shared with. This is similar to the project object returned by [Get project](#api-rest-api-3-project-projectIdOrKey-get) but it contains a subset of the properties, which are: `self`, `id`, `key`, `assigneeType`, `name`, `roles`, `avatarUrls`, `projectType`, `simplified`.   For a request, specify the `id` for the project. */
+  /* The project that the filter is shared with. This is similar to the project object returned by [Get project](#api-rest-api-2-project-projectIdOrKey-get) but it contains a subset of the properties, which are: `self`, `id`, `key`, `assigneeType`, `name`, `roles`, `avatarUrls`, `projectType`, `simplified`.   For a request, specify the `id` for the project. */
   @nullable
   @BuiltValueField(wireName: r'project')
   Project get project;

@@ -40,7 +40,7 @@ class _$CommentSerializer implements StructuredSerializer<Comment> {
       result
         ..add('body')
         ..add(serializers.serialize(object.body,
-            specifiedType: const FullType(JsonObject)));
+            specifiedType: const FullType(String)));
     }
     if (object.renderedBody != null) {
       result
@@ -113,7 +113,7 @@ class _$CommentSerializer implements StructuredSerializer<Comment> {
           break;
         case 'body':
           result.body = serializers.deserialize(value,
-              specifiedType: const FullType(JsonObject)) as JsonObject;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'renderedBody':
           result.renderedBody = serializers.deserialize(value,
@@ -160,7 +160,7 @@ class _$Comment extends Comment {
   @override
   final UserDetails author;
   @override
-  final JsonObject body;
+  final String body;
   @override
   final String renderedBody;
   @override
@@ -272,9 +272,9 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   UserDetailsBuilder get author => _$this._author ??= new UserDetailsBuilder();
   set author(UserDetailsBuilder author) => _$this._author = author;
 
-  JsonObject _body;
-  JsonObject get body => _$this._body;
-  set body(JsonObject body) => _$this._body = body;
+  String _body;
+  String get body => _$this._body;
+  set body(String body) => _$this._body = body;
 
   String _renderedBody;
   String get renderedBody => _$this._renderedBody;

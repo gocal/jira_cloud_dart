@@ -31,6 +31,18 @@ abstract class ProjectRole implements Built<ProjectRole, ProjectRoleBuilder> {
   @nullable
   @BuiltValueField(wireName: r'scope')
   Scope get scope;
+  /* The translated name of the project role. */
+  @nullable
+  @BuiltValueField(wireName: r'translatedName')
+  String get translatedName;
+  /* Whether the calling user is part of this role. */
+  @nullable
+  @BuiltValueField(wireName: r'currentUserRole')
+  bool get currentUserRole;
+  /* Whether the roles are configurable for this project. */
+  @nullable
+  @BuiltValueField(wireName: r'roleConfigurable')
+  bool get roleConfigurable;
   /* Whether this role is the admin role for the project. */
   @nullable
   @BuiltValueField(wireName: r'admin')

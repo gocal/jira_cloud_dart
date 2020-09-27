@@ -17,79 +17,15 @@ class IssueFieldsApi {
 
   IssueFieldsApi(this._dio, this._serializers);
 
-  /// Get fields paginated
-  ///
-  /// Returns a [paginated](#pagination) list of fields for Classic Jira projects. The list can include:   *  all fields.  *  specific fields, by defining &#x60;id&#x60;.  *  fields that contain a string in the field name or description, by defining &#x60;query&#x60;.  *  specific fields that contain a string in the field name or description, by defining &#x60;id&#x60; and &#x60;query&#x60;.  Only custom fields can be queried, &#x60;type&#x60; must be set to &#x60;custom&#x60;.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<PageBeanField>>
-      comAtlassianJiraRestV2IssueFieldFieldSearchResourceGetFieldsPaginatedGet({
-    int startAt,
-    int maxResults,
-    List<String> type,
-    List<String> id,
-    String query,
-    String orderBy,
-    String expand,
-    CancelToken cancelToken,
-    Map<String, String> headers,
-  }) async {
-    String _path = "/rest/api/3/field/search";
-
-    Map<String, dynamic> queryParams = {};
-    Map<String, String> headerParams = Map.from(headers ?? {});
-    dynamic bodyData;
-
-    queryParams[r'startAt'] = startAt;
-    queryParams[r'maxResults'] = maxResults;
-    queryParams[r'type'] = type;
-    queryParams[r'id'] = id;
-    queryParams[r'query'] = query;
-    queryParams[r'orderBy'] = orderBy;
-    queryParams[r'expand'] = expand;
-    queryParams.removeWhere((key, value) => value == null);
-    headerParams.removeWhere((key, value) => value == null);
-
-    List<String> contentTypes = [];
-
-    return _dio
-        .request(
-      _path,
-      queryParameters: queryParams,
-      data: bodyData,
-      options: Options(
-        method: 'get'.toUpperCase(),
-        headers: headerParams,
-        contentType:
-            contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-      ),
-      cancelToken: cancelToken,
-    )
-        .then((response) {
-      var serializer = _serializers.serializerForType(PageBeanField);
-      var data = _serializers.deserializeWith<PageBeanField>(
-          serializer, response.data);
-
-      return Response<PageBeanField>(
-        data: data,
-        headers: response.headers,
-        request: response.request,
-        redirects: response.redirects,
-        statusCode: response.statusCode,
-        statusMessage: response.statusMessage,
-        extra: response.extra,
-      );
-    });
-  }
-
   /// Create custom field
   ///
   /// Creates a custom field.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<FieldDetails>>
-      comAtlassianJiraRestV2IssueFieldResourceCreateCustomFieldPost(
+  Future<Response<FieldDetails>> createCustomField(
     CustomFieldDefinitionJsonBean customFieldDefinitionJsonBean, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field";
+    String _path = "/rest/api/2/field";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -137,15 +73,14 @@ class IssueFieldsApi {
   /// Get contexts for a field
   ///
   /// Returns a [paginated](#pagination) list of the contexts a field is used in.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<PageBeanContext>>
-      comAtlassianJiraRestV2IssueFieldResourceGetContextsForFieldGet(
+  Future<Response<PageBeanContext>> getContextsForField(
     String fieldId, {
     int startAt,
     int maxResults,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldId}/contexts"
+    String _path = "/rest/api/2/field/{fieldId}/contexts"
         .replaceAll("{" r'fieldId' "}", fieldId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -192,12 +127,11 @@ class IssueFieldsApi {
   /// Get fields
   ///
   /// Returns system and custom issue fields according to the following rules:   *  Fields that cannot be added to the issue navigator are always returned.  *  Fields that cannot be placed on an issue screen are always returned.  *  Fields that depend on global Jira settings are only returned if the setting is enabled. That is, timetracking fields, subtasks, votes, and watches.  *  For all other fields, this operation only returns the fields that the user has permission to view (that is, the field is used in at least one project that the user has *Browse Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.)  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<List<FieldDetails>>>
-      comAtlassianJiraRestV2IssueFieldResourceGetFieldsGet({
+  Future<Response<List<FieldDetails>>> getFields({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field";
+    String _path = "/rest/api/2/field";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -229,6 +163,68 @@ class IssueFieldsApi {
       var data = dataList.toList();
 
       return Response<List<FieldDetails>>(
+        data: data,
+        headers: response.headers,
+        request: response.request,
+        redirects: response.redirects,
+        statusCode: response.statusCode,
+        statusMessage: response.statusMessage,
+        extra: response.extra,
+      );
+    });
+  }
+
+  /// Get fields paginated
+  ///
+  /// Returns a [paginated](#pagination) list of fields for Classic Jira projects. The list can include:   *  all fields.  *  specific fields, by defining &#x60;id&#x60;.  *  fields that contain a string in the field name or description, by defining &#x60;query&#x60;.  *  specific fields that contain a string in the field name or description, by defining &#x60;id&#x60; and &#x60;query&#x60;.  Only custom fields can be queried, &#x60;type&#x60; must be set to &#x60;custom&#x60;.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+  Future<Response<PageBeanField>> getFieldsPaginated({
+    int startAt,
+    int maxResults,
+    List<String> type,
+    List<String> id,
+    String query,
+    String orderBy,
+    String expand,
+    CancelToken cancelToken,
+    Map<String, String> headers,
+  }) async {
+    String _path = "/rest/api/2/field/search";
+
+    Map<String, dynamic> queryParams = {};
+    Map<String, String> headerParams = Map.from(headers ?? {});
+    dynamic bodyData;
+
+    queryParams[r'startAt'] = startAt;
+    queryParams[r'maxResults'] = maxResults;
+    queryParams[r'type'] = type;
+    queryParams[r'id'] = id;
+    queryParams[r'query'] = query;
+    queryParams[r'orderBy'] = orderBy;
+    queryParams[r'expand'] = expand;
+    queryParams.removeWhere((key, value) => value == null);
+    headerParams.removeWhere((key, value) => value == null);
+
+    List<String> contentTypes = [];
+
+    return _dio
+        .request(
+      _path,
+      queryParameters: queryParams,
+      data: bodyData,
+      options: Options(
+        method: 'get'.toUpperCase(),
+        headers: headerParams,
+        contentType:
+            contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
+      ),
+      cancelToken: cancelToken,
+    )
+        .then((response) {
+      var serializer = _serializers.serializerForType(PageBeanField);
+      var data = _serializers.deserializeWith<PageBeanField>(
+          serializer, response.data);
+
+      return Response<PageBeanField>(
         data: data,
         headers: response.headers,
         request: response.request,

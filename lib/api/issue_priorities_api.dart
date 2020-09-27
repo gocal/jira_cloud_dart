@@ -16,12 +16,11 @@ class IssuePrioritiesApi {
   /// Get priorities
   ///
   /// Returns the list of all issue priorities.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<List<Priority>>>
-      comAtlassianJiraRestV2IssuePriorityResourceGetPrioritiesGet({
+  Future<Response<List<Priority>>> getPriorities({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/priority";
+    String _path = "/rest/api/2/priority";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -67,14 +66,13 @@ class IssuePrioritiesApi {
   /// Get priority
   ///
   /// Returns an issue priority.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<Priority>>
-      comAtlassianJiraRestV2IssuePriorityResourceGetPriorityGet(
+  Future<Response<Priority>> getPriority(
     String id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/priority/{id}".replaceAll("{" r'id' "}", id.toString());
+        "/rest/api/2/priority/{id}".replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

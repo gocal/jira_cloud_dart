@@ -16,8 +16,7 @@ class WorkflowTransitionPropertiesApi {
   /// Create workflow transition property
   ///
   /// Adds a property to a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowTransitionProperty>>
-      comAtlassianJiraRestV2AdminWorkflowTransitionResourceCreateWorkflowTransitionPropertyPost(
+  Future<Response<WorkflowTransitionProperty>> createWorkflowTransitionProperty(
     int transitionId,
     String key,
     String workflowName,
@@ -26,7 +25,7 @@ class WorkflowTransitionPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflow/transitions/{transitionId}/properties"
+    String _path = "/rest/api/2/workflow/transitions/{transitionId}/properties"
         .replaceAll("{" r'transitionId' "}", transitionId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -79,8 +78,7 @@ class WorkflowTransitionPropertiesApi {
   /// Delete workflow transition property
   ///
   /// Deletes a property from a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response>
-      comAtlassianJiraRestV2AdminWorkflowTransitionResourceDeleteWorkflowTransitionPropertyDelete(
+  Future<Response> deleteWorkflowTransitionProperty(
     int transitionId,
     String key,
     String workflowName, {
@@ -88,7 +86,7 @@ class WorkflowTransitionPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflow/transitions/{transitionId}/properties"
+    String _path = "/rest/api/2/workflow/transitions/{transitionId}/properties"
         .replaceAll("{" r'transitionId' "}", transitionId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -120,8 +118,7 @@ class WorkflowTransitionPropertiesApi {
   /// Get workflow transition properties
   ///
   /// Returns the properties on a workflow transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowTransitionProperty>>
-      comAtlassianJiraRestV2AdminWorkflowTransitionResourceGetWorkflowTransitionPropertiesGet(
+  Future<Response<WorkflowTransitionProperty>> getWorkflowTransitionProperties(
     int transitionId,
     String workflowName, {
     bool includeReservedKeys,
@@ -130,7 +127,7 @@ class WorkflowTransitionPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflow/transitions/{transitionId}/properties"
+    String _path = "/rest/api/2/workflow/transitions/{transitionId}/properties"
         .replaceAll("{" r'transitionId' "}", transitionId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -180,8 +177,7 @@ class WorkflowTransitionPropertiesApi {
   /// Update workflow transition property
   ///
   /// Updates a workflow transition by changing the property value. Trying to update a property that does not exist results in a new property being added to the transition. Transition properties are used to change the behavior of a transition. For more information, see [Transition properties](https://confluence.atlassian.com/x/zIhKLg#Advancedworkflowconfiguration-transitionproperties) and [Workflow properties](https://confluence.atlassian.com/x/JYlKLg).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowTransitionProperty>>
-      comAtlassianJiraRestV2AdminWorkflowTransitionResourceUpdateWorkflowTransitionPropertyPut(
+  Future<Response<WorkflowTransitionProperty>> updateWorkflowTransitionProperty(
     int transitionId,
     String key,
     String workflowName,
@@ -190,7 +186,7 @@ class WorkflowTransitionPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflow/transitions/{transitionId}/properties"
+    String _path = "/rest/api/2/workflow/transitions/{transitionId}/properties"
         .replaceAll("{" r'transitionId' "}", transitionId.toString());
 
     Map<String, dynamic> queryParams = {};

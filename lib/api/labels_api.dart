@@ -16,14 +16,13 @@ class LabelsApi {
   /// Get all labels
   ///
   /// Returns a [paginated](#pagination) list of labels.
-  Future<Response<PageBeanString>>
-      comAtlassianJiraRestV2LabelLabelResourceGetAllLabelsGet({
+  Future<Response<PageBeanString>> getAllLabels({
     int startAt,
     int maxResults,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/label";
+    String _path = "/rest/api/2/label";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

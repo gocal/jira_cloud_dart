@@ -33,10 +33,10 @@ class _$IssueUpdateDetailsSerializer
             specifiedType: const FullType(BuiltMap,
                 const [const FullType(String), const FullType(JsonObject)])));
     }
-    if (object.updateArg != null) {
+    if (object.update != null) {
       result
         ..add('update')
-        ..add(serializers.serialize(object.updateArg,
+        ..add(serializers.serialize(object.update,
             specifiedType: const FullType(BuiltMap, const [
               const FullType(String),
               const FullType(
@@ -84,7 +84,7 @@ class _$IssueUpdateDetailsSerializer
               ])) as BuiltMap<dynamic, dynamic>);
           break;
         case 'update':
-          result.updateArg.replace(serializers.deserialize(value,
+          result.update.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltMap, const [
                 const FullType(String),
                 const FullType(
@@ -115,7 +115,7 @@ class _$IssueUpdateDetails extends IssueUpdateDetails {
   @override
   final BuiltMap<String, JsonObject> fields;
   @override
-  final BuiltMap<String, BuiltList<FieldUpdateOperation>> updateArg;
+  final BuiltMap<String, BuiltList<FieldUpdateOperation>> update;
   @override
   final HistoryMetadata historyMetadata;
   @override
@@ -128,7 +128,7 @@ class _$IssueUpdateDetails extends IssueUpdateDetails {
   _$IssueUpdateDetails._(
       {this.transition,
       this.fields,
-      this.updateArg,
+      this.update,
       this.historyMetadata,
       this.properties})
       : super._();
@@ -148,7 +148,7 @@ class _$IssueUpdateDetails extends IssueUpdateDetails {
     return other is IssueUpdateDetails &&
         transition == other.transition &&
         fields == other.fields &&
-        updateArg == other.updateArg &&
+        update == other.update &&
         historyMetadata == other.historyMetadata &&
         properties == other.properties;
   }
@@ -158,7 +158,7 @@ class _$IssueUpdateDetails extends IssueUpdateDetails {
     return $jf($jc(
         $jc(
             $jc($jc($jc(0, transition.hashCode), fields.hashCode),
-                updateArg.hashCode),
+                update.hashCode),
             historyMetadata.hashCode),
         properties.hashCode));
   }
@@ -168,7 +168,7 @@ class _$IssueUpdateDetails extends IssueUpdateDetails {
     return (newBuiltValueToStringHelper('IssueUpdateDetails')
           ..add('transition', transition)
           ..add('fields', fields)
-          ..add('update', updateArg)
+          ..add('update', update)
           ..add('historyMetadata', historyMetadata)
           ..add('properties', properties))
         .toString();
@@ -191,10 +191,10 @@ class IssueUpdateDetailsBuilder
   set fields(MapBuilder<String, JsonObject> fields) => _$this._fields = fields;
 
   MapBuilder<String, BuiltList<FieldUpdateOperation>> _update;
-  MapBuilder<String, BuiltList<FieldUpdateOperation>> get updateArg =>
+  MapBuilder<String, BuiltList<FieldUpdateOperation>> get update =>
       _$this._update ??=
           new MapBuilder<String, BuiltList<FieldUpdateOperation>>();
-  set updateArg(MapBuilder<String, BuiltList<FieldUpdateOperation>> update) =>
+  set update(MapBuilder<String, BuiltList<FieldUpdateOperation>> update) =>
       _$this._update = update;
 
   HistoryMetadataBuilder _historyMetadata;
@@ -215,7 +215,7 @@ class IssueUpdateDetailsBuilder
     if (_$v != null) {
       _transition = _$v.transition?.toBuilder();
       _fields = _$v.fields?.toBuilder();
-      _update = _$v.updateArg?.toBuilder();
+      _update = _$v.update?.toBuilder();
       _historyMetadata = _$v.historyMetadata?.toBuilder();
       _properties = _$v.properties?.toBuilder();
       _$v = null;
@@ -244,7 +244,7 @@ class IssueUpdateDetailsBuilder
           new _$IssueUpdateDetails._(
               transition: _transition?.build(),
               fields: _fields?.build(),
-              updateArg: _update?.build(),
+              update: _update?.build(),
               historyMetadata: _historyMetadata?.build(),
               properties: _properties?.build());
     } catch (_) {

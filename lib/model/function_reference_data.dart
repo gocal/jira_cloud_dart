@@ -14,7 +14,7 @@ abstract class FunctionReferenceData
   @nullable
   @BuiltValueField(wireName: r'displayName')
   String get displayName;
-  /* Indicates whether the function can take a list of arguments. */
+  /* Whether the function can take a list of arguments. */
   @nullable
   @BuiltValueField(wireName: r'isList')
   String get isList;

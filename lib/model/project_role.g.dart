@@ -55,6 +55,24 @@ class _$ProjectRoleSerializer implements StructuredSerializer<ProjectRole> {
         ..add(serializers.serialize(object.scope,
             specifiedType: const FullType(Scope)));
     }
+    if (object.translatedName != null) {
+      result
+        ..add('translatedName')
+        ..add(serializers.serialize(object.translatedName,
+            specifiedType: const FullType(String)));
+    }
+    if (object.currentUserRole != null) {
+      result
+        ..add('currentUserRole')
+        ..add(serializers.serialize(object.currentUserRole,
+            specifiedType: const FullType(bool)));
+    }
+    if (object.roleConfigurable != null) {
+      result
+        ..add('roleConfigurable')
+        ..add(serializers.serialize(object.roleConfigurable,
+            specifiedType: const FullType(bool)));
+    }
     if (object.admin != null) {
       result
         ..add('admin')
@@ -107,6 +125,18 @@ class _$ProjectRoleSerializer implements StructuredSerializer<ProjectRole> {
           result.scope.replace(serializers.deserialize(value,
               specifiedType: const FullType(Scope)) as Scope);
           break;
+        case 'translatedName':
+          result.translatedName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'currentUserRole':
+          result.currentUserRole = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'roleConfigurable':
+          result.roleConfigurable = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
         case 'admin':
           result.admin = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
@@ -136,6 +166,12 @@ class _$ProjectRole extends ProjectRole {
   @override
   final Scope scope;
   @override
+  final String translatedName;
+  @override
+  final bool currentUserRole;
+  @override
+  final bool roleConfigurable;
+  @override
   final bool admin;
   @override
   final bool default_;
@@ -150,6 +186,9 @@ class _$ProjectRole extends ProjectRole {
       this.description,
       this.actors,
       this.scope,
+      this.translatedName,
+      this.currentUserRole,
+      this.roleConfigurable,
       this.admin,
       this.default_})
       : super._();
@@ -171,6 +210,9 @@ class _$ProjectRole extends ProjectRole {
         description == other.description &&
         actors == other.actors &&
         scope == other.scope &&
+        translatedName == other.translatedName &&
+        currentUserRole == other.currentUserRole &&
+        roleConfigurable == other.roleConfigurable &&
         admin == other.admin &&
         default_ == other.default_;
   }
@@ -182,11 +224,19 @@ class _$ProjectRole extends ProjectRole {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, self.hashCode), name.hashCode),
-                            id.hashCode),
-                        description.hashCode),
-                    actors.hashCode),
-                scope.hashCode),
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc(
+                                        $jc($jc(0, self.hashCode),
+                                            name.hashCode),
+                                        id.hashCode),
+                                    description.hashCode),
+                                actors.hashCode),
+                            scope.hashCode),
+                        translatedName.hashCode),
+                    currentUserRole.hashCode),
+                roleConfigurable.hashCode),
             admin.hashCode),
         default_.hashCode));
   }
@@ -200,6 +250,9 @@ class _$ProjectRole extends ProjectRole {
           ..add('description', description)
           ..add('actors', actors)
           ..add('scope', scope)
+          ..add('translatedName', translatedName)
+          ..add('currentUserRole', currentUserRole)
+          ..add('roleConfigurable', roleConfigurable)
           ..add('admin', admin)
           ..add('default_', default_))
         .toString();
@@ -234,6 +287,21 @@ class ProjectRoleBuilder implements Builder<ProjectRole, ProjectRoleBuilder> {
   ScopeBuilder get scope => _$this._scope ??= new ScopeBuilder();
   set scope(ScopeBuilder scope) => _$this._scope = scope;
 
+  String _translatedName;
+  String get translatedName => _$this._translatedName;
+  set translatedName(String translatedName) =>
+      _$this._translatedName = translatedName;
+
+  bool _currentUserRole;
+  bool get currentUserRole => _$this._currentUserRole;
+  set currentUserRole(bool currentUserRole) =>
+      _$this._currentUserRole = currentUserRole;
+
+  bool _roleConfigurable;
+  bool get roleConfigurable => _$this._roleConfigurable;
+  set roleConfigurable(bool roleConfigurable) =>
+      _$this._roleConfigurable = roleConfigurable;
+
   bool _admin;
   bool get admin => _$this._admin;
   set admin(bool admin) => _$this._admin = admin;
@@ -252,6 +320,9 @@ class ProjectRoleBuilder implements Builder<ProjectRole, ProjectRoleBuilder> {
       _description = _$v.description;
       _actors = _$v.actors?.toBuilder();
       _scope = _$v.scope?.toBuilder();
+      _translatedName = _$v.translatedName;
+      _currentUserRole = _$v.currentUserRole;
+      _roleConfigurable = _$v.roleConfigurable;
       _admin = _$v.admin;
       _default_ = _$v.default_;
       _$v = null;
@@ -284,6 +355,9 @@ class ProjectRoleBuilder implements Builder<ProjectRole, ProjectRoleBuilder> {
               description: description,
               actors: _actors?.build(),
               scope: _scope?.build(),
+              translatedName: translatedName,
+              currentUserRole: currentUserRole,
+              roleConfigurable: roleConfigurable,
               admin: admin,
               default_: default_);
     } catch (_) {

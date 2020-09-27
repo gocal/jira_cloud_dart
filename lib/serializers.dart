@@ -47,6 +47,7 @@ import 'package:jira_cloud/model/component_issues_count.dart';
 import 'package:jira_cloud/model/component_with_issue_count.dart';
 import 'package:jira_cloud/model/compound_clause.dart';
 import 'package:jira_cloud/model/configuration.dart';
+import 'package:jira_cloud/model/connect_modules.dart';
 import 'package:jira_cloud/model/connect_workflow_transition_rule.dart';
 import 'package:jira_cloud/model/container_for_registered_webhooks.dart';
 import 'package:jira_cloud/model/container_for_webhook_i_ds.dart';
@@ -56,12 +57,14 @@ import 'package:jira_cloud/model/converted_jql_queries.dart';
 import 'package:jira_cloud/model/create_update_role_request_bean.dart';
 import 'package:jira_cloud/model/created_issue.dart';
 import 'package:jira_cloud/model/created_issues.dart';
+import 'package:jira_cloud/model/custom_field_context_option.dart';
 import 'package:jira_cloud/model/custom_field_definition_json_bean.dart';
 import 'package:jira_cloud/model/custom_field_option.dart';
 import 'package:jira_cloud/model/custom_field_option_details.dart';
 import 'package:jira_cloud/model/custom_field_option_value.dart';
 import 'package:jira_cloud/model/custom_field_replacement.dart';
 import 'package:jira_cloud/model/dashboard.dart';
+import 'package:jira_cloud/model/dashboard_details.dart';
 import 'package:jira_cloud/model/default_share_scope.dart';
 import 'package:jira_cloud/model/default_workflow.dart';
 import 'package:jira_cloud/model/delete_and_replace_version_bean.dart';
@@ -77,6 +80,9 @@ import 'package:jira_cloud/model/field_changed_clause.dart';
 import 'package:jira_cloud/model/field_configuration.dart';
 import 'package:jira_cloud/model/field_configuration_issue_type_item.dart';
 import 'package:jira_cloud/model/field_configuration_item.dart';
+import 'package:jira_cloud/model/field_configuration_scheme.dart';
+import 'package:jira_cloud/model/field_configuration_scheme_project_association.dart';
+import 'package:jira_cloud/model/field_configuration_scheme_projects.dart';
 import 'package:jira_cloud/model/field_details.dart';
 import 'package:jira_cloud/model/field_last_used.dart';
 import 'package:jira_cloud/model/field_metadata.dart';
@@ -86,9 +92,9 @@ import 'package:jira_cloud/model/field_value_clause.dart';
 import 'package:jira_cloud/model/field_was_clause.dart';
 import 'package:jira_cloud/model/fields.dart';
 import 'package:jira_cloud/model/filter.dart';
+import 'package:jira_cloud/model/filter_details.dart';
 import 'package:jira_cloud/model/filter_subscription.dart';
 import 'package:jira_cloud/model/filter_subscriptions_list.dart';
-import 'package:jira_cloud/model/found_filter.dart';
 import 'package:jira_cloud/model/found_group.dart';
 import 'package:jira_cloud/model/found_groups.dart';
 import 'package:jira_cloud/model/found_users.dart';
@@ -97,6 +103,7 @@ import 'package:jira_cloud/model/function_operand.dart';
 import 'package:jira_cloud/model/function_reference_data.dart';
 import 'package:jira_cloud/model/global_scope_bean.dart';
 import 'package:jira_cloud/model/group.dart';
+import 'package:jira_cloud/model/group_details.dart';
 import 'package:jira_cloud/model/group_label.dart';
 import 'package:jira_cloud/model/group_name.dart';
 import 'package:jira_cloud/model/health_check_result.dart';
@@ -126,12 +133,27 @@ import 'package:jira_cloud/model/issue_matches.dart';
 import 'package:jira_cloud/model/issue_matches_for_jql.dart';
 import 'package:jira_cloud/model/issue_picker_suggestions.dart';
 import 'package:jira_cloud/model/issue_picker_suggestions_issue_type.dart';
+import 'package:jira_cloud/model/issue_security_level_member.dart';
 import 'package:jira_cloud/model/issue_transition.dart';
 import 'package:jira_cloud/model/issue_type_create_bean.dart';
 import 'package:jira_cloud/model/issue_type_details.dart';
+import 'package:jira_cloud/model/issue_type_i_ds.dart';
 import 'package:jira_cloud/model/issue_type_info.dart';
 import 'package:jira_cloud/model/issue_type_issue_create_metadata.dart';
+import 'package:jira_cloud/model/issue_type_scheme.dart';
+import 'package:jira_cloud/model/issue_type_scheme_details.dart';
+import 'package:jira_cloud/model/issue_type_scheme_id.dart';
+import 'package:jira_cloud/model/issue_type_scheme_mapping.dart';
+import 'package:jira_cloud/model/issue_type_scheme_project_association.dart';
+import 'package:jira_cloud/model/issue_type_scheme_projects.dart';
+import 'package:jira_cloud/model/issue_type_scheme_update_details.dart';
+import 'package:jira_cloud/model/issue_type_screen_scheme.dart';
+import 'package:jira_cloud/model/issue_type_screen_scheme_details.dart';
+import 'package:jira_cloud/model/issue_type_screen_scheme_id.dart';
 import 'package:jira_cloud/model/issue_type_screen_scheme_item.dart';
+import 'package:jira_cloud/model/issue_type_screen_scheme_mapping.dart';
+import 'package:jira_cloud/model/issue_type_screen_scheme_project_association.dart';
+import 'package:jira_cloud/model/issue_type_screen_schemes_projects.dart';
 import 'package:jira_cloud/model/issue_type_update_bean.dart';
 import 'package:jira_cloud/model/issue_type_with_status.dart';
 import 'package:jira_cloud/model/issue_type_workflow_mapping.dart';
@@ -147,6 +169,7 @@ import 'package:jira_cloud/model/jql_query_with_unknown_users.dart';
 import 'package:jira_cloud/model/jql_reference_data.dart';
 import 'package:jira_cloud/model/jexp_issues.dart';
 import 'package:jira_cloud/model/jexp_jql_issues.dart';
+import 'package:jira_cloud/model/jira_expression_analysis.dart';
 import 'package:jira_cloud/model/jira_expression_eval_context_bean.dart';
 import 'package:jira_cloud/model/jira_expression_eval_request_bean.dart';
 import 'package:jira_cloud/model/jira_expression_evaluation_meta_data_bean.dart';
@@ -184,19 +207,30 @@ import 'package:jira_cloud/model/notification_scheme.dart';
 import 'package:jira_cloud/model/notification_scheme_event.dart';
 import 'package:jira_cloud/model/operation_message.dart';
 import 'package:jira_cloud/model/operations.dart';
+import 'package:jira_cloud/model/order_of_issue_types.dart';
 import 'package:jira_cloud/model/page_bean_changelog.dart';
 import 'package:jira_cloud/model/page_bean_comment.dart';
 import 'package:jira_cloud/model/page_bean_component_with_issue_count.dart';
 import 'package:jira_cloud/model/page_bean_context.dart';
+import 'package:jira_cloud/model/page_bean_custom_field_context_option.dart';
 import 'package:jira_cloud/model/page_bean_custom_field_option_details.dart';
 import 'package:jira_cloud/model/page_bean_dashboard.dart';
 import 'package:jira_cloud/model/page_bean_field.dart';
 import 'package:jira_cloud/model/page_bean_field_configuration.dart';
 import 'package:jira_cloud/model/page_bean_field_configuration_issue_type_item.dart';
 import 'package:jira_cloud/model/page_bean_field_configuration_item.dart';
-import 'package:jira_cloud/model/page_bean_found_filter.dart';
+import 'package:jira_cloud/model/page_bean_field_configuration_scheme.dart';
+import 'package:jira_cloud/model/page_bean_field_configuration_scheme_projects.dart';
+import 'package:jira_cloud/model/page_bean_filter_details.dart';
+import 'package:jira_cloud/model/page_bean_group_details.dart';
 import 'package:jira_cloud/model/page_bean_issue_field_option.dart';
+import 'package:jira_cloud/model/page_bean_issue_security_level_member.dart';
+import 'package:jira_cloud/model/page_bean_issue_type_scheme.dart';
+import 'package:jira_cloud/model/page_bean_issue_type_scheme_mapping.dart';
+import 'package:jira_cloud/model/page_bean_issue_type_scheme_projects.dart';
+import 'package:jira_cloud/model/page_bean_issue_type_screen_scheme.dart';
 import 'package:jira_cloud/model/page_bean_issue_type_screen_scheme_item.dart';
+import 'package:jira_cloud/model/page_bean_issue_type_screen_schemes_projects.dart';
 import 'package:jira_cloud/model/page_bean_notification_scheme.dart';
 import 'package:jira_cloud/model/page_bean_project.dart';
 import 'package:jira_cloud/model/page_bean_screen.dart';
@@ -229,6 +263,7 @@ import 'package:jira_cloud/model/priority.dart';
 import 'package:jira_cloud/model/project.dart';
 import 'package:jira_cloud/model/project_avatars.dart';
 import 'package:jira_cloud/model/project_category.dart';
+import 'package:jira_cloud/model/project_email_address.dart';
 import 'package:jira_cloud/model/project_for_scope.dart';
 import 'package:jira_cloud/model/project_identifier_bean.dart';
 import 'package:jira_cloud/model/project_identifiers.dart';
@@ -241,8 +276,8 @@ import 'package:jira_cloud/model/project_issue_types_hierarchy_level.dart';
 import 'package:jira_cloud/model/project_permissions.dart';
 import 'package:jira_cloud/model/project_role.dart';
 import 'package:jira_cloud/model/project_role_actors_update_bean.dart';
-import 'package:jira_cloud/model/project_role_group_bean.dart';
-import 'package:jira_cloud/model/project_role_user_bean.dart';
+import 'package:jira_cloud/model/project_role_group.dart';
+import 'package:jira_cloud/model/project_role_user.dart';
 import 'package:jira_cloud/model/project_scope_bean.dart';
 import 'package:jira_cloud/model/project_type.dart';
 import 'package:jira_cloud/model/property_key.dart';
@@ -263,9 +298,12 @@ import 'package:jira_cloud/model/role_actor.dart';
 import 'package:jira_cloud/model/rule_configuration.dart';
 import 'package:jira_cloud/model/scope.dart';
 import 'package:jira_cloud/model/screen.dart';
+import 'package:jira_cloud/model/screen_details.dart';
 import 'package:jira_cloud/model/screen_id.dart';
 import 'package:jira_cloud/model/screen_scheme.dart';
-import 'package:jira_cloud/model/screen_type_i_ds_bean.dart';
+import 'package:jira_cloud/model/screen_scheme_details.dart';
+import 'package:jira_cloud/model/screen_scheme_id.dart';
+import 'package:jira_cloud/model/screen_types.dart';
 import 'package:jira_cloud/model/screenable_field.dart';
 import 'package:jira_cloud/model/screenable_tab.dart';
 import 'package:jira_cloud/model/search_request_bean.dart';
@@ -289,11 +327,13 @@ import 'package:jira_cloud/model/system_avatars.dart';
 import 'package:jira_cloud/model/task_progress_bean_object.dart';
 import 'package:jira_cloud/model/task_progress_bean_remove_option_from_issues_result.dart';
 import 'package:jira_cloud/model/time_tracking_configuration.dart';
+import 'package:jira_cloud/model/time_tracking_details.dart';
 import 'package:jira_cloud/model/time_tracking_provider.dart';
 import 'package:jira_cloud/model/transition.dart';
 import 'package:jira_cloud/model/transitions.dart';
 import 'package:jira_cloud/model/unrestricted_user_email.dart';
 import 'package:jira_cloud/model/update_custom_field_option.dart';
+import 'package:jira_cloud/model/update_screen_details.dart';
 import 'package:jira_cloud/model/update_user_to_group_bean.dart';
 import 'package:jira_cloud/model/updated_project_category.dart';
 import 'package:jira_cloud/model/user.dart';
@@ -325,6 +365,7 @@ import 'package:jira_cloud/model/workflow_id.dart';
 import 'package:jira_cloud/model/workflow_rules.dart';
 import 'package:jira_cloud/model/workflow_scheme.dart';
 import 'package:jira_cloud/model/workflow_scheme_associations.dart';
+import 'package:jira_cloud/model/workflow_scheme_project_association.dart';
 import 'package:jira_cloud/model/workflow_status.dart';
 import 'package:jira_cloud/model/workflow_status_properties.dart';
 import 'package:jira_cloud/model/workflow_transition.dart';
@@ -382,6 +423,7 @@ part 'serializers.g.dart';
   ComponentWithIssueCount,
   CompoundClause,
   Configuration,
+  ConnectModules,
   ConnectWorkflowTransitionRule,
   ContainerForRegisteredWebhooks,
   ContainerForWebhookIDs,
@@ -391,12 +433,14 @@ part 'serializers.g.dart';
   CreateUpdateRoleRequestBean,
   CreatedIssue,
   CreatedIssues,
+  CustomFieldContextOption,
   CustomFieldDefinitionJsonBean,
   CustomFieldOption,
   CustomFieldOptionDetails,
   CustomFieldOptionValue,
   CustomFieldReplacement,
   Dashboard,
+  DashboardDetails,
   DefaultShareScope,
   DefaultWorkflow,
   DeleteAndReplaceVersionBean,
@@ -412,6 +456,9 @@ part 'serializers.g.dart';
   FieldConfiguration,
   FieldConfigurationIssueTypeItem,
   FieldConfigurationItem,
+  FieldConfigurationScheme,
+  FieldConfigurationSchemeProjectAssociation,
+  FieldConfigurationSchemeProjects,
   FieldDetails,
   FieldLastUsed,
   FieldMetadata,
@@ -421,9 +468,9 @@ part 'serializers.g.dart';
   FieldWasClause,
   Fields,
   Filter,
+  FilterDetails,
   FilterSubscription,
   FilterSubscriptionsList,
-  FoundFilter,
   FoundGroup,
   FoundGroups,
   FoundUsers,
@@ -432,6 +479,7 @@ part 'serializers.g.dart';
   FunctionReferenceData,
   GlobalScopeBean,
   Group,
+  GroupDetails,
   GroupLabel,
   GroupName,
   HealthCheckResult,
@@ -461,12 +509,27 @@ part 'serializers.g.dart';
   IssueMatchesForJQL,
   IssuePickerSuggestions,
   IssuePickerSuggestionsIssueType,
+  IssueSecurityLevelMember,
   IssueTransition,
   IssueTypeCreateBean,
   IssueTypeDetails,
+  IssueTypeIDs,
   IssueTypeInfo,
   IssueTypeIssueCreateMetadata,
+  IssueTypeScheme,
+  IssueTypeSchemeDetails,
+  IssueTypeSchemeID,
+  IssueTypeSchemeMapping,
+  IssueTypeSchemeProjectAssociation,
+  IssueTypeSchemeProjects,
+  IssueTypeSchemeUpdateDetails,
+  IssueTypeScreenScheme,
+  IssueTypeScreenSchemeDetails,
+  IssueTypeScreenSchemeId,
   IssueTypeScreenSchemeItem,
+  IssueTypeScreenSchemeMapping,
+  IssueTypeScreenSchemeProjectAssociation,
+  IssueTypeScreenSchemesProjects,
   IssueTypeUpdateBean,
   IssueTypeWithStatus,
   IssueTypeWorkflowMapping,
@@ -482,6 +545,7 @@ part 'serializers.g.dart';
   JQLReferenceData,
   JexpIssues,
   JexpJqlIssues,
+  JiraExpressionAnalysis,
   JiraExpressionEvalContextBean,
   JiraExpressionEvalRequestBean,
   JiraExpressionEvaluationMetaDataBean,
@@ -519,19 +583,30 @@ part 'serializers.g.dart';
   NotificationSchemeEvent,
   OperationMessage,
   Operations,
+  OrderOfIssueTypes,
   PageBeanChangelog,
   PageBeanComment,
   PageBeanComponentWithIssueCount,
   PageBeanContext,
+  PageBeanCustomFieldContextOption,
   PageBeanCustomFieldOptionDetails,
   PageBeanDashboard,
   PageBeanField,
   PageBeanFieldConfiguration,
   PageBeanFieldConfigurationIssueTypeItem,
   PageBeanFieldConfigurationItem,
-  PageBeanFoundFilter,
+  PageBeanFieldConfigurationScheme,
+  PageBeanFieldConfigurationSchemeProjects,
+  PageBeanFilterDetails,
+  PageBeanGroupDetails,
   PageBeanIssueFieldOption,
+  PageBeanIssueSecurityLevelMember,
+  PageBeanIssueTypeScheme,
+  PageBeanIssueTypeSchemeMapping,
+  PageBeanIssueTypeSchemeProjects,
+  PageBeanIssueTypeScreenScheme,
   PageBeanIssueTypeScreenSchemeItem,
+  PageBeanIssueTypeScreenSchemesProjects,
   PageBeanNotificationScheme,
   PageBeanProject,
   PageBeanScreen,
@@ -564,6 +639,7 @@ part 'serializers.g.dart';
   Project,
   ProjectAvatars,
   ProjectCategory,
+  ProjectEmailAddress,
   ProjectForScope,
   ProjectIdentifierBean,
   ProjectIdentifiers,
@@ -576,8 +652,8 @@ part 'serializers.g.dart';
   ProjectPermissions,
   ProjectRole,
   ProjectRoleActorsUpdateBean,
-  ProjectRoleGroupBean,
-  ProjectRoleUserBean,
+  ProjectRoleGroup,
+  ProjectRoleUser,
   ProjectScopeBean,
   ProjectType,
   PropertyKey,
@@ -598,9 +674,12 @@ part 'serializers.g.dart';
   RuleConfiguration,
   Scope,
   Screen,
+  ScreenDetails,
   ScreenID,
   ScreenScheme,
-  ScreenTypeIDsBean,
+  ScreenSchemeDetails,
+  ScreenSchemeId,
+  ScreenTypes,
   ScreenableField,
   ScreenableTab,
   SearchRequestBean,
@@ -624,11 +703,13 @@ part 'serializers.g.dart';
   TaskProgressBeanObject,
   TaskProgressBeanRemoveOptionFromIssuesResult,
   TimeTrackingConfiguration,
+  TimeTrackingDetails,
   TimeTrackingProvider,
   Transition,
   Transitions,
   UnrestrictedUserEmail,
   UpdateCustomFieldOption,
+  UpdateScreenDetails,
   UpdateUserToGroupBean,
   UpdatedProjectCategory,
   User,
@@ -660,6 +741,7 @@ part 'serializers.g.dart';
   WorkflowRules,
   WorkflowScheme,
   WorkflowSchemeAssociations,
+  WorkflowSchemeProjectAssociation,
   WorkflowStatus,
   WorkflowStatusProperties,
   WorkflowTransition,
@@ -772,6 +854,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ComponentWithIssueCount)]), () => new ListBuilder<ComponentWithIssueCount>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CompoundClause)]), () => new ListBuilder<CompoundClause>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Configuration)]), () => new ListBuilder<Configuration>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ConnectModules)]), () => new ListBuilder<ConnectModules>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ConnectWorkflowTransitionRule)]), () => new ListBuilder<ConnectWorkflowTransitionRule>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ContainerForRegisteredWebhooks)]), () => new ListBuilder<ContainerForRegisteredWebhooks>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ContainerForWebhookIDs)]), () => new ListBuilder<ContainerForWebhookIDs>())
@@ -781,12 +864,14 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CreateUpdateRoleRequestBean)]), () => new ListBuilder<CreateUpdateRoleRequestBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CreatedIssue)]), () => new ListBuilder<CreatedIssue>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CreatedIssues)]), () => new ListBuilder<CreatedIssues>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldContextOption)]), () => new ListBuilder<CustomFieldContextOption>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldDefinitionJsonBean)]), () => new ListBuilder<CustomFieldDefinitionJsonBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldOption)]), () => new ListBuilder<CustomFieldOption>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldOptionDetails)]), () => new ListBuilder<CustomFieldOptionDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldOptionValue)]), () => new ListBuilder<CustomFieldOptionValue>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(CustomFieldReplacement)]), () => new ListBuilder<CustomFieldReplacement>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Dashboard)]), () => new ListBuilder<Dashboard>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(DashboardDetails)]), () => new ListBuilder<DashboardDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(DefaultShareScope)]), () => new ListBuilder<DefaultShareScope>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(DefaultWorkflow)]), () => new ListBuilder<DefaultWorkflow>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(DeleteAndReplaceVersionBean)]), () => new ListBuilder<DeleteAndReplaceVersionBean>())
@@ -802,6 +887,9 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfiguration)]), () => new ListBuilder<FieldConfiguration>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfigurationIssueTypeItem)]), () => new ListBuilder<FieldConfigurationIssueTypeItem>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfigurationItem)]), () => new ListBuilder<FieldConfigurationItem>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfigurationScheme)]), () => new ListBuilder<FieldConfigurationScheme>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfigurationSchemeProjectAssociation)]), () => new ListBuilder<FieldConfigurationSchemeProjectAssociation>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldConfigurationSchemeProjects)]), () => new ListBuilder<FieldConfigurationSchemeProjects>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldDetails)]), () => new ListBuilder<FieldDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldLastUsed)]), () => new ListBuilder<FieldLastUsed>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldMetadata)]), () => new ListBuilder<FieldMetadata>())
@@ -811,9 +899,9 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FieldWasClause)]), () => new ListBuilder<FieldWasClause>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Fields)]), () => new ListBuilder<Fields>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Filter)]), () => new ListBuilder<Filter>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FilterDetails)]), () => new ListBuilder<FilterDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FilterSubscription)]), () => new ListBuilder<FilterSubscription>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FilterSubscriptionsList)]), () => new ListBuilder<FilterSubscriptionsList>())
-      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FoundFilter)]), () => new ListBuilder<FoundFilter>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FoundGroup)]), () => new ListBuilder<FoundGroup>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FoundGroups)]), () => new ListBuilder<FoundGroups>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FoundUsers)]), () => new ListBuilder<FoundUsers>())
@@ -822,6 +910,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(FunctionReferenceData)]), () => new ListBuilder<FunctionReferenceData>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(GlobalScopeBean)]), () => new ListBuilder<GlobalScopeBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Group)]), () => new ListBuilder<Group>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(GroupDetails)]), () => new ListBuilder<GroupDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(GroupLabel)]), () => new ListBuilder<GroupLabel>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(GroupName)]), () => new ListBuilder<GroupName>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(HealthCheckResult)]), () => new ListBuilder<HealthCheckResult>())
@@ -851,12 +940,27 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueMatchesForJQL)]), () => new ListBuilder<IssueMatchesForJQL>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssuePickerSuggestions)]), () => new ListBuilder<IssuePickerSuggestions>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssuePickerSuggestionsIssueType)]), () => new ListBuilder<IssuePickerSuggestionsIssueType>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueSecurityLevelMember)]), () => new ListBuilder<IssueSecurityLevelMember>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTransition)]), () => new ListBuilder<IssueTransition>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeCreateBean)]), () => new ListBuilder<IssueTypeCreateBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeDetails)]), () => new ListBuilder<IssueTypeDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeIDs)]), () => new ListBuilder<IssueTypeIDs>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeInfo)]), () => new ListBuilder<IssueTypeInfo>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeIssueCreateMetadata)]), () => new ListBuilder<IssueTypeIssueCreateMetadata>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScheme)]), () => new ListBuilder<IssueTypeScheme>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeDetails)]), () => new ListBuilder<IssueTypeSchemeDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeID)]), () => new ListBuilder<IssueTypeSchemeID>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeMapping)]), () => new ListBuilder<IssueTypeSchemeMapping>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeProjectAssociation)]), () => new ListBuilder<IssueTypeSchemeProjectAssociation>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeProjects)]), () => new ListBuilder<IssueTypeSchemeProjects>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeSchemeUpdateDetails)]), () => new ListBuilder<IssueTypeSchemeUpdateDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenScheme)]), () => new ListBuilder<IssueTypeScreenScheme>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemeDetails)]), () => new ListBuilder<IssueTypeScreenSchemeDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemeId)]), () => new ListBuilder<IssueTypeScreenSchemeId>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemeItem)]), () => new ListBuilder<IssueTypeScreenSchemeItem>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemeMapping)]), () => new ListBuilder<IssueTypeScreenSchemeMapping>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemeProjectAssociation)]), () => new ListBuilder<IssueTypeScreenSchemeProjectAssociation>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeScreenSchemesProjects)]), () => new ListBuilder<IssueTypeScreenSchemesProjects>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeUpdateBean)]), () => new ListBuilder<IssueTypeUpdateBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeWithStatus)]), () => new ListBuilder<IssueTypeWithStatus>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(IssueTypeWorkflowMapping)]), () => new ListBuilder<IssueTypeWorkflowMapping>())
@@ -872,6 +976,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JQLReferenceData)]), () => new ListBuilder<JQLReferenceData>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JexpIssues)]), () => new ListBuilder<JexpIssues>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JexpJqlIssues)]), () => new ListBuilder<JexpJqlIssues>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JiraExpressionAnalysis)]), () => new ListBuilder<JiraExpressionAnalysis>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JiraExpressionEvalContextBean)]), () => new ListBuilder<JiraExpressionEvalContextBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JiraExpressionEvalRequestBean)]), () => new ListBuilder<JiraExpressionEvalRequestBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(JiraExpressionEvaluationMetaDataBean)]), () => new ListBuilder<JiraExpressionEvaluationMetaDataBean>())
@@ -909,19 +1014,30 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(NotificationSchemeEvent)]), () => new ListBuilder<NotificationSchemeEvent>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(OperationMessage)]), () => new ListBuilder<OperationMessage>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Operations)]), () => new ListBuilder<Operations>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(OrderOfIssueTypes)]), () => new ListBuilder<OrderOfIssueTypes>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanChangelog)]), () => new ListBuilder<PageBeanChangelog>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanComment)]), () => new ListBuilder<PageBeanComment>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanComponentWithIssueCount)]), () => new ListBuilder<PageBeanComponentWithIssueCount>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanContext)]), () => new ListBuilder<PageBeanContext>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanCustomFieldContextOption)]), () => new ListBuilder<PageBeanCustomFieldContextOption>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanCustomFieldOptionDetails)]), () => new ListBuilder<PageBeanCustomFieldOptionDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanDashboard)]), () => new ListBuilder<PageBeanDashboard>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanField)]), () => new ListBuilder<PageBeanField>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFieldConfiguration)]), () => new ListBuilder<PageBeanFieldConfiguration>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFieldConfigurationIssueTypeItem)]), () => new ListBuilder<PageBeanFieldConfigurationIssueTypeItem>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFieldConfigurationItem)]), () => new ListBuilder<PageBeanFieldConfigurationItem>())
-      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFoundFilter)]), () => new ListBuilder<PageBeanFoundFilter>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFieldConfigurationScheme)]), () => new ListBuilder<PageBeanFieldConfigurationScheme>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFieldConfigurationSchemeProjects)]), () => new ListBuilder<PageBeanFieldConfigurationSchemeProjects>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanFilterDetails)]), () => new ListBuilder<PageBeanFilterDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanGroupDetails)]), () => new ListBuilder<PageBeanGroupDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueFieldOption)]), () => new ListBuilder<PageBeanIssueFieldOption>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueSecurityLevelMember)]), () => new ListBuilder<PageBeanIssueSecurityLevelMember>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeScheme)]), () => new ListBuilder<PageBeanIssueTypeScheme>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeSchemeMapping)]), () => new ListBuilder<PageBeanIssueTypeSchemeMapping>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeSchemeProjects)]), () => new ListBuilder<PageBeanIssueTypeSchemeProjects>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeScreenScheme)]), () => new ListBuilder<PageBeanIssueTypeScreenScheme>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeScreenSchemeItem)]), () => new ListBuilder<PageBeanIssueTypeScreenSchemeItem>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanIssueTypeScreenSchemesProjects)]), () => new ListBuilder<PageBeanIssueTypeScreenSchemesProjects>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanNotificationScheme)]), () => new ListBuilder<PageBeanNotificationScheme>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanProject)]), () => new ListBuilder<PageBeanProject>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PageBeanScreen)]), () => new ListBuilder<PageBeanScreen>())
@@ -954,6 +1070,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Project)]), () => new ListBuilder<Project>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectAvatars)]), () => new ListBuilder<ProjectAvatars>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectCategory)]), () => new ListBuilder<ProjectCategory>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectEmailAddress)]), () => new ListBuilder<ProjectEmailAddress>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectForScope)]), () => new ListBuilder<ProjectForScope>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectIdentifierBean)]), () => new ListBuilder<ProjectIdentifierBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectIdentifiers)]), () => new ListBuilder<ProjectIdentifiers>())
@@ -966,8 +1083,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectPermissions)]), () => new ListBuilder<ProjectPermissions>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRole)]), () => new ListBuilder<ProjectRole>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRoleActorsUpdateBean)]), () => new ListBuilder<ProjectRoleActorsUpdateBean>())
-      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRoleGroupBean)]), () => new ListBuilder<ProjectRoleGroupBean>())
-      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRoleUserBean)]), () => new ListBuilder<ProjectRoleUserBean>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRoleGroup)]), () => new ListBuilder<ProjectRoleGroup>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectRoleUser)]), () => new ListBuilder<ProjectRoleUser>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectScopeBean)]), () => new ListBuilder<ProjectScopeBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ProjectType)]), () => new ListBuilder<ProjectType>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(PropertyKey)]), () => new ListBuilder<PropertyKey>())
@@ -988,9 +1105,12 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(RuleConfiguration)]), () => new ListBuilder<RuleConfiguration>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Scope)]), () => new ListBuilder<Scope>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Screen)]), () => new ListBuilder<Screen>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenDetails)]), () => new ListBuilder<ScreenDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenID)]), () => new ListBuilder<ScreenID>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenScheme)]), () => new ListBuilder<ScreenScheme>())
-      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenTypeIDsBean)]), () => new ListBuilder<ScreenTypeIDsBean>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenSchemeDetails)]), () => new ListBuilder<ScreenSchemeDetails>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenSchemeId)]), () => new ListBuilder<ScreenSchemeId>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenTypes)]), () => new ListBuilder<ScreenTypes>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenableField)]), () => new ListBuilder<ScreenableField>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(ScreenableTab)]), () => new ListBuilder<ScreenableTab>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(SearchRequestBean)]), () => new ListBuilder<SearchRequestBean>())
@@ -1014,11 +1134,13 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(TaskProgressBeanObject)]), () => new ListBuilder<TaskProgressBeanObject>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(TaskProgressBeanRemoveOptionFromIssuesResult)]), () => new ListBuilder<TaskProgressBeanRemoveOptionFromIssuesResult>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(TimeTrackingConfiguration)]), () => new ListBuilder<TimeTrackingConfiguration>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(TimeTrackingDetails)]), () => new ListBuilder<TimeTrackingDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(TimeTrackingProvider)]), () => new ListBuilder<TimeTrackingProvider>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Transition)]), () => new ListBuilder<Transition>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(Transitions)]), () => new ListBuilder<Transitions>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(UnrestrictedUserEmail)]), () => new ListBuilder<UnrestrictedUserEmail>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(UpdateCustomFieldOption)]), () => new ListBuilder<UpdateCustomFieldOption>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(UpdateScreenDetails)]), () => new ListBuilder<UpdateScreenDetails>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(UpdateUserToGroupBean)]), () => new ListBuilder<UpdateUserToGroupBean>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(UpdatedProjectCategory)]), () => new ListBuilder<UpdatedProjectCategory>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(User)]), () => new ListBuilder<User>())
@@ -1050,6 +1172,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowRules)]), () => new ListBuilder<WorkflowRules>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowScheme)]), () => new ListBuilder<WorkflowScheme>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowSchemeAssociations)]), () => new ListBuilder<WorkflowSchemeAssociations>())
+      ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowSchemeProjectAssociation)]), () => new ListBuilder<WorkflowSchemeProjectAssociation>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowStatus)]), () => new ListBuilder<WorkflowStatus>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowStatusProperties)]), () => new ListBuilder<WorkflowStatusProperties>())
       ..addBuilderFactory(const FullType(BuiltList, const [const FullType(WorkflowTransition)]), () => new ListBuilder<WorkflowTransition>())

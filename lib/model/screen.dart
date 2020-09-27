@@ -13,6 +13,10 @@ abstract class Screen implements Built<Screen, ScreenBuilder> {
   @nullable
   @BuiltValueField(wireName: r'name')
   String get name;
+  /* The description of the screen. */
+  @nullable
+  @BuiltValueField(wireName: r'description')
+  String get description;
   /* The scope of the screen. */
   @nullable
   @BuiltValueField(wireName: r'scope')

@@ -37,11 +37,11 @@ abstract class Filter implements Built<Filter, FilterBuilder> {
   @nullable
   @BuiltValueField(wireName: r'viewUrl')
   String get viewUrl;
-  /* A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-3-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/3/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*. */
+  /* A URL to view the filter results in Jira, using the [Search for issues using JQL](#api-rest-api-2-filter-search-get) operation with the filter's JQL string to return the filter results. For example, *https://your-domain.atlassian.net/rest/api/2/search?jql=project+%3D+SSP+AND+issuetype+%3D+Bug*. */
   @nullable
   @BuiltValueField(wireName: r'searchUrl')
   String get searchUrl;
-  /* Indicates whether the filter is selected as a favorite. */
+  /* Whether the filter is selected as a favorite. */
   @nullable
   @BuiltValueField(wireName: r'favourite')
   bool get favourite;

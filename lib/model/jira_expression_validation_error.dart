@@ -7,15 +7,19 @@ abstract class JiraExpressionValidationError
     implements
         Built<JiraExpressionValidationError,
             JiraExpressionValidationErrorBuilder> {
-  /* The text line in which the error occurred. If absent, the error pertains to the entire expression. */
+  /* The text line in which the error occurred. */
   @nullable
   @BuiltValueField(wireName: r'line')
   int get line;
-  /* The text column in which the error occurred. If absent, the error pertains to the entire expression. */
+  /* The text column in which the error occurred. */
   @nullable
   @BuiltValueField(wireName: r'column')
   int get column;
-  /* The detailed message about the error. */
+  /* The part of the expression in which the error occurred. */
+  @nullable
+  @BuiltValueField(wireName: r'expression')
+  String get expression;
+  /* Details about the error. */
   @nullable
   @BuiltValueField(wireName: r'message')
   String get message;
@@ -23,7 +27,7 @@ abstract class JiraExpressionValidationError
   @nullable
   @BuiltValueField(wireName: r'type')
   String get type;
-  //enum typeEnum {  syntax,  other,  };
+  //enum typeEnum {  syntax,  type,  other,  };
 
   // Boilerplate code needed to wire-up generated code
   JiraExpressionValidationError._();

@@ -13,7 +13,7 @@ abstract class HealthCheckResult
   @nullable
   @BuiltValueField(wireName: r'description')
   String get description;
-  /* Indicates whether the Jira health check item passed or failed. */
+  /* Whether the Jira health check item passed or failed. */
   @nullable
   @BuiltValueField(wireName: r'passed')
   bool get passed;

@@ -17,15 +17,14 @@ class ProjectPropertiesApi {
   /// Delete project property
   ///
   /// Deletes the [property](https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties) from a project.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg) or *Administer Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the property.
-  Future<Response>
-      comAtlassianJiraRestV2IssueProjectPropertyResourceDeleteProjectPropertyDelete(
+  Future<Response> deleteProjectProperty(
     String projectIdOrKey,
     String propertyKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}"
+        "/rest/api/2/project/{projectIdOrKey}/properties/{propertyKey}"
             .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
@@ -55,15 +54,14 @@ class ProjectPropertiesApi {
   /// Get project property
   ///
   /// Returns the value of a [project property](https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Browse Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the property.
-  Future<Response<EntityProperty>>
-      comAtlassianJiraRestV2IssueProjectPropertyResourceGetProjectPropertyGet(
+  Future<Response<EntityProperty>> getProjectProperty(
     String projectIdOrKey,
     String propertyKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}"
+        "/rest/api/2/project/{projectIdOrKey}/properties/{propertyKey}"
             .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
@@ -109,13 +107,12 @@ class ProjectPropertiesApi {
   /// Get project property keys
   ///
   /// Returns all [project property](https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties) keys for the project.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Browse Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project.
-  Future<Response<PropertyKeys>>
-      comAtlassianJiraRestV2IssueProjectPropertyResourceGetProjectPropertyKeysGet(
+  Future<Response<PropertyKeys>> getProjectPropertyKeys(
     String projectIdOrKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/project/{projectIdOrKey}/properties"
+    String _path = "/rest/api/2/project/{projectIdOrKey}/properties"
         .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -160,8 +157,7 @@ class ProjectPropertiesApi {
   /// Set project property
   ///
   /// Sets the value of the [project property](https://developer.atlassian.com/cloud/jira/platform/storing-data-without-a-database/#a-id-jira-entity-properties-a-jira-entity-properties). You can use project properties to store custom data against the project.  The value of the request body must be a [valid](http://tools.ietf.org/html/rfc4627), non-empty JSON blob. The maximum length is 32768 characters.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg) or *Administer Projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project in which the property is created.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueProjectPropertyResourceSetProjectPropertyPut(
+  Future<Response<Object>> setProjectProperty(
     String projectIdOrKey,
     String propertyKey,
     Object body, {
@@ -169,7 +165,7 @@ class ProjectPropertiesApi {
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/project/{projectIdOrKey}/properties/{propertyKey}"
+        "/rest/api/2/project/{projectIdOrKey}/properties/{propertyKey}"
             .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 

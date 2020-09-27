@@ -16,12 +16,11 @@ class ApplicationRolesApi {
   /// Get all application roles
   ///
   /// Returns all application roles. In Jira, application roles are managed using the [Application access configuration](https://confluence.atlassian.com/x/3YxjL) page.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<List<ApplicationRole>>>
-      comAtlassianJiraRestV2AdminApplicationroleApplicationRoleResourceGetAllApplicationRolesGet({
+  Future<Response<List<ApplicationRole>>> getAllApplicationRoles({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/applicationrole";
+    String _path = "/rest/api/2/applicationrole";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -67,13 +66,12 @@ class ApplicationRolesApi {
   /// Get application role
   ///
   /// Returns an application role.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<ApplicationRole>>
-      comAtlassianJiraRestV2AdminApplicationroleApplicationRoleResourceGetApplicationRoleGet(
+  Future<Response<ApplicationRole>> getApplicationRole(
     String key, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/applicationrole/{key}"
+    String _path = "/rest/api/2/applicationrole/{key}"
         .replaceAll("{" r'key' "}", key.toString());
 
     Map<String, dynamic> queryParams = {};

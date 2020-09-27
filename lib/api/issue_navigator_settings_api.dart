@@ -16,12 +16,11 @@ class IssueNavigatorSettingsApi {
   /// Get issue navigator default columns
   ///
   /// Returns the default issue navigator columns.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<List<ColumnItem>>>
-      comAtlassianJiraRestV2AdminSettingsResourceGetIssueNavigatorDefaultColumnsGet({
+  Future<Response<List<ColumnItem>>> getIssueNavigatorDefaultColumns({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/settings/columns";
+    String _path = "/rest/api/2/settings/columns";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -66,14 +65,13 @@ class IssueNavigatorSettingsApi {
 
   /// Set issue navigator default columns
   ///
-  /// Sets the default issue navigator columns.  The &#x60;columns&#x60; parameter accepts a navigable field value and is expressed as HTML form data. To specify multiple columns, pass multiple &#x60;columns&#x60; parameters. For example, in curl:  &#x60;curl -X PUT -d columns&#x3D;summary -d columns&#x3D;description https://your-domain.atlassian.net/rest/api/3/settings/columns&#x60;  If no column details are sent, then all default columns are removed.  A navigable field is one that can be used as a column on the issue navigator. Find details of navigable issue columns using [Get fields](#api-rest-api-3-field-get).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<Object>>
-      comAtlassianJiraRestV2AdminSettingsResourceSetIssueNavigatorDefaultColumnsPut({
+  /// Sets the default issue navigator columns.  The &#x60;columns&#x60; parameter accepts a navigable field value and is expressed as HTML form data. To specify multiple columns, pass multiple &#x60;columns&#x60; parameters. For example, in curl:  &#x60;curl -X PUT -d columns&#x3D;summary -d columns&#x3D;description https://your-domain.atlassian.net/rest/api/2/settings/columns&#x60;  If no column details are sent, then all default columns are removed.  A navigable field is one that can be used as a column on the issue navigator. Find details of navigable issue columns using [Get fields](#api-rest-api-2-field-get).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
+  Future<Response<Object>> setIssueNavigatorDefaultColumns({
     List<String> requestBody,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/settings/columns";
+    String _path = "/rest/api/2/settings/columns";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

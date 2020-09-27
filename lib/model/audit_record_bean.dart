@@ -20,7 +20,7 @@ abstract class AuditRecordBean
   @nullable
   @BuiltValueField(wireName: r'remoteAddress')
   String get remoteAddress;
-  /* The key of the user who created the audit record. */
+  /* Deprecated, use `authorAccountId` instead. The key of the user who created the audit record. */
   @nullable
   @BuiltValueField(wireName: r'authorKey')
   String get authorKey;

@@ -17,7 +17,7 @@ abstract class FieldConfiguration
   @nullable
   @BuiltValueField(wireName: r'description')
   String get description;
-  /* Indicates whether the field configuration is the default. */
+  /* Whether the field configuration is the default. */
   @nullable
   @BuiltValueField(wireName: r'isDefault')
   bool get isDefault;

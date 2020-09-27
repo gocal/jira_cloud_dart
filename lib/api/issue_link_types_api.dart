@@ -17,13 +17,12 @@ class IssueLinkTypesApi {
   /// Create issue link type
   ///
   /// Creates an issue link type. Use this operation to create descriptions of the reasons why issues are linked. The issue link type consists of a name and descriptions for a link&#39;s inward and outward relationships.  To use this operation, the site must have [issue linking](https://confluence.atlassian.com/x/yoXKM) enabled.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<IssueLinkType>>
-      comAtlassianJiraRestV2IssueIssueLinkTypeResourceCreateIssueLinkTypePost(
+  Future<Response<IssueLinkType>> createIssueLinkType(
     IssueLinkType issueLinkType, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issueLinkType";
+    String _path = "/rest/api/2/issueLinkType";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -71,13 +70,12 @@ class IssueLinkTypesApi {
   /// Delete issue link type
   ///
   /// Deletes an issue link type.  To use this operation, the site must have [issue linking](https://confluence.atlassian.com/x/yoXKM) enabled.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response>
-      comAtlassianJiraRestV2IssueIssueLinkTypeResourceDeleteIssueLinkTypeDelete(
+  Future<Response> deleteIssueLinkType(
     String issueLinkTypeId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issueLinkType/{issueLinkTypeId}"
+    String _path = "/rest/api/2/issueLinkType/{issueLinkTypeId}"
         .replaceAll("{" r'issueLinkTypeId' "}", issueLinkTypeId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -106,13 +104,12 @@ class IssueLinkTypesApi {
   /// Get issue link type
   ///
   /// Returns an issue link type.  To use this operation, the site must have [issue linking](https://confluence.atlassian.com/x/yoXKM) enabled.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for a project in the site.
-  Future<Response<IssueLinkType>>
-      comAtlassianJiraRestV2IssueIssueLinkTypeResourceGetIssueLinkTypeGet(
+  Future<Response<IssueLinkType>> getIssueLinkType(
     String issueLinkTypeId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issueLinkType/{issueLinkTypeId}"
+    String _path = "/rest/api/2/issueLinkType/{issueLinkTypeId}"
         .replaceAll("{" r'issueLinkTypeId' "}", issueLinkTypeId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -157,12 +154,11 @@ class IssueLinkTypesApi {
   /// Get issue link types
   ///
   /// Returns a list of all issue link types.  To use this operation, the site must have [issue linking](https://confluence.atlassian.com/x/yoXKM) enabled.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for a project in the site.
-  Future<Response<IssueLinkTypes>>
-      comAtlassianJiraRestV2IssueIssueLinkTypeResourceGetIssueLinkTypesGet({
+  Future<Response<IssueLinkTypes>> getIssueLinkTypes({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issueLinkType";
+    String _path = "/rest/api/2/issueLinkType";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -206,14 +202,13 @@ class IssueLinkTypesApi {
   /// Update issue link type
   ///
   /// Updates an issue link type.  To use this operation, the site must have [issue linking](https://confluence.atlassian.com/x/yoXKM) enabled.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<IssueLinkType>>
-      comAtlassianJiraRestV2IssueIssueLinkTypeResourceUpdateIssueLinkTypePut(
+  Future<Response<IssueLinkType>> updateIssueLinkType(
     String issueLinkTypeId,
     IssueLinkType issueLinkType, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issueLinkType/{issueLinkTypeId}"
+    String _path = "/rest/api/2/issueLinkType/{issueLinkTypeId}"
         .replaceAll("{" r'issueLinkTypeId' "}", issueLinkTypeId.toString());
 
     Map<String, dynamic> queryParams = {};

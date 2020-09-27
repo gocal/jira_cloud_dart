@@ -4,7 +4,7 @@ import 'package:built_value/serializer.dart';
 part 'id_bean.g.dart';
 
 abstract class IdBean implements Built<IdBean, IdBeanBuilder> {
-  /* The ID of the permission scheme to associate with the project. Use the [Get all permission schemes](#api-rest-api-3-permissionscheme-get) resource to get a list of permission scheme IDs. */
+  /* The ID of the permission scheme to associate with the project. Use the [Get all permission schemes](#api-rest-api-2-permissionscheme-get) resource to get a list of permission scheme IDs. */
   @nullable
   @BuiltValueField(wireName: r'id')
   int get id;

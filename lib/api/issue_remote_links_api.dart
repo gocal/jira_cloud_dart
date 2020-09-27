@@ -17,14 +17,13 @@ class IssueRemoteLinksApi {
   /// Create or update remote issue link
   ///
   /// Creates or updates a remote issue link for an issue.  If a &#x60;globalId&#x60; is provided and a remote issue link with that global ID is found it is updated. Any fields without values in the request are set to null. Otherwise, the remote issue link is created.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* and *Link issues* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<RemoteIssueLinkIdentifies>>
-      comAtlassianJiraRestV2IssueIssueResourceCreateOrUpdateRemoteIssueLinkPost(
+  Future<Response<RemoteIssueLinkIdentifies>> createOrUpdateRemoteIssueLink(
     String issueIdOrKey,
     Map<String, Object> requestBody, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -74,14 +73,13 @@ class IssueRemoteLinksApi {
   /// Delete remote issue link by global ID
   ///
   /// Deletes the remote issue link from the issue using the link&#39;s global ID. Where the global ID includes reserved URL characters these must be escaped in the request. For example, pass &#x60;system&#x3D;http://www.mycompany.com/support&amp;id&#x3D;1&#x60; as &#x60;system%3Dhttp%3A%2F%2Fwww.mycompany.com%2Fsupport%26id%3D1&#x60;.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* and *Link issues* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is implemented, issue-level security permission to view the issue.
-  Future<Response>
-      comAtlassianJiraRestV2IssueIssueResourceDeleteRemoteIssueLinkByGlobalIdDelete(
+  Future<Response> deleteRemoteIssueLinkByGlobalId(
     String issueIdOrKey,
     String globalId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -111,14 +109,13 @@ class IssueRemoteLinksApi {
   /// Delete remote issue link by ID
   ///
   /// Deletes a remote issue link from an issue.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects*, *Edit issues*, and *Link issues* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response>
-      comAtlassianJiraRestV2IssueIssueResourceDeleteRemoteIssueLinkByIdDelete(
+  Future<Response> deleteRemoteIssueLinkById(
     String issueIdOrKey,
     String linkId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink/{linkId}"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
         .replaceAll("{" r'linkId' "}", linkId.toString());
 
@@ -148,14 +145,13 @@ class IssueRemoteLinksApi {
   /// Get remote issue link by ID
   ///
   /// Returns a remote issue link for an issue.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<RemoteIssueLink>>
-      comAtlassianJiraRestV2IssueIssueResourceGetRemoteIssueLinkByIdGet(
+  Future<Response<RemoteIssueLink>> getRemoteIssueLinkById(
     String issueIdOrKey,
     String linkId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink/{linkId}"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
         .replaceAll("{" r'linkId' "}", linkId.toString());
 
@@ -201,14 +197,13 @@ class IssueRemoteLinksApi {
   /// Get remote issue links
   ///
   /// Returns the remote issue links for an issue. When a remote issue link global ID is provided the record with that global ID is returned, otherwise all remote issue links are returned. Where a global ID includes reserved URL characters these must be escaped in the request. For example, pass &#x60;system&#x3D;http://www.mycompany.com/support&amp;id&#x3D;1&#x60; as &#x60;system%3Dhttp%3A%2F%2Fwww.mycompany.com%2Fsupport%26id%3D1&#x60;.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<RemoteIssueLink>>
-      comAtlassianJiraRestV2IssueIssueResourceGetRemoteIssueLinksGet(
+  Future<Response<RemoteIssueLink>> getRemoteIssueLinks(
     String issueIdOrKey, {
     String globalId,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -254,15 +249,14 @@ class IssueRemoteLinksApi {
   /// Update remote issue link by ID
   ///
   /// Updates a remote issue link for an issue.  Note: Fields without values in the request are set to null.  This operation requires [issue linking to be active](https://confluence.atlassian.com/x/yoXKM).  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* and *Link issues* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueIssueResourceUpdateRemoteIssueLinkPut(
+  Future<Response<Object>> updateRemoteIssueLink(
     String issueIdOrKey,
     String linkId,
     Map<String, Object> requestBody, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/{issueIdOrKey}/remotelink/{linkId}"
+    String _path = "/rest/api/2/issue/{issueIdOrKey}/remotelink/{linkId}"
         .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
         .replaceAll("{" r'linkId' "}", linkId.toString());
 

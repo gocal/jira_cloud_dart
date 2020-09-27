@@ -13,15 +13,15 @@ abstract class Avatar implements Built<Avatar, AvatarBuilder> {
   @nullable
   @BuiltValueField(wireName: r'owner')
   String get owner;
-  /* Indicates whether the avatar is a system avatar. */
+  /* Whether the avatar is a system avatar. */
   @nullable
   @BuiltValueField(wireName: r'isSystemAvatar')
   bool get isSystemAvatar;
-  /* Indicates whether the avatar is used in Jira. For example, shown as a project's avatar. */
+  /* Whether the avatar is used in Jira. For example, shown as a project's avatar. */
   @nullable
   @BuiltValueField(wireName: r'isSelected')
   bool get isSelected;
-  /* Indicates whether the avatar can be deleted. */
+  /* Whether the avatar can be deleted. */
   @nullable
   @BuiltValueField(wireName: r'isDeletable')
   bool get isDeletable;

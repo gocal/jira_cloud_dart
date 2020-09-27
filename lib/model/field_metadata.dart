@@ -8,7 +8,7 @@ part 'field_metadata.g.dart';
 
 abstract class FieldMetadata
     implements Built<FieldMetadata, FieldMetadataBuilder> {
-  /* Indicates whether the field is required. */
+  /* Whether the field is required. */
   @nullable
   @BuiltValueField(wireName: r'required')
   bool get required_;
@@ -28,7 +28,7 @@ abstract class FieldMetadata
   @nullable
   @BuiltValueField(wireName: r'autoCompleteUrl')
   String get autoCompleteUrl;
-  /* Indicates whether the field has a default value. */
+  /* Whether the field has a default value. */
   @nullable
   @BuiltValueField(wireName: r'hasDefaultValue')
   bool get hasDefaultValue;

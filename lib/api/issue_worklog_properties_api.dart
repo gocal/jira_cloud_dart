@@ -17,8 +17,7 @@ class IssueWorklogPropertiesApi {
   /// Delete worklog property
   ///
   /// Deletes a worklog property.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response>
-      comAtlassianJiraRestV2IssueWorklogPropertyResourceDeleteWorklogPropertyDelete(
+  Future<Response> deleteWorklogProperty(
     String issueIdOrKey,
     String worklogId,
     String propertyKey, {
@@ -26,7 +25,7 @@ class IssueWorklogPropertiesApi {
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
+        "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
             .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
             .replaceAll("{" r'worklogId' "}", worklogId.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
@@ -57,8 +56,7 @@ class IssueWorklogPropertiesApi {
   /// Get worklog property
   ///
   /// Returns the value of a worklog property.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response<EntityProperty>>
-      comAtlassianJiraRestV2IssueWorklogPropertyResourceGetWorklogPropertyGet(
+  Future<Response<EntityProperty>> getWorklogProperty(
     String issueIdOrKey,
     String worklogId,
     String propertyKey, {
@@ -66,7 +64,7 @@ class IssueWorklogPropertiesApi {
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
+        "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
             .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
             .replaceAll("{" r'worklogId' "}", worklogId.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
@@ -113,15 +111,14 @@ class IssueWorklogPropertiesApi {
   /// Get worklog property keys
   ///
   /// Returns the keys of all properties for a worklog.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response<PropertyKeys>>
-      comAtlassianJiraRestV2IssueWorklogPropertyResourceGetWorklogPropertyKeysGet(
+  Future<Response<PropertyKeys>> getWorklogPropertyKeys(
     String issueIdOrKey,
     String worklogId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties"
+        "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties"
             .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
             .replaceAll("{" r'worklogId' "}", worklogId.toString());
 
@@ -167,8 +164,7 @@ class IssueWorklogPropertiesApi {
   /// Set worklog property
   ///
   /// Sets the value of a worklog property. Use this operation to store custom data against the worklog.  The value of the request body must be a [valid](http://tools.ietf.org/html/rfc4627), non-empty JSON blob. The maximum length is 32768 characters.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  *Edit all worklogs*[ project permission](https://confluence.atlassian.com/x/yodKLg) to update any worklog or *Edit own worklogs* to update worklogs created by the user.  *  If the worklog has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueWorklogPropertyResourceSetWorklogPropertyPut(
+  Future<Response<Object>> setWorklogProperty(
     String issueIdOrKey,
     String worklogId,
     String propertyKey,
@@ -177,7 +173,7 @@ class IssueWorklogPropertiesApi {
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
+        "/rest/api/2/issue/{issueIdOrKey}/worklog/{worklogId}/properties/{propertyKey}"
             .replaceAll("{" r'issueIdOrKey' "}", issueIdOrKey.toString())
             .replaceAll("{" r'worklogId' "}", worklogId.toString())
             .replaceAll("{" r'propertyKey' "}", propertyKey.toString());

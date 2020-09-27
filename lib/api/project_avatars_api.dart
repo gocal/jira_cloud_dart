@@ -16,9 +16,8 @@ class ProjectAvatarsApi {
 
   /// Load project avatar
   ///
-  /// Loads an avatar for a project.  Specify the avatar&#39;s local file location in the body of the request. Also, include the following headers:   *  &#x60;X-Atlassian-Token: no-check&#x60; To prevent XSRF protection blocking the request, for more information see [Special Headers](#special-request-headers).  *  &#x60;Content-Type: image/image type&#x60; Valid image types are JPEG, GIF, or PNG.  For example:   &#x60;curl --request POST &#x60;  &#x60;--user email@example.com:&lt;api_token&gt; &#x60;  &#x60;--header &#39;X-Atlassian-Token: no-check&#39; &#x60;  &#x60;--header &#39;Content-Type: image/&lt; image_type&gt;&#39; &#x60;  &#x60;--data-binary \&quot;&lt;@/path/to/file/with/your/avatar&gt;\&quot; &#x60;  &#x60;--url &#39;https://your-domain.atlassian.net/rest/api/3/project/{projectIdOrKey}/avatar2&#39;&#x60;  The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square&#39;s sides is set to the smaller of the height or width of the image.  The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.  After creating the avatar use [Set project avatar](#api-rest-api-3-project-projectIdOrKey-avatar-put) to set it as the project&#39;s displayed avatar.  **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
-  Future<Response<Avatar>>
-      comAtlassianJiraRestV2IssueProjectResourceCreateProjectAvatarPost(
+  /// Loads an avatar for a project.  Specify the avatar&#39;s local file location in the body of the request. Also, include the following headers:   *  &#x60;X-Atlassian-Token: no-check&#x60; To prevent XSRF protection blocking the request, for more information see [Special Headers](#special-request-headers).  *  &#x60;Content-Type: image/image type&#x60; Valid image types are JPEG, GIF, or PNG.  For example:   &#x60;curl --request POST &#x60;  &#x60;--user email@example.com:&lt;api_token&gt; &#x60;  &#x60;--header &#39;X-Atlassian-Token: no-check&#39; &#x60;  &#x60;--header &#39;Content-Type: image/&lt; image_type&gt;&#39; &#x60;  &#x60;--data-binary \&quot;&lt;@/path/to/file/with/your/avatar&gt;\&quot; &#x60;  &#x60;--url &#39;https://your-domain.atlassian.net/rest/api/2/project/{projectIdOrKey}/avatar2&#39;&#x60;  The avatar is cropped to a square. If no crop parameters are specified, the square originates at the top left of the image. The length of the square&#39;s sides is set to the smaller of the height or width of the image.  The cropped image is then used to create avatars of 16x16, 24x24, 32x32, and 48x48 in size.  After creating the avatar use [Set project avatar](#api-rest-api-2-project-projectIdOrKey-avatar-put) to set it as the project&#39;s displayed avatar.  **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
+  Future<Response<Avatar>> createProjectAvatar(
     String projectIdOrKey,
     Object body, {
     int x,
@@ -27,7 +26,7 @@ class ProjectAvatarsApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/project/{projectIdOrKey}/avatar2"
+    String _path = "/rest/api/2/project/{projectIdOrKey}/avatar2"
         .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -79,14 +78,13 @@ class ProjectAvatarsApi {
   /// Delete project avatar
   ///
   /// Deletes a custom avatar from a project. Note that system avatars cannot be deleted.  **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
-  Future<Response>
-      comAtlassianJiraRestV2IssueProjectResourceDeleteProjectAvatarDelete(
+  Future<Response> deleteProjectAvatar(
     String projectIdOrKey,
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/project/{projectIdOrKey}/avatar/{id}"
+    String _path = "/rest/api/2/project/{projectIdOrKey}/avatar/{id}"
         .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString())
         .replaceAll("{" r'id' "}", id.toString());
 
@@ -116,13 +114,12 @@ class ProjectAvatarsApi {
   /// Get all project avatars
   ///
   /// Returns all project avatars, grouped by system and custom avatars.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project.
-  Future<Response<ProjectAvatars>>
-      comAtlassianJiraRestV2IssueProjectResourceGetAllProjectAvatarsGet(
+  Future<Response<ProjectAvatars>> getAllProjectAvatars(
     String projectIdOrKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/project/{projectIdOrKey}/avatars"
+    String _path = "/rest/api/2/project/{projectIdOrKey}/avatars"
         .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -166,15 +163,14 @@ class ProjectAvatarsApi {
 
   /// Set project avatar
   ///
-  /// Sets the avatar displayed for a project.  Use [Load project avatar](#api-rest-api-3-project-projectIdOrKey-avatar2-post) to store avatars against the project, before using this operation to set the displayed avatar.  **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueProjectResourceUpdateProjectAvatarPut(
+  /// Sets the avatar displayed for a project.  Use [Load project avatar](#api-rest-api-2-project-projectIdOrKey-avatar2-post) to store avatars against the project, before using this operation to set the displayed avatar.  **[Permissions](#permissions) required:** *Administer projects* [project permission](https://confluence.atlassian.com/x/yodKLg).
+  Future<Response<Object>> updateProjectAvatar(
     String projectIdOrKey,
     Avatar avatar, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/project/{projectIdOrKey}/avatar"
+    String _path = "/rest/api/2/project/{projectIdOrKey}/avatar"
         .replaceAll("{" r'projectIdOrKey' "}", projectIdOrKey.toString());
 
     Map<String, dynamic> queryParams = {};

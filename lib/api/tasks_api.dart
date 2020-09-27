@@ -16,12 +16,12 @@ class TasksApi {
   /// Cancel task
   ///
   /// Cancels a task.  **[Permissions](#permissions) required:** either of:   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).  *  Creator of the task.
-  Future<Response<Object>> comAtlassianJiraRestV2TaskTaskResourceCancelTaskPost(
+  Future<Response<Object>> cancelTask(
     String taskId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/task/{taskId}/cancel"
+    String _path = "/rest/api/2/task/{taskId}/cancel"
         .replaceAll("{" r'taskId' "}", taskId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -66,13 +66,12 @@ class TasksApi {
   /// Get task
   ///
   /// Returns the status of a [long-running asynchronous task](#async).  When a task has finished, this operation returns the JSON blob applicable to the task. See the documentation of the operation that created the task for details. Task details are not permanently retained. As of September 2019, details are retained for 14 days although this period may change without notice.  **[Permissions](#permissions) required:** either of:   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).  *  Creator of the task.
-  Future<Response<TaskProgressBeanObject>>
-      comAtlassianJiraRestV2TaskTaskResourceGetTaskGet(
+  Future<Response<TaskProgressBeanObject>> getTask(
     String taskId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/task/{taskId}"
+    String _path = "/rest/api/2/task/{taskId}"
         .replaceAll("{" r'taskId' "}", taskId.toString());
 
     Map<String, dynamic> queryParams = {};

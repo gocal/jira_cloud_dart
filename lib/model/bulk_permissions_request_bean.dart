@@ -16,6 +16,10 @@ abstract class BulkPermissionsRequestBean
   @nullable
   @BuiltValueField(wireName: r'globalPermissions')
   BuiltList<String> get globalPermissions;
+  /* The account ID of a user. */
+  @nullable
+  @BuiltValueField(wireName: r'accountId')
+  String get accountId;
 
   // Boilerplate code needed to wire-up generated code
   BulkPermissionsRequestBean._();

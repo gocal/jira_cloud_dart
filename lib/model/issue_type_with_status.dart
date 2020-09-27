@@ -19,7 +19,7 @@ abstract class IssueTypeWithStatus
   @nullable
   @BuiltValueField(wireName: r'name')
   String get name;
-  /* Indicates whether this issue type represents subtasks. */
+  /* Whether this issue type represents subtasks. */
   @nullable
   @BuiltValueField(wireName: r'subtask')
   bool get subtask;

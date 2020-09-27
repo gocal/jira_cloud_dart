@@ -1,4 +1,4 @@
-import 'package:jira_cloud/model/screen_type_i_ds_bean.dart';
+import 'package:jira_cloud/model/screen_types.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,10 +18,10 @@ abstract class ScreenScheme
   @nullable
   @BuiltValueField(wireName: r'description')
   String get description;
-  /* IDs of the screens for the associated screen types. */
+  /* The IDs of the screens for the screen types of the screen scheme. */
   @nullable
   @BuiltValueField(wireName: r'screens')
-  ScreenTypeIDsBean get screens;
+  ScreenTypes get screens;
 
   // Boilerplate code needed to wire-up generated code
   ScreenScheme._();

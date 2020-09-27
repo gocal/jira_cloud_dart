@@ -2,7 +2,6 @@ import 'package:built_collection/built_collection.dart';
 import 'package:jira_cloud/model/visibility.dart';
 import 'package:jira_cloud/model/user_details.dart';
 import 'package:jira_cloud/model/entity_property.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,10 +20,10 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   @nullable
   @BuiltValueField(wireName: r'author')
   UserDetails get author;
-  /* The comment text in [Atlassian Document Format](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/). */
+  /* The comment text. */
   @nullable
   @BuiltValueField(wireName: r'body')
-  JsonObject get body;
+  String get body;
   /* The rendered version of the comment. */
   @nullable
   @BuiltValueField(wireName: r'renderedBody')
@@ -45,7 +44,7 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   @nullable
   @BuiltValueField(wireName: r'visibility')
   Visibility get visibility;
-  /* Indicates whether the comment is visible in Jira Service Desk. Defaults to true when comments are created in the Jira Cloud Platform. This includes when the site doesn't use Jira Service Desk or the project isn't a Jira Service Desk project and, therefore, there is no Jira Service Desk for the issue to be visible on. To create a comment with its visibility in Jira Service Desk set to false, use the Jira Service Desk REST API [Create request comment](https://developer.atlassian.com/cloud/jira/service-desk/rest/#api-rest-servicedeskapi-request-issueIdOrKey-comment-post) operation. */
+  /* Whether the comment is visible in Jira Service Desk. Defaults to true when comments are created in the Jira Cloud Platform. This includes when the site doesn't use Jira Service Desk or the project isn't a Jira Service Desk project and, therefore, there is no Jira Service Desk for the issue to be visible on. To create a comment with its visibility in Jira Service Desk set to false, use the Jira Service Desk REST API [Create request comment](https://developer.atlassian.com/cloud/jira/service-desk/rest/#api-rest-servicedeskapi-request-issueIdOrKey-comment-post) operation. */
   @nullable
   @BuiltValueField(wireName: r'jsdPublic')
   bool get jsdPublic;

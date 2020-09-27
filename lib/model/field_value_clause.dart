@@ -14,6 +14,7 @@ abstract class FieldValueClause
   @nullable
   @BuiltValueField(wireName: r'operator')
   String get operator_;
+  //enum operator_Enum {  &#x3D;,  !&#x3D;,  &gt;,  &lt;,  &gt;&#x3D;,  &lt;&#x3D;,  in,  not in,  ~,  ~&#x3D;,  is,  is not,  };
 
   @nullable
   @BuiltValueField(wireName: r'operand')

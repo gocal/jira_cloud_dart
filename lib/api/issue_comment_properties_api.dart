@@ -17,14 +17,13 @@ class IssueCommentPropertiesApi {
   /// Delete comment property
   ///
   /// Deletes a comment property.  **[Permissions](#permissions) required:** either of:   *  *Edit All Comments* [project permission](https://confluence.atlassian.com/x/yodKLg) to delete a property from any comment.  *  *Edit Own Comments* [project permission](https://confluence.atlassian.com/x/yodKLg) to delete a property from a comment created by the user.  Also, when the visibility of a comment is restricted to a role or group the user must be a member of that role or group.
-  Future<Response>
-      comAtlassianJiraRestV2IssueCommentPropertyResourceDeleteCommentPropertyDelete(
+  Future<Response> deleteCommentProperty(
     String commentId,
     String propertyKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/comment/{commentId}/properties/{propertyKey}"
+    String _path = "/rest/api/2/comment/{commentId}/properties/{propertyKey}"
         .replaceAll("{" r'commentId' "}", commentId.toString())
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
@@ -54,14 +53,13 @@ class IssueCommentPropertiesApi {
   /// Get comment property
   ///
   /// Returns the value of a comment property.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response<EntityProperty>>
-      comAtlassianJiraRestV2IssueCommentPropertyResourceGetCommentPropertyGet(
+  Future<Response<EntityProperty>> getCommentProperty(
     String commentId,
     String propertyKey, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/comment/{commentId}/properties/{propertyKey}"
+    String _path = "/rest/api/2/comment/{commentId}/properties/{propertyKey}"
         .replaceAll("{" r'commentId' "}", commentId.toString())
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
@@ -107,13 +105,12 @@ class IssueCommentPropertiesApi {
   /// Get comment property keys
   ///
   /// Returns the keys of all the properties of a comment.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:**   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.  *  If the comment has visibility restrictions, belongs to the group or has the role visibility is restricted to.
-  Future<Response<PropertyKeys>>
-      comAtlassianJiraRestV2IssueCommentPropertyResourceGetCommentPropertyKeysGet(
+  Future<Response<PropertyKeys>> getCommentPropertyKeys(
     String commentId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/comment/{commentId}/properties"
+    String _path = "/rest/api/2/comment/{commentId}/properties"
         .replaceAll("{" r'commentId' "}", commentId.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -158,15 +155,14 @@ class IssueCommentPropertiesApi {
   /// Set comment property
   ///
   /// Creates or updates the value of a property for a comment. Use this resource to store custom data against a comment.  The value of the request body must be a [valid](http://tools.ietf.org/html/rfc4627), non-empty JSON blob. The maximum length is 32768 characters.  **[Permissions](#permissions) required:** either of:   *  *Edit All Comments* [project permission](https://confluence.atlassian.com/x/yodKLg) to create or update the value of a property on any comment.  *  *Edit Own Comments* [project permission](https://confluence.atlassian.com/x/yodKLg) to create or update the value of a property on a comment created by the user.  Also, when the visibility of a comment is restricted to a role or group the user must be a member of that role or group.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueCommentPropertyResourceSetCommentPropertyPut(
+  Future<Response<Object>> setCommentProperty(
     String commentId,
     String propertyKey,
     Object body, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/comment/{commentId}/properties/{propertyKey}"
+    String _path = "/rest/api/2/comment/{commentId}/properties/{propertyKey}"
         .replaceAll("{" r'commentId' "}", commentId.toString())
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 

@@ -7,7 +7,7 @@ part 'project_role_actors_update_bean.g.dart';
 abstract class ProjectRoleActorsUpdateBean
     implements
         Built<ProjectRoleActorsUpdateBean, ProjectRoleActorsUpdateBeanBuilder> {
-  /* The ID of the project role. Use [Get all project roles](#api-rest-api-3-role-get) to get a list of project role IDs. */
+  /* The ID of the project role. Use [Get all project roles](#api-rest-api-2-role-get) to get a list of project role IDs. */
   @nullable
   @BuiltValueField(wireName: r'id')
   int get id;

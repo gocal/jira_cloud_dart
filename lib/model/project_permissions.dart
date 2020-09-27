@@ -5,7 +5,7 @@ part 'project_permissions.g.dart';
 
 abstract class ProjectPermissions
     implements Built<ProjectPermissions, ProjectPermissionsBuilder> {
-  /* Indicates whether the logged user can edit the project. */
+  /* Whether the logged user can edit the project. */
   @nullable
   @BuiltValueField(wireName: r'canEdit')
   bool get canEdit;

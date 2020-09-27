@@ -7,8 +7,8 @@ import 'package:built_value/serializer.dart';
 
 import 'package:jira_cloud/model/filter.dart';
 import 'package:jira_cloud/model/error_collection.dart';
+import 'package:jira_cloud/model/page_bean_filter_details.dart';
 import 'package:jira_cloud/model/column_item.dart';
-import 'package:jira_cloud/model/page_bean_found_filter.dart';
 
 class FiltersApi {
   final Dio _dio;
@@ -18,15 +18,14 @@ class FiltersApi {
 
   /// Create filter
   ///
-  /// Creates a filter. The filter is shared according to the [default share scope](#api-rest-api-3-filter-post). The filter is not selected as a favorite.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<Filter>>
-      comAtlassianJiraRestV2SearchFilterResourceCreateFilterPost(
+  /// Creates a filter. The filter is shared according to the [default share scope](#api-rest-api-2-filter-post). The filter is not selected as a favorite.  **[Permissions](#permissions) required:** Permission to access Jira.
+  Future<Response<Filter>> createFilter(
     Filter filter, {
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter";
+    String _path = "/rest/api/2/filter";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -75,14 +74,13 @@ class FiltersApi {
   /// Remove filter as favorite
   ///
   /// Removes a filter as a favorite for the user. Note that this operation only removes filters visible to the user from the user&#39;s favorites list. For example, if the user favorites a public filter that is subsequently made private (and is therefore no longer visible on their favorites list) they cannot remove it from their favorites list.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<Filter>>
-      comAtlassianJiraRestV2SearchFilterResourceDeleteFavouriteForFilterDelete(
+  Future<Response<Filter>> deleteFavouriteForFilter(
     int id, {
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/{id}/favourite"
+    String _path = "/rest/api/2/filter/{id}/favourite"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -128,13 +126,13 @@ class FiltersApi {
   /// Delete filter
   ///
   /// Delete a filter.  **[Permissions](#permissions) required:** Permission to access Jira, however filters can only be deleted by the creator of the filter or a user with *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response> comAtlassianJiraRestV2SearchFilterResourceDeleteFilterDelete(
+  Future<Response> deleteFilter(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/filter/{id}".replaceAll("{" r'id' "}", id.toString());
+        "/rest/api/2/filter/{id}".replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -162,13 +160,12 @@ class FiltersApi {
   /// Get columns
   ///
   /// Returns the columns configured for a filter. The column configuration is used when the filter&#39;s results are viewed in *List View* with the *Columns* set to *Filter*.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, column details are only returned for:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response<List<ColumnItem>>>
-      comAtlassianJiraRestV2SearchFilterResourceGetColumnsGet(
+  Future<Response<List<ColumnItem>>> getColumns(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/{id}/columns"
+    String _path = "/rest/api/2/filter/{id}/columns"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -215,13 +212,12 @@ class FiltersApi {
   /// Get favorite filters
   ///
   /// Returns the visible favorite filters of the user.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** A favorite filter is only visible to the user where the filter is:   *  owned by the user.  *  shared with a group that the user is a member of.  *  shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  shared with a public project.  *  shared with the public.  For example, if the user favorites a public filter that is subsequently made private that filter is not returned by this operation.
-  Future<Response<List<Filter>>>
-      comAtlassianJiraRestV2SearchFilterResourceGetFavouriteFiltersGet({
+  Future<Response<List<Filter>>> getFavouriteFilters({
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/favourite";
+    String _path = "/rest/api/2/filter/favourite";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -268,15 +264,14 @@ class FiltersApi {
   /// Get filter
   ///
   /// Returns a filter.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, the filter is only returned where it is:   *  owned by the user.  *  shared with a group that the user is a member of.  *  shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  shared with a public project.  *  shared with the public.
-  Future<Response<Filter>>
-      comAtlassianJiraRestV2SearchFilterResourceGetFilterGet(
+  Future<Response<Filter>> getFilter(
     int id, {
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/filter/{id}".replaceAll("{" r'id' "}", id.toString());
+        "/rest/api/2/filter/{id}".replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -320,14 +315,13 @@ class FiltersApi {
 
   /// Get filters
   ///
-  /// Returns all filters. Deprecated, use [ Search for filters](#api-rest-api-3-filter-search-get) that supports search and pagination.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, only the following filters are returned:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response<List<Filter>>>
-      comAtlassianJiraRestV2SearchFilterResourceGetFiltersGet({
+  /// Returns all filters. Deprecated, use [ Search for filters](#api-rest-api-2-filter-search-get) that supports search and pagination.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, only the following filters are returned:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
+  Future<Response<List<Filter>>> getFilters({
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter";
+    String _path = "/rest/api/2/filter";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -373,14 +367,14 @@ class FiltersApi {
 
   /// Search for filters
   ///
-  /// Searches for filters. This operation is similar to [Get filters](#api-rest-api-3-filter-get) except that the results can be refined to include filters that have specific attributes. For example, filters with a particular name. When multiple attributes are specified only filters matching all attributes are returned.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, only the following filters that match the query parameters are returned:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response<PageBeanFoundFilter>>
-      comAtlassianJiraRestV2SearchFilterResourceGetFiltersPaginatedGet({
+  /// Returns a [paginated](#pagination) list of filters. Use this operation to get:   *  specific filters, by defining &#x60;id&#x60; only.  *  filters that match all of the specified attributes. For example, all filters for a user with a particular word in their name. When multiple attributes are specified only filters matching all attributes are returned.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None, however, only the following filters that match the query parameters are returned:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
+  Future<Response<PageBeanFilterDetails>> getFiltersPaginated({
     String filterName,
     String accountId,
     String owner,
     String groupname,
     int projectId,
+    List<int> id,
     String orderBy,
     int startAt,
     int maxResults,
@@ -388,7 +382,7 @@ class FiltersApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/search";
+    String _path = "/rest/api/2/filter/search";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -399,6 +393,7 @@ class FiltersApi {
     queryParams[r'owner'] = owner;
     queryParams[r'groupname'] = groupname;
     queryParams[r'projectId'] = projectId;
+    queryParams[r'id'] = id;
     queryParams[r'orderBy'] = orderBy;
     queryParams[r'startAt'] = startAt;
     queryParams[r'maxResults'] = maxResults;
@@ -422,11 +417,11 @@ class FiltersApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(PageBeanFoundFilter);
-      var data = _serializers.deserializeWith<PageBeanFoundFilter>(
+      var serializer = _serializers.serializerForType(PageBeanFilterDetails);
+      var data = _serializers.deserializeWith<PageBeanFilterDetails>(
           serializer, response.data);
 
-      return Response<PageBeanFoundFilter>(
+      return Response<PageBeanFilterDetails>(
         data: data,
         headers: response.headers,
         request: response.request,
@@ -441,14 +436,13 @@ class FiltersApi {
   /// Get my filters
   ///
   /// Returns the filters owned by the user. If &#x60;includeFavourites&#x60; is &#x60;true&#x60;, the user&#39;s visible favorite filters are also returned.  **[Permissions](#permissions) required:** Permission to access Jira, however, a favorite filters is only visible to the user where the filter is:   *  owned by the user.  *  shared with a group that the user is a member of.  *  shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  shared with a public project.  *  shared with the public.  For example, if the user favorites a public filter that is subsequently made private that filter is not returned by this operation.
-  Future<Response<List<Filter>>>
-      comAtlassianJiraRestV2SearchFilterResourceGetMyFiltersGet({
+  Future<Response<List<Filter>>> getMyFilters({
     String expand,
     bool includeFavourites,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/my";
+    String _path = "/rest/api/2/filter/my";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -496,12 +490,12 @@ class FiltersApi {
   /// Reset columns
   ///
   /// Reset the user&#39;s column configuration for the filter to the default.  **[Permissions](#permissions) required:** Permission to access Jira, however, columns are only reset for:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response> comAtlassianJiraRestV2SearchFilterResourceResetColumnsDelete(
+  Future<Response> resetColumns(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/{id}/columns"
+    String _path = "/rest/api/2/filter/{id}/columns"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -529,15 +523,14 @@ class FiltersApi {
 
   /// Set columns
   ///
-  /// Sets the columns for a filter. Only navigable fields can be set as columns. Use [Get fields](#api-rest-api-3-field-get) to get the list fields in Jira. A navigable field has &#x60;navigable&#x60; set to &#x60;true&#x60;.  The parameters for this resource are expressed as HTML form data. For example, in curl:  &#x60;curl -X PUT -d columns&#x3D;summary -d columns&#x3D;description https://your-domain.atlassian.net/rest/api/3/filter/10000/columns&#x60;  **[Permissions](#permissions) required:** Permission to access Jira, however, columns are only set for:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2SearchFilterResourceSetColumnsPut(
+  /// Sets the columns for a filter. Only navigable fields can be set as columns. Use [Get fields](#api-rest-api-2-field-get) to get the list fields in Jira. A navigable field has &#x60;navigable&#x60; set to &#x60;true&#x60;.  The parameters for this resource are expressed as HTML form data. For example, in curl:  &#x60;curl -X PUT -d columns&#x3D;summary -d columns&#x3D;description https://your-domain.atlassian.net/rest/api/2/filter/10000/columns&#x60;  **[Permissions](#permissions) required:** Permission to access Jira, however, columns are only set for:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
+  Future<Response<Object>> setColumns(
     int id, {
     List<String> requestBody,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/{id}/columns"
+    String _path = "/rest/api/2/filter/{id}/columns"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -590,14 +583,13 @@ class FiltersApi {
   /// Add filter as favorite
   ///
   /// Add a filter as a favorite for the user.  **[Permissions](#permissions) required:** Permission to access Jira, however, the user can only favorite:   *  filters owned by the user.  *  filters shared with a group that the user is a member of.  *  filters shared with a private project that the user has *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for.  *  filters shared with a public project.  *  filters shared with the public.
-  Future<Response<Filter>>
-      comAtlassianJiraRestV2SearchFilterResourceSetFavouriteForFilterPut(
+  Future<Response<Filter>> setFavouriteForFilter(
     int id, {
     String expand,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/filter/{id}/favourite"
+    String _path = "/rest/api/2/filter/{id}/favourite"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -643,8 +635,7 @@ class FiltersApi {
   /// Update filter
   ///
   /// Updates a filter. Use this operation to update a filter&#39;s name, description, JQL, or sharing.  **[Permissions](#permissions) required:** Permission to access Jira, however the user must own the filter.
-  Future<Response<Filter>>
-      comAtlassianJiraRestV2SearchFilterResourceUpdateFilterPut(
+  Future<Response<Filter>> updateFilter(
     int id,
     Filter filter, {
     String expand,
@@ -652,7 +643,7 @@ class FiltersApi {
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/filter/{id}".replaceAll("{" r'id' "}", id.toString());
+        "/rest/api/2/filter/{id}".replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

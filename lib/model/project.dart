@@ -60,7 +60,7 @@ abstract class Project implements Built<Project, ProjectBuilder> {
   @BuiltValueField(wireName: r'assigneeType')
   String get assigneeType;
   //enum assigneeTypeEnum {  PROJECT_LEAD,  UNASSIGNED,  };
-  /* The versions defined in the project. For more information, see [Create version](#api-rest-api-3-version-post). */
+  /* The versions defined in the project. For more information, see [Create version](#api-rest-api-2-version-post). */
   @nullable
   @BuiltValueField(wireName: r'versions')
   BuiltList<Version> get versions;
@@ -68,7 +68,7 @@ abstract class Project implements Built<Project, ProjectBuilder> {
   @nullable
   @BuiltValueField(wireName: r'name')
   String get name;
-  /* The name and self URL for each role defined in the project. For more information, see [Create project role](#api-rest-api-3-role-post). */
+  /* The name and self URL for each role defined in the project. For more information, see [Create project role](#api-rest-api-2-role-post). */
   @nullable
   @BuiltValueField(wireName: r'roles')
   BuiltMap<String, String> get roles;
@@ -138,6 +138,18 @@ abstract class Project implements Built<Project, ProjectBuilder> {
   @nullable
   @BuiltValueField(wireName: r'deletedBy')
   User get deletedBy;
+  /* Whether the project is archived. */
+  @nullable
+  @BuiltValueField(wireName: r'archived')
+  bool get archived;
+  /* The date when the project was archived. */
+  @nullable
+  @BuiltValueField(wireName: r'archivedDate')
+  DateTime get archivedDate;
+  /* The user who archived the project. */
+  @nullable
+  @BuiltValueField(wireName: r'archivedBy')
+  User get archivedBy;
 
   // Boilerplate code needed to wire-up generated code
   Project._();

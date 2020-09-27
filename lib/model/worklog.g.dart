@@ -40,7 +40,7 @@ class _$WorklogSerializer implements StructuredSerializer<Worklog> {
       result
         ..add('comment')
         ..add(serializers.serialize(object.comment,
-            specifiedType: const FullType(JsonObject)));
+            specifiedType: const FullType(String)));
     }
     if (object.created != null) {
       result
@@ -125,7 +125,7 @@ class _$WorklogSerializer implements StructuredSerializer<Worklog> {
           break;
         case 'comment':
           result.comment = serializers.deserialize(value,
-              specifiedType: const FullType(JsonObject)) as JsonObject;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'created':
           result.created = serializers.deserialize(value,
@@ -180,7 +180,7 @@ class _$Worklog extends Worklog {
   @override
   final UserDetails updateAuthor;
   @override
-  final JsonObject comment;
+  final String comment;
   @override
   final DateTime created;
   @override
@@ -310,9 +310,9 @@ class WorklogBuilder implements Builder<Worklog, WorklogBuilder> {
   set updateAuthor(UserDetailsBuilder updateAuthor) =>
       _$this._updateAuthor = updateAuthor;
 
-  JsonObject _comment;
-  JsonObject get comment => _$this._comment;
-  set comment(JsonObject comment) => _$this._comment = comment;
+  String _comment;
+  String get comment => _$this._comment;
+  set comment(String comment) => _$this._comment = comment;
 
   DateTime _created;
   DateTime get created => _$this._created;

@@ -14,17 +14,17 @@ abstract class FieldReferenceData
   @nullable
   @BuiltValueField(wireName: r'displayName')
   String get displayName;
-  /* Indicates whether the field can be used in a query's `ORDER BY` clause. */
+  /* Whether the field can be used in a query's `ORDER BY` clause. */
   @nullable
   @BuiltValueField(wireName: r'orderable')
   String get orderable;
   //enum orderableEnum {  true,  false,  };
-  /* Indicates whether the content of this field can be searched. */
+  /* Whether the content of this field can be searched. */
   @nullable
   @BuiltValueField(wireName: r'searchable')
   String get searchable;
   //enum searchableEnum {  true,  false,  };
-  /* Indicates whether the field provide auto-complete suggestions. */
+  /* Whether the field provide auto-complete suggestions. */
   @nullable
   @BuiltValueField(wireName: r'auto')
   String get auto;

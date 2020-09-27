@@ -51,7 +51,7 @@ abstract class Component implements Built<Component, ComponentBuilder> {
   @nullable
   @BuiltValueField(wireName: r'realAssignee')
   User get realAssignee;
-  /* Indicates whether a user is associated with `assigneeType`. For example, if the `assigneeType` is set to `COMPONENT_LEAD` but the component lead is not set, then `false` is returned. */
+  /* Whether a user is associated with `assigneeType`. For example, if the `assigneeType` is set to `COMPONENT_LEAD` but the component lead is not set, then `false` is returned. */
   @nullable
   @BuiltValueField(wireName: r'isAssigneeTypeValid')
   bool get isAssigneeTypeValid;

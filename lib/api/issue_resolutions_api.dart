@@ -16,14 +16,13 @@ class IssueResolutionsApi {
   /// Get resolution
   ///
   /// Returns an issue resolution value.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<Resolution>>
-      comAtlassianJiraRestV2IssueResolutionResourceGetResolutionGet(
+  Future<Response<Resolution>> getResolution(
     String id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
     String _path =
-        "/rest/api/3/resolution/{id}".replaceAll("{" r'id' "}", id.toString());
+        "/rest/api/2/resolution/{id}".replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -67,12 +66,11 @@ class IssueResolutionsApi {
   /// Get resolutions
   ///
   /// Returns a list of all issue resolution values.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<List<Resolution>>>
-      comAtlassianJiraRestV2IssueResolutionResourceGetResolutionsGet({
+  Future<Response<List<Resolution>>> getResolutions({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/resolution";
+    String _path = "/rest/api/2/resolution";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

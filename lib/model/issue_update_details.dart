@@ -22,7 +22,7 @@ abstract class IssueUpdateDetails
   /* List of operations to perform on issue screen fields. Note that fields included in here cannot be included in `fields`. */
   @nullable
   @BuiltValueField(wireName: r'update')
-  BuiltMap<String, BuiltList<FieldUpdateOperation>> get updateArg;
+  BuiltMap<String, BuiltList<FieldUpdateOperation>> get update;
   /* Additional issue history details. */
   @nullable
   @BuiltValueField(wireName: r'historyMetadata')

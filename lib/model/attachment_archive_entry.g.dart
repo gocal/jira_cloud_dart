@@ -24,17 +24,17 @@ class _$AttachmentArchiveEntrySerializer
       Serializers serializers, AttachmentArchiveEntry object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
-    if (object.entryIndex != null) {
-      result
-        ..add('entryIndex')
-        ..add(serializers.serialize(object.entryIndex,
-            specifiedType: const FullType(int)));
-    }
     if (object.abbreviatedName != null) {
       result
         ..add('abbreviatedName')
         ..add(serializers.serialize(object.abbreviatedName,
             specifiedType: const FullType(String)));
+    }
+    if (object.entryIndex != null) {
+      result
+        ..add('entryIndex')
+        ..add(serializers.serialize(object.entryIndex,
+            specifiedType: const FullType(int)));
     }
     if (object.mediaType != null) {
       result
@@ -69,13 +69,13 @@ class _$AttachmentArchiveEntrySerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'entryIndex':
-          result.entryIndex = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'abbreviatedName':
           result.abbreviatedName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'entryIndex':
+          result.entryIndex = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
         case 'mediaType':
           result.mediaType = serializers.deserialize(value,
@@ -98,9 +98,9 @@ class _$AttachmentArchiveEntrySerializer
 
 class _$AttachmentArchiveEntry extends AttachmentArchiveEntry {
   @override
-  final int entryIndex;
-  @override
   final String abbreviatedName;
+  @override
+  final int entryIndex;
   @override
   final String mediaType;
   @override
@@ -113,8 +113,8 @@ class _$AttachmentArchiveEntry extends AttachmentArchiveEntry {
       (new AttachmentArchiveEntryBuilder()..update(updates)).build();
 
   _$AttachmentArchiveEntry._(
-      {this.entryIndex,
-      this.abbreviatedName,
+      {this.abbreviatedName,
+      this.entryIndex,
       this.mediaType,
       this.name,
       this.size})
@@ -133,8 +133,8 @@ class _$AttachmentArchiveEntry extends AttachmentArchiveEntry {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AttachmentArchiveEntry &&
-        entryIndex == other.entryIndex &&
         abbreviatedName == other.abbreviatedName &&
+        entryIndex == other.entryIndex &&
         mediaType == other.mediaType &&
         name == other.name &&
         size == other.size;
@@ -144,7 +144,7 @@ class _$AttachmentArchiveEntry extends AttachmentArchiveEntry {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, entryIndex.hashCode), abbreviatedName.hashCode),
+            $jc($jc($jc(0, abbreviatedName.hashCode), entryIndex.hashCode),
                 mediaType.hashCode),
             name.hashCode),
         size.hashCode));
@@ -153,8 +153,8 @@ class _$AttachmentArchiveEntry extends AttachmentArchiveEntry {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AttachmentArchiveEntry')
-          ..add('entryIndex', entryIndex)
           ..add('abbreviatedName', abbreviatedName)
+          ..add('entryIndex', entryIndex)
           ..add('mediaType', mediaType)
           ..add('name', name)
           ..add('size', size))
@@ -166,14 +166,14 @@ class AttachmentArchiveEntryBuilder
     implements Builder<AttachmentArchiveEntry, AttachmentArchiveEntryBuilder> {
   _$AttachmentArchiveEntry _$v;
 
-  int _entryIndex;
-  int get entryIndex => _$this._entryIndex;
-  set entryIndex(int entryIndex) => _$this._entryIndex = entryIndex;
-
   String _abbreviatedName;
   String get abbreviatedName => _$this._abbreviatedName;
   set abbreviatedName(String abbreviatedName) =>
       _$this._abbreviatedName = abbreviatedName;
+
+  int _entryIndex;
+  int get entryIndex => _$this._entryIndex;
+  set entryIndex(int entryIndex) => _$this._entryIndex = entryIndex;
 
   String _mediaType;
   String get mediaType => _$this._mediaType;
@@ -191,8 +191,8 @@ class AttachmentArchiveEntryBuilder
 
   AttachmentArchiveEntryBuilder get _$this {
     if (_$v != null) {
-      _entryIndex = _$v.entryIndex;
       _abbreviatedName = _$v.abbreviatedName;
+      _entryIndex = _$v.entryIndex;
       _mediaType = _$v.mediaType;
       _name = _$v.name;
       _size = _$v.size;
@@ -218,8 +218,8 @@ class AttachmentArchiveEntryBuilder
   _$AttachmentArchiveEntry build() {
     final _$result = _$v ??
         new _$AttachmentArchiveEntry._(
-            entryIndex: entryIndex,
             abbreviatedName: abbreviatedName,
+            entryIndex: entryIndex,
             mediaType: mediaType,
             name: name,
             size: size);

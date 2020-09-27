@@ -5,11 +5,11 @@ part 'user_permission.g.dart';
 
 abstract class UserPermission
     implements Built<UserPermission, UserPermissionBuilder> {
-  /* The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+  /* The ID of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
   @nullable
   @BuiltValueField(wireName: r'id')
   String get id;
-  /* The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-3-permissions-get) to get the list of permissions. */
+  /* The key of the permission. Either `id` or `key` must be specified. Use [Get all permissions](#api-rest-api-2-permissions-get) to get the list of permissions. */
   @nullable
   @BuiltValueField(wireName: r'key')
   String get key;
@@ -26,7 +26,7 @@ abstract class UserPermission
   @nullable
   @BuiltValueField(wireName: r'description')
   String get description;
-  /* Indicates whether the permission is available to the user in the queried context. */
+  /* Whether the permission is available to the user in the queried context. */
   @nullable
   @BuiltValueField(wireName: r'havePermission')
   bool get havePermission;

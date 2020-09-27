@@ -32,6 +32,8 @@ import 'package:jira_cloud/api/issue_search_api.dart';
 import 'package:jira_cloud/api/issue_security_level_api.dart';
 import 'package:jira_cloud/api/issue_security_schemes_api.dart';
 import 'package:jira_cloud/api/issue_type_properties_api.dart';
+import 'package:jira_cloud/api/issue_type_schemes_api.dart';
+import 'package:jira_cloud/api/issue_type_screen_schemes_api.dart';
 import 'package:jira_cloud/api/issue_types_api.dart';
 import 'package:jira_cloud/api/issue_votes_api.dart';
 import 'package:jira_cloud/api/issue_watchers_api.dart';
@@ -48,6 +50,7 @@ import 'package:jira_cloud/api/permissions_api.dart';
 import 'package:jira_cloud/api/project_avatars_api.dart';
 import 'package:jira_cloud/api/project_categories_api.dart';
 import 'package:jira_cloud/api/project_components_api.dart';
+import 'package:jira_cloud/api/project_email_api.dart';
 import 'package:jira_cloud/api/project_key_and_name_validation_api.dart';
 import 'package:jira_cloud/api/project_permission_schemes_api.dart';
 import 'package:jira_cloud/api/project_properties_api.dart';
@@ -56,6 +59,9 @@ import 'package:jira_cloud/api/project_roles_api.dart';
 import 'package:jira_cloud/api/project_types_api.dart';
 import 'package:jira_cloud/api/project_versions_api.dart';
 import 'package:jira_cloud/api/projects_api.dart';
+import 'package:jira_cloud/api/screen_schemes_api.dart';
+import 'package:jira_cloud/api/screen_tab_fields_api.dart';
+import 'package:jira_cloud/api/screen_tabs_api.dart';
 import 'package:jira_cloud/api/screens_api.dart';
 import 'package:jira_cloud/api/server_info_api.dart';
 import 'package:jira_cloud/api/tasks_api.dart';
@@ -76,7 +82,7 @@ import 'package:jira_cloud/api/workflows_api.dart';
 class JiraCloud {
   Dio dio;
   Serializers serializers;
-  String basePath = "https://mydomain.atlassian.net";
+  String basePath = "https://your-domain.atlassian.com";
 
   JiraCloud({this.dio, Serializers serializers}) {
     if (dio == null) {
@@ -324,6 +330,22 @@ class JiraCloud {
   }
 
   /**
+    * Get IssueTypeSchemesApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  IssueTypeSchemesApi getIssueTypeSchemesApi() {
+    return IssueTypeSchemesApi(dio, serializers);
+  }
+
+  /**
+    * Get IssueTypeScreenSchemesApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  IssueTypeScreenSchemesApi getIssueTypeScreenSchemesApi() {
+    return IssueTypeScreenSchemesApi(dio, serializers);
+  }
+
+  /**
     * Get IssueTypesApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
@@ -452,6 +474,14 @@ class JiraCloud {
   }
 
   /**
+    * Get ProjectEmailApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  ProjectEmailApi getProjectEmailApi() {
+    return ProjectEmailApi(dio, serializers);
+  }
+
+  /**
     * Get ProjectKeyAndNameValidationApi instance, base route and serializer can be overridden by a given but be careful,
     * by doing that all interceptors will not be executed
     */
@@ -513,6 +543,30 @@ class JiraCloud {
     */
   ProjectsApi getProjectsApi() {
     return ProjectsApi(dio, serializers);
+  }
+
+  /**
+    * Get ScreenSchemesApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  ScreenSchemesApi getScreenSchemesApi() {
+    return ScreenSchemesApi(dio, serializers);
+  }
+
+  /**
+    * Get ScreenTabFieldsApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  ScreenTabFieldsApi getScreenTabFieldsApi() {
+    return ScreenTabFieldsApi(dio, serializers);
+  }
+
+  /**
+    * Get ScreenTabsApi instance, base route and serializer can be overridden by a given but be careful,
+    * by doing that all interceptors will not be executed
+    */
+  ScreenTabsApi getScreenTabsApi() {
+    return ScreenTabsApi(dio, serializers);
   }
 
   /**

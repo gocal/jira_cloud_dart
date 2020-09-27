@@ -10,10 +10,6 @@ abstract class ComponentWithIssueCount
   @nullable
   @BuiltValueField(wireName: r'issueCount')
   int get issueCount;
-  /* Not used. */
-  @nullable
-  @BuiltValueField(wireName: r'projectId')
-  int get projectId;
   /* The description for the component. */
   @nullable
   @BuiltValueField(wireName: r'description')
@@ -22,6 +18,14 @@ abstract class ComponentWithIssueCount
   @nullable
   @BuiltValueField(wireName: r'self')
   String get self;
+  /* Not used. */
+  @nullable
+  @BuiltValueField(wireName: r'projectId')
+  int get projectId;
+  /* The details of the user associated with `assigneeType`, if any. See `realAssignee` for details of the user assigned to issues created with this component. */
+  @nullable
+  @BuiltValueField(wireName: r'assignee')
+  User get assignee;
   /* The key of the project to which the component is assigned. */
   @nullable
   @BuiltValueField(wireName: r'project')
@@ -35,15 +39,11 @@ abstract class ComponentWithIssueCount
   @BuiltValueField(wireName: r'assigneeType')
   String get assigneeType;
   //enum assigneeTypeEnum {  PROJECT_DEFAULT,  COMPONENT_LEAD,  PROJECT_LEAD,  UNASSIGNED,  };
-  /* The details of the user associated with `assigneeType`, if any. See `realAssignee` for details of the user assigned to issues created with this component. */
-  @nullable
-  @BuiltValueField(wireName: r'assignee')
-  User get assignee;
   /* The user assigned to issues created with this component, when `assigneeType` does not identify a valid assignee. */
   @nullable
   @BuiltValueField(wireName: r'realAssignee')
   User get realAssignee;
-  /* Indicates whether a user is associated with `assigneeType`. For example, if the `assigneeType` is set to `COMPONENT_LEAD` but the component lead is not set, then `false` is returned. */
+  /* Whether a user is associated with `assigneeType`. For example, if the `assigneeType` is set to `COMPONENT_LEAD` but the component lead is not set, then `false` is returned. */
   @nullable
   @BuiltValueField(wireName: r'isAssigneeTypeValid')
   bool get isAssigneeTypeValid;

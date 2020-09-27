@@ -4,7 +4,7 @@ import 'package:built_value/serializer.dart';
 part 'visibility.g.dart';
 
 abstract class Visibility implements Built<Visibility, VisibilityBuilder> {
-  /* Indicates whether visibility of this item is restricted to a group or role. */
+  /* Whether visibility of this item is restricted to a group or role. */
   @nullable
   @BuiltValueField(wireName: r'type')
   String get type;

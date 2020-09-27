@@ -10,7 +10,7 @@ abstract class Watchers implements Built<Watchers, WatchersBuilder> {
   @nullable
   @BuiltValueField(wireName: r'self')
   String get self;
-  /* Indicates whether the calling user is watching this issue. */
+  /* Whether the calling user is watching this issue. */
   @nullable
   @BuiltValueField(wireName: r'isWatching')
   bool get isWatching;

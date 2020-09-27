@@ -11,8 +11,16 @@ abstract class JsonNode implements Built<JsonNode, JsonNodeBuilder> {
   JsonObject get elements;
 
   @nullable
-  @BuiltValueField(wireName: r'number')
-  bool get number;
+  @BuiltValueField(wireName: r'missingNode')
+  bool get missingNode;
+
+  @nullable
+  @BuiltValueField(wireName: r'object')
+  bool get object;
+
+  @nullable
+  @BuiltValueField(wireName: r'floatingPointNumber')
+  bool get floatingPointNumber;
 
   @nullable
   @BuiltValueField(wireName: r'valueNode')
@@ -23,12 +31,8 @@ abstract class JsonNode implements Built<JsonNode, JsonNodeBuilder> {
   bool get containerNode;
 
   @nullable
-  @BuiltValueField(wireName: r'missingNode')
-  bool get missingNode;
-
-  @nullable
-  @BuiltValueField(wireName: r'object')
-  bool get object;
+  @BuiltValueField(wireName: r'number')
+  bool get number;
 
   @nullable
   @BuiltValueField(wireName: r'pojo')
@@ -39,20 +43,16 @@ abstract class JsonNode implements Built<JsonNode, JsonNodeBuilder> {
   bool get integralNumber;
 
   @nullable
-  @BuiltValueField(wireName: r'floatingPointNumber')
-  bool get floatingPointNumber;
+  @BuiltValueField(wireName: r'int')
+  bool get int;
 
   @nullable
-  @BuiltValueField(wireName: r'intArg')
-  bool get intArg;
+  @BuiltValueField(wireName: r'long')
+  bool get long;
 
   @nullable
-  @BuiltValueField(wireName: r'longArg')
-  bool get longArg;
-
-  @nullable
-  @BuiltValueField(wireName: r'doubleArg')
-  bool get doubleArg;
+  @BuiltValueField(wireName: r'double')
+  bool get double;
 
   @nullable
   @BuiltValueField(wireName: r'bigDecimal')

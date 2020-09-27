@@ -30,12 +30,6 @@ class _$ComponentWithIssueCountSerializer
         ..add(serializers.serialize(object.issueCount,
             specifiedType: const FullType(int)));
     }
-    if (object.projectId != null) {
-      result
-        ..add('projectId')
-        ..add(serializers.serialize(object.projectId,
-            specifiedType: const FullType(int)));
-    }
     if (object.description != null) {
       result
         ..add('description')
@@ -47,6 +41,18 @@ class _$ComponentWithIssueCountSerializer
         ..add('self')
         ..add(serializers.serialize(object.self,
             specifiedType: const FullType(String)));
+    }
+    if (object.projectId != null) {
+      result
+        ..add('projectId')
+        ..add(serializers.serialize(object.projectId,
+            specifiedType: const FullType(int)));
+    }
+    if (object.assignee != null) {
+      result
+        ..add('assignee')
+        ..add(serializers.serialize(object.assignee,
+            specifiedType: const FullType(User)));
     }
     if (object.project != null) {
       result
@@ -65,12 +71,6 @@ class _$ComponentWithIssueCountSerializer
         ..add('assigneeType')
         ..add(serializers.serialize(object.assigneeType,
             specifiedType: const FullType(String)));
-    }
-    if (object.assignee != null) {
-      result
-        ..add('assignee')
-        ..add(serializers.serialize(object.assignee,
-            specifiedType: const FullType(User)));
     }
     if (object.realAssignee != null) {
       result
@@ -121,10 +121,6 @@ class _$ComponentWithIssueCountSerializer
           result.issueCount = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'projectId':
-          result.projectId = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -132,6 +128,14 @@ class _$ComponentWithIssueCountSerializer
         case 'self':
           result.self = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
+          break;
+        case 'projectId':
+          result.projectId = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'assignee':
+          result.assignee.replace(serializers.deserialize(value,
+              specifiedType: const FullType(User)) as User);
           break;
         case 'project':
           result.project = serializers.deserialize(value,
@@ -144,10 +148,6 @@ class _$ComponentWithIssueCountSerializer
         case 'assigneeType':
           result.assigneeType = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          break;
-        case 'assignee':
-          result.assignee.replace(serializers.deserialize(value,
-              specifiedType: const FullType(User)) as User);
           break;
         case 'realAssignee':
           result.realAssignee.replace(serializers.deserialize(value,
@@ -180,19 +180,19 @@ class _$ComponentWithIssueCount extends ComponentWithIssueCount {
   @override
   final int issueCount;
   @override
-  final int projectId;
-  @override
   final String description;
   @override
   final String self;
+  @override
+  final int projectId;
+  @override
+  final User assignee;
   @override
   final String project;
   @override
   final User lead;
   @override
   final String assigneeType;
-  @override
-  final User assignee;
   @override
   final User realAssignee;
   @override
@@ -210,13 +210,13 @@ class _$ComponentWithIssueCount extends ComponentWithIssueCount {
 
   _$ComponentWithIssueCount._(
       {this.issueCount,
-      this.projectId,
       this.description,
       this.self,
+      this.projectId,
+      this.assignee,
       this.project,
       this.lead,
       this.assigneeType,
-      this.assignee,
       this.realAssignee,
       this.isAssigneeTypeValid,
       this.realAssigneeType,
@@ -238,13 +238,13 @@ class _$ComponentWithIssueCount extends ComponentWithIssueCount {
     if (identical(other, this)) return true;
     return other is ComponentWithIssueCount &&
         issueCount == other.issueCount &&
-        projectId == other.projectId &&
         description == other.description &&
         self == other.self &&
+        projectId == other.projectId &&
+        assignee == other.assignee &&
         project == other.project &&
         lead == other.lead &&
         assigneeType == other.assigneeType &&
-        assignee == other.assignee &&
         realAssignee == other.realAssignee &&
         isAssigneeTypeValid == other.isAssigneeTypeValid &&
         realAssigneeType == other.realAssigneeType &&
@@ -266,13 +266,13 @@ class _$ComponentWithIssueCount extends ComponentWithIssueCount {
                                         $jc(
                                             $jc(
                                                 $jc($jc(0, issueCount.hashCode),
-                                                    projectId.hashCode),
-                                                description.hashCode),
-                                            self.hashCode),
-                                        project.hashCode),
-                                    lead.hashCode),
-                                assigneeType.hashCode),
-                            assignee.hashCode),
+                                                    description.hashCode),
+                                                self.hashCode),
+                                            projectId.hashCode),
+                                        assignee.hashCode),
+                                    project.hashCode),
+                                lead.hashCode),
+                            assigneeType.hashCode),
                         realAssignee.hashCode),
                     isAssigneeTypeValid.hashCode),
                 realAssigneeType.hashCode),
@@ -284,13 +284,13 @@ class _$ComponentWithIssueCount extends ComponentWithIssueCount {
   String toString() {
     return (newBuiltValueToStringHelper('ComponentWithIssueCount')
           ..add('issueCount', issueCount)
-          ..add('projectId', projectId)
           ..add('description', description)
           ..add('self', self)
+          ..add('projectId', projectId)
+          ..add('assignee', assignee)
           ..add('project', project)
           ..add('lead', lead)
           ..add('assigneeType', assigneeType)
-          ..add('assignee', assignee)
           ..add('realAssignee', realAssignee)
           ..add('isAssigneeTypeValid', isAssigneeTypeValid)
           ..add('realAssigneeType', realAssigneeType)
@@ -309,10 +309,6 @@ class ComponentWithIssueCountBuilder
   int get issueCount => _$this._issueCount;
   set issueCount(int issueCount) => _$this._issueCount = issueCount;
 
-  int _projectId;
-  int get projectId => _$this._projectId;
-  set projectId(int projectId) => _$this._projectId = projectId;
-
   String _description;
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
@@ -320,6 +316,14 @@ class ComponentWithIssueCountBuilder
   String _self;
   String get self => _$this._self;
   set self(String self) => _$this._self = self;
+
+  int _projectId;
+  int get projectId => _$this._projectId;
+  set projectId(int projectId) => _$this._projectId = projectId;
+
+  UserBuilder _assignee;
+  UserBuilder get assignee => _$this._assignee ??= new UserBuilder();
+  set assignee(UserBuilder assignee) => _$this._assignee = assignee;
 
   String _project;
   String get project => _$this._project;
@@ -332,10 +336,6 @@ class ComponentWithIssueCountBuilder
   String _assigneeType;
   String get assigneeType => _$this._assigneeType;
   set assigneeType(String assigneeType) => _$this._assigneeType = assigneeType;
-
-  UserBuilder _assignee;
-  UserBuilder get assignee => _$this._assignee ??= new UserBuilder();
-  set assignee(UserBuilder assignee) => _$this._assignee = assignee;
 
   UserBuilder _realAssignee;
   UserBuilder get realAssignee => _$this._realAssignee ??= new UserBuilder();
@@ -365,13 +365,13 @@ class ComponentWithIssueCountBuilder
   ComponentWithIssueCountBuilder get _$this {
     if (_$v != null) {
       _issueCount = _$v.issueCount;
-      _projectId = _$v.projectId;
       _description = _$v.description;
       _self = _$v.self;
+      _projectId = _$v.projectId;
+      _assignee = _$v.assignee?.toBuilder();
       _project = _$v.project;
       _lead = _$v.lead?.toBuilder();
       _assigneeType = _$v.assigneeType;
-      _assignee = _$v.assignee?.toBuilder();
       _realAssignee = _$v.realAssignee?.toBuilder();
       _isAssigneeTypeValid = _$v.isAssigneeTypeValid;
       _realAssigneeType = _$v.realAssigneeType;
@@ -402,13 +402,13 @@ class ComponentWithIssueCountBuilder
       _$result = _$v ??
           new _$ComponentWithIssueCount._(
               issueCount: issueCount,
-              projectId: projectId,
               description: description,
               self: self,
+              projectId: projectId,
+              assignee: _assignee?.build(),
               project: project,
               lead: _lead?.build(),
               assigneeType: assigneeType,
-              assignee: _assignee?.build(),
               realAssignee: _realAssignee?.build(),
               isAssigneeTypeValid: isAssigneeTypeValid,
               realAssigneeType: realAssigneeType,
@@ -417,11 +417,12 @@ class ComponentWithIssueCountBuilder
     } catch (_) {
       String _$failedField;
       try {
+        _$failedField = 'assignee';
+        _assignee?.build();
+
         _$failedField = 'lead';
         _lead?.build();
 
-        _$failedField = 'assignee';
-        _assignee?.build();
         _$failedField = 'realAssignee';
         _realAssignee?.build();
       } catch (e) {

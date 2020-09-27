@@ -19,13 +19,12 @@ class WorkflowSchemeDraftsApi {
   /// Create draft workflow scheme
   ///
   /// Create a draft workflow scheme from an active workflow scheme, by copying the active workflow scheme. Note that an active workflow scheme can only have one draft workflow scheme.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceCreateWorkflowSchemeDraftFromParentPost(
+  Future<Response<WorkflowScheme>> createWorkflowSchemeDraftFromParent(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/createdraft"
+    String _path = "/rest/api/2/workflowscheme/{id}/createdraft"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -70,13 +69,12 @@ class WorkflowSchemeDraftsApi {
   /// Delete draft default workflow
   ///
   /// Resets the default workflow for a workflow scheme&#39;s draft. That is, the default workflow is set to Jira&#39;s system workflow (the *jira* workflow).  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceDeleteDraftDefaultWorkflowDelete(
+  Future<Response<WorkflowScheme>> deleteDraftDefaultWorkflow(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/default"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/default"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -121,14 +119,13 @@ class WorkflowSchemeDraftsApi {
   /// Delete issue types for workflow in draft workflow scheme
   ///
   /// Deletes the workflow-issue type mapping for a workflow in a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceDeleteDraftWorkflowMappingDelete(
+  Future<Response> deleteDraftWorkflowMapping(
     int id,
     String workflowName, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/workflow"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/workflow"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -158,13 +155,12 @@ class WorkflowSchemeDraftsApi {
   /// Delete draft workflow scheme
   ///
   /// Deletes a draft workflow scheme.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceDeleteWorkflowSchemeDraftDelete(
+  Future<Response> deleteWorkflowSchemeDraft(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -193,14 +189,13 @@ class WorkflowSchemeDraftsApi {
   /// Delete workflow for issue type in draft workflow scheme
   ///
   /// Deletes the issue type-workflow mapping for an issue type in a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceDeleteWorkflowSchemeDraftIssueTypeDelete(
+  Future<Response<WorkflowScheme>> deleteWorkflowSchemeDraftIssueType(
     int id,
     String issueType, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/issuetype/{issueType}"
         .replaceAll("{" r'id' "}", id.toString())
         .replaceAll("{" r'issueType' "}", issueType.toString());
 
@@ -246,13 +241,12 @@ class WorkflowSchemeDraftsApi {
   /// Get draft default workflow
   ///
   /// Returns the default workflow for a workflow scheme&#39;s draft. The default workflow is the workflow that is assigned any issue types that have not been mapped to any other workflow. The default workflow has *All Unassigned Issue Types* listed in its issue types for the workflow scheme in Jira.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<DefaultWorkflow>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceGetDraftDefaultWorkflowGet(
+  Future<Response<DefaultWorkflow>> getDraftDefaultWorkflow(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/default"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/default"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -297,14 +291,13 @@ class WorkflowSchemeDraftsApi {
   /// Get issue types for workflows in draft workflow scheme
   ///
   /// Returns the workflow-issue type mappings for a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<IssueTypesWorkflowMapping>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceGetDraftWorkflowGet(
+  Future<Response<IssueTypesWorkflowMapping>> getDraftWorkflow(
     int id, {
     String workflowName,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/workflow"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/workflow"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -351,13 +344,12 @@ class WorkflowSchemeDraftsApi {
   /// Get draft workflow scheme
   ///
   /// Returns the draft workflow scheme for an active workflow scheme. Draft workflow schemes allow changes to be made to the active workflow schemes: When an active workflow scheme is updated, a draft copy is created. The draft is modified, then the changes in the draft are copied back to the active workflow scheme. See [Configuring workflow schemes](https://confluence.atlassian.com/x/tohKLg) for more information.   Note that:   *  Only active workflow schemes can have draft workflow schemes.  *  An active workflow scheme can only have one draft workflow scheme.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceGetWorkflowSchemeDraftGet(
+  Future<Response<WorkflowScheme>> getWorkflowSchemeDraft(
     int id, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -402,14 +394,13 @@ class WorkflowSchemeDraftsApi {
   /// Get workflow for issue type in draft workflow scheme
   ///
   /// Returns the issue type-workflow mapping for an issue type in a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<IssueTypeWorkflowMapping>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceGetWorkflowSchemeDraftIssueTypeGet(
+  Future<Response<IssueTypeWorkflowMapping>> getWorkflowSchemeDraftIssueType(
     int id,
     String issueType, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/issuetype/{issueType}"
         .replaceAll("{" r'id' "}", id.toString())
         .replaceAll("{" r'issueType' "}", issueType.toString());
 
@@ -455,15 +446,14 @@ class WorkflowSchemeDraftsApi {
   /// Set workflow for issue type in draft workflow scheme
   ///
   /// Sets the workflow for an issue type in a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceSetWorkflowSchemeDraftIssueTypePut(
+  Future<Response<WorkflowScheme>> setWorkflowSchemeDraftIssueType(
     int id,
     String issueType,
     IssueTypeWorkflowMapping issueTypeWorkflowMapping, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/issuetype/{issueType}"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/issuetype/{issueType}"
         .replaceAll("{" r'id' "}", id.toString())
         .replaceAll("{" r'issueType' "}", issueType.toString());
 
@@ -513,14 +503,13 @@ class WorkflowSchemeDraftsApi {
   /// Update draft default workflow
   ///
   /// Sets the default workflow for a workflow scheme&#39;s draft.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceUpdateDraftDefaultWorkflowPut(
+  Future<Response<WorkflowScheme>> updateDraftDefaultWorkflow(
     int id,
     DefaultWorkflow defaultWorkflow, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/default"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/default"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -569,15 +558,14 @@ class WorkflowSchemeDraftsApi {
   /// Set issue types for workflow in workflow scheme
   ///
   /// Sets the issue types for a workflow in a workflow scheme&#39;s draft. The workflow can also be set as the default workflow for the draft workflow scheme. Unmapped issues types are mapped to the default workflow.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceUpdateDraftWorkflowMappingPut(
+  Future<Response<WorkflowScheme>> updateDraftWorkflowMapping(
     int id,
     String workflowName,
     IssueTypesWorkflowMapping issueTypesWorkflowMapping, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft/workflow"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft/workflow"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -627,14 +615,13 @@ class WorkflowSchemeDraftsApi {
   /// Update draft workflow scheme
   ///
   /// Updates a draft workflow scheme. If a draft workflow scheme does not exist for the active workflow scheme, then a draft is created. Note that an active workflow scheme can only have one draft workflow scheme.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg).
-  Future<Response<WorkflowScheme>>
-      comAtlassianJiraRestV2AdminWorkflowschemeWorkflowSchemeResourceUpdateWorkflowSchemeDraftPut(
+  Future<Response<WorkflowScheme>> updateWorkflowSchemeDraft(
     int id,
     WorkflowScheme workflowScheme, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/workflowscheme/{id}/draft"
+    String _path = "/rest/api/2/workflowscheme/{id}/draft"
         .replaceAll("{" r'id' "}", id.toString());
 
     Map<String, dynamic> queryParams = {};

@@ -6,12 +6,12 @@ part 'attachment_archive_entry.g.dart';
 abstract class AttachmentArchiveEntry
     implements Built<AttachmentArchiveEntry, AttachmentArchiveEntryBuilder> {
   @nullable
-  @BuiltValueField(wireName: r'entryIndex')
-  int get entryIndex;
-
-  @nullable
   @BuiltValueField(wireName: r'abbreviatedName')
   String get abbreviatedName;
+
+  @nullable
+  @BuiltValueField(wireName: r'entryIndex')
+  int get entryIndex;
 
   @nullable
   @BuiltValueField(wireName: r'mediaType')

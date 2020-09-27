@@ -30,6 +30,12 @@ class _$ScreenSerializer implements StructuredSerializer<Screen> {
         ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
+    if (object.description != null) {
+      result
+        ..add('description')
+        ..add(serializers.serialize(object.description,
+            specifiedType: const FullType(String)));
+    }
     if (object.scope != null) {
       result
         ..add('scope')
@@ -58,6 +64,10 @@ class _$ScreenSerializer implements StructuredSerializer<Screen> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'scope':
           result.scope.replace(serializers.deserialize(value,
               specifiedType: const FullType(Scope)) as Scope);
@@ -75,12 +85,14 @@ class _$Screen extends Screen {
   @override
   final String name;
   @override
+  final String description;
+  @override
   final Scope scope;
 
   factory _$Screen([void Function(ScreenBuilder) updates]) =>
       (new ScreenBuilder()..update(updates)).build();
 
-  _$Screen._({this.id, this.name, this.scope}) : super._();
+  _$Screen._({this.id, this.name, this.description, this.scope}) : super._();
 
   @override
   Screen rebuild(void Function(ScreenBuilder) updates) =>
@@ -95,12 +107,15 @@ class _$Screen extends Screen {
     return other is Screen &&
         id == other.id &&
         name == other.name &&
+        description == other.description &&
         scope == other.scope;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, id.hashCode), name.hashCode), scope.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, id.hashCode), name.hashCode), description.hashCode),
+        scope.hashCode));
   }
 
   @override
@@ -108,6 +123,7 @@ class _$Screen extends Screen {
     return (newBuiltValueToStringHelper('Screen')
           ..add('id', id)
           ..add('name', name)
+          ..add('description', description)
           ..add('scope', scope))
         .toString();
   }
@@ -124,6 +140,10 @@ class ScreenBuilder implements Builder<Screen, ScreenBuilder> {
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
+  String _description;
+  String get description => _$this._description;
+  set description(String description) => _$this._description = description;
+
   ScopeBuilder _scope;
   ScopeBuilder get scope => _$this._scope ??= new ScopeBuilder();
   set scope(ScopeBuilder scope) => _$this._scope = scope;
@@ -134,6 +154,7 @@ class ScreenBuilder implements Builder<Screen, ScreenBuilder> {
     if (_$v != null) {
       _id = _$v.id;
       _name = _$v.name;
+      _description = _$v.description;
       _scope = _$v.scope?.toBuilder();
       _$v = null;
     }
@@ -157,8 +178,12 @@ class ScreenBuilder implements Builder<Screen, ScreenBuilder> {
   _$Screen build() {
     _$Screen _$result;
     try {
-      _$result =
-          _$v ?? new _$Screen._(id: id, name: name, scope: _scope?.build());
+      _$result = _$v ??
+          new _$Screen._(
+              id: id,
+              name: name,
+              description: description,
+              scope: _scope?.build());
     } catch (_) {
       String _$failedField;
       try {

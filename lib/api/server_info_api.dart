@@ -16,12 +16,11 @@ class ServerInfoApi {
   /// Get Jira instance info
   ///
   /// Returns information about the Jira instance.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<ServerInformation>>
-      comAtlassianJiraRestV2ServerInfoResourceGetServerInfoGet({
+  Future<Response<ServerInformation>> getServerInfo({
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/serverInfo";
+    String _path = "/rest/api/2/serverInfo";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

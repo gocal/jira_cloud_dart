@@ -42,6 +42,12 @@ class _$FieldsSerializer implements StructuredSerializer<Fields> {
         ..add(serializers.serialize(object.assignee,
             specifiedType: const FullType(UserDetails)));
     }
+    if (object.timetracking != null) {
+      result
+        ..add('timetracking')
+        ..add(serializers.serialize(object.timetracking,
+            specifiedType: const FullType(TimeTrackingDetails)));
+    }
     if (object.issuetype != null) {
       result
         ..add('issuetype')
@@ -84,6 +90,11 @@ class _$FieldsSerializer implements StructuredSerializer<Fields> {
           result.assignee.replace(serializers.deserialize(value,
               specifiedType: const FullType(UserDetails)) as UserDetails);
           break;
+        case 'timetracking':
+          result.timetracking.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(TimeTrackingDetails))
+              as TimeTrackingDetails);
+          break;
         case 'issuetype':
           result.issuetype.replace(serializers.deserialize(value,
                   specifiedType: const FullType(IssueTypeDetails))
@@ -111,6 +122,8 @@ class _$Fields extends Fields {
   @override
   final UserDetails assignee;
   @override
+  final TimeTrackingDetails timetracking;
+  @override
   final IssueTypeDetails issuetype;
   @override
   final IssueTypeDetails issueType;
@@ -123,6 +136,7 @@ class _$Fields extends Fields {
       this.status,
       this.priority,
       this.assignee,
+      this.timetracking,
       this.issuetype,
       this.issueType})
       : super._();
@@ -142,6 +156,7 @@ class _$Fields extends Fields {
         status == other.status &&
         priority == other.priority &&
         assignee == other.assignee &&
+        timetracking == other.timetracking &&
         issuetype == other.issuetype &&
         issueType == other.issueType;
   }
@@ -151,9 +166,11 @@ class _$Fields extends Fields {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, summary.hashCode), status.hashCode),
-                    priority.hashCode),
-                assignee.hashCode),
+                $jc(
+                    $jc($jc($jc(0, summary.hashCode), status.hashCode),
+                        priority.hashCode),
+                    assignee.hashCode),
+                timetracking.hashCode),
             issuetype.hashCode),
         issueType.hashCode));
   }
@@ -165,6 +182,7 @@ class _$Fields extends Fields {
           ..add('status', status)
           ..add('priority', priority)
           ..add('assignee', assignee)
+          ..add('timetracking', timetracking)
           ..add('issuetype', issuetype)
           ..add('issueType', issueType))
         .toString();
@@ -192,6 +210,12 @@ class FieldsBuilder implements Builder<Fields, FieldsBuilder> {
       _$this._assignee ??= new UserDetailsBuilder();
   set assignee(UserDetailsBuilder assignee) => _$this._assignee = assignee;
 
+  TimeTrackingDetailsBuilder _timetracking;
+  TimeTrackingDetailsBuilder get timetracking =>
+      _$this._timetracking ??= new TimeTrackingDetailsBuilder();
+  set timetracking(TimeTrackingDetailsBuilder timetracking) =>
+      _$this._timetracking = timetracking;
+
   IssueTypeDetailsBuilder _issuetype;
   IssueTypeDetailsBuilder get issuetype =>
       _$this._issuetype ??= new IssueTypeDetailsBuilder();
@@ -212,6 +236,7 @@ class FieldsBuilder implements Builder<Fields, FieldsBuilder> {
       _status = _$v.status?.toBuilder();
       _priority = _$v.priority?.toBuilder();
       _assignee = _$v.assignee?.toBuilder();
+      _timetracking = _$v.timetracking?.toBuilder();
       _issuetype = _$v.issuetype?.toBuilder();
       _issueType = _$v.issueType?.toBuilder();
       _$v = null;
@@ -242,6 +267,7 @@ class FieldsBuilder implements Builder<Fields, FieldsBuilder> {
               status: _status?.build(),
               priority: _priority?.build(),
               assignee: _assignee?.build(),
+              timetracking: _timetracking?.build(),
               issuetype: _issuetype?.build(),
               issueType: _issueType?.build());
     } catch (_) {
@@ -253,6 +279,8 @@ class FieldsBuilder implements Builder<Fields, FieldsBuilder> {
         _priority?.build();
         _$failedField = 'assignee';
         _assignee?.build();
+        _$failedField = 'timetracking';
+        _timetracking?.build();
         _$failedField = 'issuetype';
         _issuetype?.build();
         _$failedField = 'issueType';

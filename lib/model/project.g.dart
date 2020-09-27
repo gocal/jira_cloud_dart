@@ -203,6 +203,24 @@ class _$ProjectSerializer implements StructuredSerializer<Project> {
         ..add(serializers.serialize(object.deletedBy,
             specifiedType: const FullType(User)));
     }
+    if (object.archived != null) {
+      result
+        ..add('archived')
+        ..add(serializers.serialize(object.archived,
+            specifiedType: const FullType(bool)));
+    }
+    if (object.archivedDate != null) {
+      result
+        ..add('archivedDate')
+        ..add(serializers.serialize(object.archivedDate,
+            specifiedType: const FullType(DateTime)));
+    }
+    if (object.archivedBy != null) {
+      result
+        ..add('archivedBy')
+        ..add(serializers.serialize(object.archivedBy,
+            specifiedType: const FullType(User)));
+    }
     return result;
   }
 
@@ -351,6 +369,18 @@ class _$ProjectSerializer implements StructuredSerializer<Project> {
           result.deletedBy.replace(serializers.deserialize(value,
               specifiedType: const FullType(User)) as User);
           break;
+        case 'archived':
+          result.archived = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'archivedDate':
+          result.archivedDate = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime;
+          break;
+        case 'archivedBy':
+          result.archivedBy.replace(serializers.deserialize(value,
+              specifiedType: const FullType(User)) as User);
+          break;
       }
     }
 
@@ -419,6 +449,12 @@ class _$Project extends Project {
   final DateTime deletedDate;
   @override
   final User deletedBy;
+  @override
+  final bool archived;
+  @override
+  final DateTime archivedDate;
+  @override
+  final User archivedBy;
 
   factory _$Project([void Function(ProjectBuilder) updates]) =>
       (new ProjectBuilder()..update(updates)).build();
@@ -453,7 +489,10 @@ class _$Project extends Project {
       this.deleted,
       this.retentionTillDate,
       this.deletedDate,
-      this.deletedBy})
+      this.deletedBy,
+      this.archived,
+      this.archivedDate,
+      this.archivedBy})
       : super._();
 
   @override
@@ -496,7 +535,10 @@ class _$Project extends Project {
         deleted == other.deleted &&
         retentionTillDate == other.retentionTillDate &&
         deletedDate == other.deletedDate &&
-        deletedBy == other.deletedBy;
+        deletedBy == other.deletedBy &&
+        archived == other.archived &&
+        archivedDate == other.archivedDate &&
+        archivedBy == other.archivedBy;
   }
 
   @override
@@ -519,26 +561,26 @@ class _$Project extends Project {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, expand.hashCode), self.hashCode), id.hashCode), key.hashCode), description.hashCode), lead.hashCode), components.hashCode), issueTypes.hashCode), url.hashCode), email.hashCode), assigneeType.hashCode),
-                                                                                versions.hashCode),
-                                                                            name.hashCode),
-                                                                        roles.hashCode),
-                                                                    avatarUrls.hashCode),
-                                                                projectCategory.hashCode),
-                                                            projectTypeKey.hashCode),
-                                                        simplified.hashCode),
-                                                    style.hashCode),
-                                                favourite.hashCode),
-                                            isPrivate.hashCode),
-                                        issueTypeHierarchy.hashCode),
-                                    permissions.hashCode),
-                                properties.hashCode),
-                            uuid.hashCode),
-                        insight.hashCode),
-                    deleted.hashCode),
-                retentionTillDate.hashCode),
-            deletedDate.hashCode),
-        deletedBy.hashCode));
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, expand.hashCode), self.hashCode), id.hashCode), key.hashCode), description.hashCode), lead.hashCode), components.hashCode), issueTypes.hashCode), url.hashCode), email.hashCode), assigneeType.hashCode), versions.hashCode), name.hashCode), roles.hashCode),
+                                                                                avatarUrls.hashCode),
+                                                                            projectCategory.hashCode),
+                                                                        projectTypeKey.hashCode),
+                                                                    simplified.hashCode),
+                                                                style.hashCode),
+                                                            favourite.hashCode),
+                                                        isPrivate.hashCode),
+                                                    issueTypeHierarchy.hashCode),
+                                                permissions.hashCode),
+                                            properties.hashCode),
+                                        uuid.hashCode),
+                                    insight.hashCode),
+                                deleted.hashCode),
+                            retentionTillDate.hashCode),
+                        deletedDate.hashCode),
+                    deletedBy.hashCode),
+                archived.hashCode),
+            archivedDate.hashCode),
+        archivedBy.hashCode));
   }
 
   @override
@@ -573,7 +615,10 @@ class _$Project extends Project {
           ..add('deleted', deleted)
           ..add('retentionTillDate', retentionTillDate)
           ..add('deletedDate', deletedDate)
-          ..add('deletedBy', deletedBy))
+          ..add('deletedBy', deletedBy)
+          ..add('archived', archived)
+          ..add('archivedDate', archivedDate)
+          ..add('archivedBy', archivedBy))
         .toString();
   }
 }
@@ -720,6 +765,19 @@ class ProjectBuilder implements Builder<Project, ProjectBuilder> {
   UserBuilder get deletedBy => _$this._deletedBy ??= new UserBuilder();
   set deletedBy(UserBuilder deletedBy) => _$this._deletedBy = deletedBy;
 
+  bool _archived;
+  bool get archived => _$this._archived;
+  set archived(bool archived) => _$this._archived = archived;
+
+  DateTime _archivedDate;
+  DateTime get archivedDate => _$this._archivedDate;
+  set archivedDate(DateTime archivedDate) =>
+      _$this._archivedDate = archivedDate;
+
+  UserBuilder _archivedBy;
+  UserBuilder get archivedBy => _$this._archivedBy ??= new UserBuilder();
+  set archivedBy(UserBuilder archivedBy) => _$this._archivedBy = archivedBy;
+
   ProjectBuilder();
 
   ProjectBuilder get _$this {
@@ -754,6 +812,9 @@ class ProjectBuilder implements Builder<Project, ProjectBuilder> {
       _retentionTillDate = _$v.retentionTillDate;
       _deletedDate = _$v.deletedDate;
       _deletedBy = _$v.deletedBy?.toBuilder();
+      _archived = _$v.archived;
+      _archivedDate = _$v.archivedDate;
+      _archivedBy = _$v.archivedBy?.toBuilder();
       _$v = null;
     }
     return this;
@@ -807,7 +868,10 @@ class ProjectBuilder implements Builder<Project, ProjectBuilder> {
               deleted: deleted,
               retentionTillDate: retentionTillDate,
               deletedDate: deletedDate,
-              deletedBy: _deletedBy?.build());
+              deletedBy: _deletedBy?.build(),
+              archived: archived,
+              archivedDate: archivedDate,
+              archivedBy: _archivedBy?.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -840,6 +904,9 @@ class ProjectBuilder implements Builder<Project, ProjectBuilder> {
 
         _$failedField = 'deletedBy';
         _deletedBy?.build();
+
+        _$failedField = 'archivedBy';
+        _archivedBy?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Project', _$failedField, e.toString());

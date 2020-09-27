@@ -1,6 +1,7 @@
 import 'package:jira_cloud/model/priority.dart';
 import 'package:jira_cloud/model/status_details.dart';
 import 'package:jira_cloud/model/issue_type_details.dart';
+import 'package:jira_cloud/model/time_tracking_details.dart';
 import 'package:jira_cloud/model/user_details.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -24,6 +25,10 @@ abstract class Fields implements Built<Fields, FieldsBuilder> {
   @nullable
   @BuiltValueField(wireName: r'assignee')
   UserDetails get assignee;
+  /* The time tracking of the linked issue. */
+  @nullable
+  @BuiltValueField(wireName: r'timetracking')
+  TimeTrackingDetails get timetracking;
 
   @nullable
   @BuiltValueField(wireName: r'issuetype')

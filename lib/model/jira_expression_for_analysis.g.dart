@@ -31,6 +31,13 @@ class _$JiraExpressionForAnalysisSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    if (object.contextVariables != null) {
+      result
+        ..add('contextVariables')
+        ..add(serializers.serialize(object.contextVariables,
+            specifiedType: const FullType(BuiltMap,
+                const [const FullType(String), const FullType(String)])));
+    }
     return result;
   }
 
@@ -52,6 +59,13 @@ class _$JiraExpressionForAnalysisSerializer
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<dynamic>);
           break;
+        case 'contextVariables':
+          result.contextVariables.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltMap, const [
+                const FullType(String),
+                const FullType(String)
+              ])) as BuiltMap<dynamic, dynamic>);
+          break;
       }
     }
 
@@ -62,12 +76,15 @@ class _$JiraExpressionForAnalysisSerializer
 class _$JiraExpressionForAnalysis extends JiraExpressionForAnalysis {
   @override
   final BuiltList<String> expressions;
+  @override
+  final BuiltMap<String, String> contextVariables;
 
   factory _$JiraExpressionForAnalysis(
           [void Function(JiraExpressionForAnalysisBuilder) updates]) =>
       (new JiraExpressionForAnalysisBuilder()..update(updates)).build();
 
-  _$JiraExpressionForAnalysis._({this.expressions}) : super._();
+  _$JiraExpressionForAnalysis._({this.expressions, this.contextVariables})
+      : super._();
 
   @override
   JiraExpressionForAnalysis rebuild(
@@ -82,18 +99,20 @@ class _$JiraExpressionForAnalysis extends JiraExpressionForAnalysis {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is JiraExpressionForAnalysis &&
-        expressions == other.expressions;
+        expressions == other.expressions &&
+        contextVariables == other.contextVariables;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, expressions.hashCode));
+    return $jf($jc($jc(0, expressions.hashCode), contextVariables.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('JiraExpressionForAnalysis')
-          ..add('expressions', expressions))
+          ..add('expressions', expressions)
+          ..add('contextVariables', contextVariables))
         .toString();
   }
 }
@@ -109,11 +128,18 @@ class JiraExpressionForAnalysisBuilder
   set expressions(ListBuilder<String> expressions) =>
       _$this._expressions = expressions;
 
+  MapBuilder<String, String> _contextVariables;
+  MapBuilder<String, String> get contextVariables =>
+      _$this._contextVariables ??= new MapBuilder<String, String>();
+  set contextVariables(MapBuilder<String, String> contextVariables) =>
+      _$this._contextVariables = contextVariables;
+
   JiraExpressionForAnalysisBuilder();
 
   JiraExpressionForAnalysisBuilder get _$this {
     if (_$v != null) {
       _expressions = _$v.expressions?.toBuilder();
+      _contextVariables = _$v.contextVariables?.toBuilder();
       _$v = null;
     }
     return this;
@@ -137,12 +163,16 @@ class JiraExpressionForAnalysisBuilder
     _$JiraExpressionForAnalysis _$result;
     try {
       _$result = _$v ??
-          new _$JiraExpressionForAnalysis._(expressions: _expressions?.build());
+          new _$JiraExpressionForAnalysis._(
+              expressions: _expressions?.build(),
+              contextVariables: _contextVariables?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'expressions';
         _expressions?.build();
+        _$failedField = 'contextVariables';
+        _contextVariables?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'JiraExpressionForAnalysis', _$failedField, e.toString());

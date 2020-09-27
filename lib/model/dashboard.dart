@@ -14,7 +14,7 @@ abstract class Dashboard implements Built<Dashboard, DashboardBuilder> {
   @nullable
   @BuiltValueField(wireName: r'id')
   String get id;
-  /* Indicates whether the dashboard is selected as a favorite by the user. */
+  /* Whether the dashboard is selected as a favorite by the user. */
   @nullable
   @BuiltValueField(wireName: r'isFavourite')
   bool get isFavourite;

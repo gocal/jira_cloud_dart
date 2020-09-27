@@ -17,7 +17,7 @@ abstract class IssueFilterForBulkPropertySet
   @nullable
   @BuiltValueField(wireName: r'currentValue')
   JsonObject get currentValue;
-  /* Indicates whether the bulk operation occurs only when the property is present on or absent from an issue. */
+  /* Whether the bulk operation occurs only when the property is present on or absent from an issue. */
   @nullable
   @BuiltValueField(wireName: r'hasProperty')
   bool get hasProperty;

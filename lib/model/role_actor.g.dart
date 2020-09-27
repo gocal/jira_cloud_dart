@@ -52,13 +52,13 @@ class _$RoleActorSerializer implements StructuredSerializer<RoleActor> {
       result
         ..add('actorUser')
         ..add(serializers.serialize(object.actorUser,
-            specifiedType: const FullType(ProjectRoleUserBean)));
+            specifiedType: const FullType(ProjectRoleUser)));
     }
     if (object.actorGroup != null) {
       result
         ..add('actorGroup')
         ..add(serializers.serialize(object.actorGroup,
-            specifiedType: const FullType(ProjectRoleGroupBean)));
+            specifiedType: const FullType(ProjectRoleGroup)));
     }
     return result;
   }
@@ -96,13 +96,13 @@ class _$RoleActorSerializer implements StructuredSerializer<RoleActor> {
           break;
         case 'actorUser':
           result.actorUser.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(ProjectRoleUserBean))
-              as ProjectRoleUserBean);
+                  specifiedType: const FullType(ProjectRoleUser))
+              as ProjectRoleUser);
           break;
         case 'actorGroup':
           result.actorGroup.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(ProjectRoleGroupBean))
-              as ProjectRoleGroupBean);
+                  specifiedType: const FullType(ProjectRoleGroup))
+              as ProjectRoleGroup);
           break;
       }
     }
@@ -123,9 +123,9 @@ class _$RoleActor extends RoleActor {
   @override
   final String avatarUrl;
   @override
-  final ProjectRoleUserBean actorUser;
+  final ProjectRoleUser actorUser;
   @override
-  final ProjectRoleGroupBean actorGroup;
+  final ProjectRoleGroup actorGroup;
 
   factory _$RoleActor([void Function(RoleActorBuilder) updates]) =>
       (new RoleActorBuilder()..update(updates)).build();
@@ -211,16 +211,16 @@ class RoleActorBuilder implements Builder<RoleActor, RoleActorBuilder> {
   String get avatarUrl => _$this._avatarUrl;
   set avatarUrl(String avatarUrl) => _$this._avatarUrl = avatarUrl;
 
-  ProjectRoleUserBeanBuilder _actorUser;
-  ProjectRoleUserBeanBuilder get actorUser =>
-      _$this._actorUser ??= new ProjectRoleUserBeanBuilder();
-  set actorUser(ProjectRoleUserBeanBuilder actorUser) =>
+  ProjectRoleUserBuilder _actorUser;
+  ProjectRoleUserBuilder get actorUser =>
+      _$this._actorUser ??= new ProjectRoleUserBuilder();
+  set actorUser(ProjectRoleUserBuilder actorUser) =>
       _$this._actorUser = actorUser;
 
-  ProjectRoleGroupBeanBuilder _actorGroup;
-  ProjectRoleGroupBeanBuilder get actorGroup =>
-      _$this._actorGroup ??= new ProjectRoleGroupBeanBuilder();
-  set actorGroup(ProjectRoleGroupBeanBuilder actorGroup) =>
+  ProjectRoleGroupBuilder _actorGroup;
+  ProjectRoleGroupBuilder get actorGroup =>
+      _$this._actorGroup ??= new ProjectRoleGroupBuilder();
+  set actorGroup(ProjectRoleGroupBuilder actorGroup) =>
       _$this._actorGroup = actorGroup;
 
   RoleActorBuilder();

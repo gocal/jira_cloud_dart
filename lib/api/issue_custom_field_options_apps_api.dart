@@ -18,14 +18,13 @@ class IssueCustomFieldOptionsAppsApi {
   /// Create issue field option
   ///
   /// Creates an option for a select list issue field.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response<IssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceCreateIssueFieldOptionPost(
+  Future<Response<IssueFieldOption>> createIssueFieldOption(
     String fieldKey,
     Map<String, Object> requestBody, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option"
+    String _path = "/rest/api/2/field/{fieldKey}/option"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -74,14 +73,13 @@ class IssueCustomFieldOptionsAppsApi {
   /// Delete issue field option
   ///
   /// Deletes an option from a select list issue field.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceDeleteIssueFieldOptionDelete(
+  Future<Response<Object>> deleteIssueFieldOption(
     String fieldKey,
     int optionId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/{optionId}"
+    String _path = "/rest/api/2/field/{fieldKey}/option/{optionId}"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString())
         .replaceAll("{" r'optionId' "}", optionId.toString());
 
@@ -126,16 +124,15 @@ class IssueCustomFieldOptionsAppsApi {
 
   /// Get all issue field options
   ///
-  /// Returns all the options of a select list issue field. A select list issue field is a type of [issue field](https://developer.atlassian.com/cloud/jira/platform/modules/issue-field/) that enables a user to select a value from a list of options.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response<PageBeanIssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceGetAllIssueFieldOptionsGet(
+  /// Returns a [paginated](#pagination) list of all the options of a select list issue field. A select list issue field is a type of [issue field](https://developer.atlassian.com/cloud/jira/platform/modules/issue-field/) that enables a user to select a value from a list of options.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
+  Future<Response<PageBeanIssueFieldOption>> getAllIssueFieldOptions(
     String fieldKey, {
     int startAt,
     int maxResults,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option"
+    String _path = "/rest/api/2/field/{fieldKey}/option"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -182,14 +179,13 @@ class IssueCustomFieldOptionsAppsApi {
   /// Get issue field option
   ///
   /// Returns an option from a select list issue field.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response<IssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceGetIssueFieldOptionGet(
+  Future<Response<IssueFieldOption>> getIssueFieldOption(
     String fieldKey,
     int optionId, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/{optionId}"
+    String _path = "/rest/api/2/field/{fieldKey}/option/{optionId}"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString())
         .replaceAll("{" r'optionId' "}", optionId.toString());
 
@@ -234,9 +230,8 @@ class IssueCustomFieldOptionsAppsApi {
 
   /// Get selectable issue field options
   ///
-  /// Returns options for a select list issue field that can be viewed and selected by the user.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<PageBeanIssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceGetSelectableIssueFieldOptionsGet(
+  /// Returns a [paginated](#pagination) list of options for a select list issue field that can be viewed and selected by the user.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** Permission to access Jira.
+  Future<Response<PageBeanIssueFieldOption>> getSelectableIssueFieldOptions(
     String fieldKey, {
     int startAt,
     int maxResults,
@@ -244,7 +239,7 @@ class IssueCustomFieldOptionsAppsApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/suggestions/edit"
+    String _path = "/rest/api/2/field/{fieldKey}/option/suggestions/edit"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -291,9 +286,8 @@ class IssueCustomFieldOptionsAppsApi {
 
   /// Get visible issue field options
   ///
-  /// Returns options for a select list issue field that can be viewed by the user.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** Permission to access Jira.
-  Future<Response<PageBeanIssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceGetVisibleIssueFieldOptionsGet(
+  /// Returns a [paginated](#pagination) list of options for a select list issue field that can be viewed by the user.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** Permission to access Jira.
+  Future<Response<PageBeanIssueFieldOption>> getVisibleIssueFieldOptions(
     String fieldKey, {
     int startAt,
     int maxResults,
@@ -301,7 +295,7 @@ class IssueCustomFieldOptionsAppsApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/suggestions/search"
+    String _path = "/rest/api/2/field/{fieldKey}/option/suggestions/search"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -349,8 +343,7 @@ class IssueCustomFieldOptionsAppsApi {
   /// Replace issue field option
   ///
   /// Deselects an issue-field select-list option from all issues where it is selected. A different option can be selected to replace the deselected option. The update can also be limited to a smaller set of issues by using a JQL query.  This is an [asynchronous operation](#async). The response object contains a link to the long-running task.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceReplaceIssueFieldOptionDelete(
+  Future<Response> replaceIssueFieldOption(
     String fieldKey,
     int optionId, {
     int replaceWith,
@@ -358,7 +351,7 @@ class IssueCustomFieldOptionsAppsApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/{optionId}/issue"
+    String _path = "/rest/api/2/field/{fieldKey}/option/{optionId}/issue"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString())
         .replaceAll("{" r'optionId' "}", optionId.toString());
 
@@ -390,15 +383,14 @@ class IssueCustomFieldOptionsAppsApi {
   /// Update issue field option
   ///
   /// Updates or creates an option for a select list issue field. This operation requires that the option ID is provided when creating an option, therefore, the option ID needs to be specified as a path and body parameter. The option ID provided in the path and body must be identical.  Note that this operation **only works for issue field select list options added by Connect apps**, it cannot be used with issue field select list options created in Jira or using operations from the [Issue custom field options](#api-group-Issue-custom-field-options) resource.  **[Permissions](#permissions) required:** *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg). Jira permissions are not required for the app providing the field.
-  Future<Response<IssueFieldOption>>
-      comAtlassianJiraRestV2IssueFieldIssueFieldOptionResourceUpdateIssueFieldOptionPut(
+  Future<Response<IssueFieldOption>> updateIssueFieldOption(
     String fieldKey,
     int optionId,
     IssueFieldOption issueFieldOption, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/field/{fieldKey}/option/{optionId}"
+    String _path = "/rest/api/2/field/{fieldKey}/option/{optionId}"
         .replaceAll("{" r'fieldKey' "}", fieldKey.toString())
         .replaceAll("{" r'optionId' "}", optionId.toString());
 

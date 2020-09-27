@@ -22,13 +22,12 @@ class WebhooksApi {
   /// Delete webhooks by ID
   ///
   /// Removes webhooks by ID. Only webhooks registered by the calling Connect app are removed. If webhooks created by other apps are specified, they are ignored.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
-  Future<Response>
-      comAtlassianJiraRestV2WebhookDynamicWebhookResourceDeleteWebhookByIdDelete(
+  Future<Response> deleteWebhookById(
     ContainerForWebhookIDs containerForWebhookIDs, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/webhook";
+    String _path = "/rest/api/2/webhook";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -59,15 +58,14 @@ class WebhooksApi {
 
   /// Get dynamic webhooks for app
   ///
-  /// Returns the webhooks registered by the calling app.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
-  Future<Response<PageBeanWebhook>>
-      comAtlassianJiraRestV2WebhookDynamicWebhookResourceGetDynamicWebhooksForAppGet({
+  /// Returns a [paginated](#pagination) list of the webhooks registered by the calling app.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
+  Future<Response<PageBeanWebhook>> getDynamicWebhooksForApp({
     int startAt,
     int maxResults,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/webhook";
+    String _path = "/rest/api/2/webhook";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -110,16 +108,67 @@ class WebhooksApi {
     });
   }
 
+  /// Get failed webhooks
+  ///
+  /// Returns webhooks that have recently failed to be delivered to the requesting app after the maximum number of retries.  After 72 hours the failure may no longer be returned by this operation.  The oldest failure is returned first.  This method uses a cursor-based pagination. To request the next page use the failure time of the last webhook on the list as the &#x60;failedAfter&#x60; value or use the URL provided in &#x60;next&#x60;.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
+  Future<Response<FailedWebhooks>> getFailedWebhooks({
+    int maxResults,
+    int after,
+    CancelToken cancelToken,
+    Map<String, String> headers,
+  }) async {
+    String _path = "/rest/api/2/webhook/failed";
+
+    Map<String, dynamic> queryParams = {};
+    Map<String, String> headerParams = Map.from(headers ?? {});
+    dynamic bodyData;
+
+    queryParams[r'maxResults'] = maxResults;
+    queryParams[r'after'] = after;
+    queryParams.removeWhere((key, value) => value == null);
+    headerParams.removeWhere((key, value) => value == null);
+
+    List<String> contentTypes = [];
+
+    return _dio
+        .request(
+      _path,
+      queryParameters: queryParams,
+      data: bodyData,
+      options: Options(
+        method: 'get'.toUpperCase(),
+        headers: headerParams,
+        contentType:
+            contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
+      ),
+      cancelToken: cancelToken,
+    )
+        .then((response) {
+      var serializer = _serializers.serializerForType(FailedWebhooks);
+      var data = _serializers.deserializeWith<FailedWebhooks>(
+          serializer, response.data);
+
+      return Response<FailedWebhooks>(
+        data: data,
+        headers: response.headers,
+        request: response.request,
+        redirects: response.redirects,
+        statusCode: response.statusCode,
+        statusMessage: response.statusMessage,
+        extra: response.extra,
+      );
+    });
+  }
+
   /// Extend webhook life
   ///
   /// Webhooks registered through the REST API expire after 30 days. Call this resource periodically to keep them alive.  Unrecognized webhook IDs (nonexistent or belonging to other apps) are ignored.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
-  Future<Response<WebhooksExpirationDate>>
-      comAtlassianJiraRestV2WebhookDynamicWebhookResourceRefreshWebhooksPut(
+  Future<Response<WebhooksExpirationDate>> refreshWebhooks(
     ContainerForWebhookIDs containerForWebhookIDs, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/webhook/refresh";
+    String _path = "/rest/api/2/webhook/refresh";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -167,13 +216,12 @@ class WebhooksApi {
   /// Register dynamic webhooks
   ///
   /// Registers webhooks.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
-  Future<Response<ContainerForRegisteredWebhooks>>
-      comAtlassianJiraRestV2WebhookDynamicWebhookResourceRegisterDynamicWebhooksPost(
+  Future<Response<ContainerForRegisteredWebhooks>> registerDynamicWebhooks(
     WebhookRegistrationDetails webhookRegistrationDetails, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/webhook";
+    String _path = "/rest/api/2/webhook";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -208,59 +256,6 @@ class WebhooksApi {
           serializer, response.data);
 
       return Response<ContainerForRegisteredWebhooks>(
-        data: data,
-        headers: response.headers,
-        request: response.request,
-        redirects: response.redirects,
-        statusCode: response.statusCode,
-        statusMessage: response.statusMessage,
-        extra: response.extra,
-      );
-    });
-  }
-
-  /// Get failed webhooks
-  ///
-  /// Returns webhooks that have recently failed to be delivered to the requesting app after the maximum number of retries.  After 72 hours the failure may no longer be returned by this operation.  The oldest failure is returned first.  This method uses a cursor-based pagination. To request the next page use the failure time of the last webhook on the list as the &#x60;failedAfter&#x60; value or use the URL provided in &#x60;next&#x60;.  **[Permissions](#permissions) required:** Only [Connect apps](https://developer.atlassian.com/cloud/jira/platform/integrating-with-jira-cloud/#atlassian-connect) can use this operation.
-  Future<Response<FailedWebhooks>>
-      comAtlassianJiraRestV2WebhookFailedWebhookResourceGetFailedWebhooksGet({
-    int maxResults,
-    int after,
-    CancelToken cancelToken,
-    Map<String, String> headers,
-  }) async {
-    String _path = "/rest/api/3/webhook/failed";
-
-    Map<String, dynamic> queryParams = {};
-    Map<String, String> headerParams = Map.from(headers ?? {});
-    dynamic bodyData;
-
-    queryParams[r'maxResults'] = maxResults;
-    queryParams[r'after'] = after;
-    queryParams.removeWhere((key, value) => value == null);
-    headerParams.removeWhere((key, value) => value == null);
-
-    List<String> contentTypes = [];
-
-    return _dio
-        .request(
-      _path,
-      queryParameters: queryParams,
-      data: bodyData,
-      options: Options(
-        method: 'get'.toUpperCase(),
-        headers: headerParams,
-        contentType:
-            contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-      ),
-      cancelToken: cancelToken,
-    )
-        .then((response) {
-      var serializer = _serializers.serializerForType(FailedWebhooks);
-      var data = _serializers.deserializeWith<FailedWebhooks>(
-          serializer, response.data);
-
-      return Response<FailedWebhooks>(
         data: data,
         headers: response.headers,
         request: response.request,

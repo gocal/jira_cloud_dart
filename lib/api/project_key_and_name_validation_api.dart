@@ -15,14 +15,13 @@ class ProjectKeyAndNameValidationApi {
 
   /// Get valid project key
   ///
-  /// Validates a project key and, if the key is invalid or in use, generates a valid random string for the project key.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<String>>
-      comAtlassianJiraRestV2IssueProjectValidateResourceGetValidProjectKeyGet({
+  /// Validates a project key and, if the key is invalid or in use, generates a valid random string for the project key.  **[Permissions](#permissions) required:** None.
+  Future<Response<String>> getValidProjectKey({
     String key,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/projectvalidate/validProjectKey";
+    String _path = "/rest/api/2/projectvalidate/validProjectKey";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -66,14 +65,13 @@ class ProjectKeyAndNameValidationApi {
 
   /// Get valid project name
   ///
-  /// Checks that a project name isn&#39;t in use. If the name isn&#39;t in use, the passed string is returned. If the name is in use, this operation attempts to generate a valid project name based on the one supplied, usually by adding a sequence number. If a valid project name cannot be generated, a 404 response is returned.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<String>>
-      comAtlassianJiraRestV2IssueProjectValidateResourceGetValidProjectNameGet(
+  /// Checks that a project name isn&#39;t in use. If the name isn&#39;t in use, the passed string is returned. If the name is in use, this operation attempts to generate a valid project name based on the one supplied, usually by adding a sequence number. If a valid project name cannot be generated, a 404 response is returned.  **[Permissions](#permissions) required:** None.
+  Future<Response<String>> getValidProjectName(
     String name, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/projectvalidate/validProjectName";
+    String _path = "/rest/api/2/projectvalidate/validProjectName";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -117,14 +115,13 @@ class ProjectKeyAndNameValidationApi {
 
   /// Validate project key
   ///
-  /// Validates a project key by confirming the key is a valid string and not in use.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<ErrorCollection>>
-      comAtlassianJiraRestV2IssueProjectValidateResourceValidateProjectKeyGet({
+  /// Validates a project key by confirming the key is a valid string and not in use.  **[Permissions](#permissions) required:** None.
+  Future<Response<ErrorCollection>> validateProjectKey({
     String key,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/projectvalidate/key";
+    String _path = "/rest/api/2/projectvalidate/key";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

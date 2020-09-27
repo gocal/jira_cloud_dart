@@ -37,6 +37,12 @@ class _$JiraExpressionValidationErrorSerializer
         ..add(serializers.serialize(object.column,
             specifiedType: const FullType(int)));
     }
+    if (object.expression != null) {
+      result
+        ..add('expression')
+        ..add(serializers.serialize(object.expression,
+            specifiedType: const FullType(String)));
+    }
     if (object.message != null) {
       result
         ..add('message')
@@ -72,6 +78,10 @@ class _$JiraExpressionValidationErrorSerializer
           result.column = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'expression':
+          result.expression = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'message':
           result.message = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -93,6 +103,8 @@ class _$JiraExpressionValidationError extends JiraExpressionValidationError {
   @override
   final int column;
   @override
+  final String expression;
+  @override
   final String message;
   @override
   final String type;
@@ -102,7 +114,7 @@ class _$JiraExpressionValidationError extends JiraExpressionValidationError {
       (new JiraExpressionValidationErrorBuilder()..update(updates)).build();
 
   _$JiraExpressionValidationError._(
-      {this.line, this.column, this.message, this.type})
+      {this.line, this.column, this.expression, this.message, this.type})
       : super._();
 
   @override
@@ -120,6 +132,7 @@ class _$JiraExpressionValidationError extends JiraExpressionValidationError {
     return other is JiraExpressionValidationError &&
         line == other.line &&
         column == other.column &&
+        expression == other.expression &&
         message == other.message &&
         type == other.type;
   }
@@ -127,7 +140,10 @@ class _$JiraExpressionValidationError extends JiraExpressionValidationError {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, line.hashCode), column.hashCode), message.hashCode),
+        $jc(
+            $jc($jc($jc(0, line.hashCode), column.hashCode),
+                expression.hashCode),
+            message.hashCode),
         type.hashCode));
   }
 
@@ -136,6 +152,7 @@ class _$JiraExpressionValidationError extends JiraExpressionValidationError {
     return (newBuiltValueToStringHelper('JiraExpressionValidationError')
           ..add('line', line)
           ..add('column', column)
+          ..add('expression', expression)
           ..add('message', message)
           ..add('type', type))
         .toString();
@@ -156,6 +173,10 @@ class JiraExpressionValidationErrorBuilder
   int get column => _$this._column;
   set column(int column) => _$this._column = column;
 
+  String _expression;
+  String get expression => _$this._expression;
+  set expression(String expression) => _$this._expression = expression;
+
   String _message;
   String get message => _$this._message;
   set message(String message) => _$this._message = message;
@@ -170,6 +191,7 @@ class JiraExpressionValidationErrorBuilder
     if (_$v != null) {
       _line = _$v.line;
       _column = _$v.column;
+      _expression = _$v.expression;
       _message = _$v.message;
       _type = _$v.type;
       _$v = null;
@@ -194,7 +216,11 @@ class JiraExpressionValidationErrorBuilder
   _$JiraExpressionValidationError build() {
     final _$result = _$v ??
         new _$JiraExpressionValidationError._(
-            line: line, column: column, message: message, type: type);
+            line: line,
+            column: column,
+            expression: expression,
+            message: message,
+            type: type);
     replace(_$result);
     return _$result;
   }

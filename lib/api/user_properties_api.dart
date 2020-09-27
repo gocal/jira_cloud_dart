@@ -17,8 +17,7 @@ class UserPropertiesApi {
   /// Delete user property
   ///
   /// Deletes a property from a user.  Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to delete a property from any user.  *  Access to Jira, to delete a property from the calling user&#39;s record.
-  Future<Response>
-      comAtlassianJiraRestV2UserpropertyUserPropertyResourceDeleteUserPropertyDelete(
+  Future<Response> deleteUserProperty(
     String propertyKey, {
     String accountId,
     String userKey,
@@ -26,7 +25,7 @@ class UserPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/user/properties/{propertyKey}"
+    String _path = "/rest/api/2/user/properties/{propertyKey}"
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -57,9 +56,8 @@ class UserPropertiesApi {
 
   /// Get user property
   ///
-  /// Returns the value of a user&#39;s property. If no property key is provided [Get user property keys](#api-rest-api-3-user-properties-get) is called.  Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to get a property from any user.  *  Access to Jira, to get a property from the calling user&#39;s record.
-  Future<Response<EntityProperty>>
-      comAtlassianJiraRestV2UserpropertyUserPropertyResourceGetUserPropertyGet(
+  /// Returns the value of a user&#39;s property. If no property key is provided [Get user property keys](#api-rest-api-2-user-properties-get) is called.  Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to get a property from any user.  *  Access to Jira, to get a property from the calling user&#39;s record.
+  Future<Response<EntityProperty>> getUserProperty(
     String propertyKey, {
     String accountId,
     String userKey,
@@ -67,7 +65,7 @@ class UserPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/user/properties/{propertyKey}"
+    String _path = "/rest/api/2/user/properties/{propertyKey}"
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
     Map<String, dynamic> queryParams = {};
@@ -115,15 +113,14 @@ class UserPropertiesApi {
   /// Get user property keys
   ///
   /// Returns the keys of all properties for a user.  Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to access the property keys on any user.  *  Access to Jira, to access the calling user&#39;s property keys.
-  Future<Response<PropertyKeys>>
-      comAtlassianJiraRestV2UserpropertyUserPropertyResourceGetUserPropertyKeysGet({
+  Future<Response<PropertyKeys>> getUserPropertyKeys({
     String accountId,
     String userKey,
     String username,
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/user/properties";
+    String _path = "/rest/api/2/user/properties";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -170,8 +167,7 @@ class UserPropertiesApi {
   /// Set user property
   ///
   /// Sets the value of a user&#39;s property. Use this resource to store custom data against a user.  Note: This operation does not access the [user properties](https://confluence.atlassian.com/x/8YxjL) created and maintained in Jira.  **[Permissions](#permissions) required:**   *  *Administer Jira* [global permission](https://confluence.atlassian.com/x/x4dKLg), to set a property on any user.  *  Access to Jira, to set a property on the calling user&#39;s record.
-  Future<Response<Object>>
-      comAtlassianJiraRestV2UserpropertyUserPropertyResourceSetUserPropertyPut(
+  Future<Response<Object>> setUserProperty(
     String propertyKey,
     Object body, {
     String accountId,
@@ -180,7 +176,7 @@ class UserPropertiesApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/user/properties/{propertyKey}"
+    String _path = "/rest/api/2/user/properties/{propertyKey}"
         .replaceAll("{" r'propertyKey' "}", propertyKey.toString());
 
     Map<String, dynamic> queryParams = {};

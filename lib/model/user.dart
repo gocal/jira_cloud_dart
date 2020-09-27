@@ -40,7 +40,7 @@ abstract class User implements Built<User, UserBuilder> {
   @nullable
   @BuiltValueField(wireName: r'displayName')
   String get displayName;
-  /* Indicates whether the user is active. */
+  /* Whether the user is active. */
   @nullable
   @BuiltValueField(wireName: r'active')
   bool get active;

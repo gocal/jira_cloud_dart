@@ -20,8 +20,7 @@ class IssueSearchApi {
   /// Get issue picker suggestions
   ///
   /// Returns lists of issues matching a query string. Use this resource to provide auto-completion suggestions when the user is looking for an issue using a word or string.  This operation returns two lists:   *  &#x60;History Search&#x60; which includes issues from the user&#39;s history of created, edited, or viewed issues that contain the string in the &#x60;query&#x60; parameter.  *  &#x60;Current Search&#x60; which includes issues that match the JQL expression in &#x60;currentJQL&#x60; and contain the string in the &#x60;query&#x60; parameter.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** None.
-  Future<Response<IssuePickerSuggestions>>
-      comAtlassianJiraRestV2IssueIssueResourceGetIssuePickerResourceGet({
+  Future<Response<IssuePickerSuggestions>> getIssuePickerResource({
     String query,
     String currentJQL,
     String currentIssueKey,
@@ -31,7 +30,7 @@ class IssueSearchApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/issue/picker";
+    String _path = "/rest/api/2/issue/picker";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -81,13 +80,12 @@ class IssueSearchApi {
   /// Check issues against JQL
   ///
   /// Checks whether one or more issues would be returned by one or more JQL queries.  **[Permissions](#permissions) required:** None, however, issues are only matched against JQL queries where the user has:   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project that the issue is in.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<IssueMatches>>
-      comAtlassianJiraRestV2MatchIssueMatchResourceMatchIssuesPost(
+  Future<Response<IssueMatches>> matchIssues(
     IssuesAndJQLQueries issuesAndJQLQueries, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/jql/match";
+    String _path = "/rest/api/2/jql/match";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -134,9 +132,8 @@ class IssueSearchApi {
 
   /// Search for issues using JQL (GET)
   ///
-  /// Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).  If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-3-search-post) version of this resource.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** Issues are included in the response where the user has:   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the issue.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<SearchResults>>
-      comAtlassianJiraRestV2SearchSearchResourceSearchForIssuesUsingJqlGet({
+  /// Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).  If the JQL query expression is too large to be encoded as a query parameter, use the [POST](#api-rest-api-2-search-post) version of this resource.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** Issues are included in the response where the user has:   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the issue.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
+  Future<Response<SearchResults>> searchForIssuesUsingJql({
     String jql,
     int startAt,
     int maxResults,
@@ -148,7 +145,7 @@ class IssueSearchApi {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/search";
+    String _path = "/rest/api/2/search";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});
@@ -199,14 +196,13 @@ class IssueSearchApi {
 
   /// Search for issues using JQL (POST)
   ///
-  /// Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).  There is a [GET](#api-rest-api-3-search-get) version of this resource that can be used for smaller JQL query expressions.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** Issues are included in the response where the user has:   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the issue.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
-  Future<Response<SearchResults>>
-      comAtlassianJiraRestV2SearchSearchResourceSearchForIssuesUsingJqlPost(
+  /// Searches for issues using [JQL](https://confluence.atlassian.com/x/egORLQ).  There is a [GET](#api-rest-api-2-search-get) version of this resource that can be used for smaller JQL query expressions.  This operation can be accessed anonymously.  **[Permissions](#permissions) required:** Issues are included in the response where the user has:   *  *Browse projects* [project permission](https://confluence.atlassian.com/x/yodKLg) for the project containing the issue.  *  If [issue-level security](https://confluence.atlassian.com/x/J4lKLg) is configured, issue-level security permission to view the issue.
+  Future<Response<SearchResults>> searchForIssuesUsingJqlPost(
     SearchRequestBean searchRequestBean, {
     CancelToken cancelToken,
     Map<String, String> headers,
   }) async {
-    String _path = "/rest/api/3/search";
+    String _path = "/rest/api/2/search";
 
     Map<String, dynamic> queryParams = {};
     Map<String, String> headerParams = Map.from(headers ?? {});

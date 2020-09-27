@@ -8,19 +8,19 @@ part 'notification_recipients.g.dart';
 
 abstract class NotificationRecipients
     implements Built<NotificationRecipients, NotificationRecipientsBuilder> {
-  /* Indicates whether the notification should be sent to the issue's reporter. */
+  /* Whether the notification should be sent to the issue's reporter. */
   @nullable
   @BuiltValueField(wireName: r'reporter')
   bool get reporter;
-  /* Indicates whether the notification should be sent to the issue's assignees. */
+  /* Whether the notification should be sent to the issue's assignees. */
   @nullable
   @BuiltValueField(wireName: r'assignee')
   bool get assignee;
-  /* Indicates whether the notification should be sent to the issue's watchers. */
+  /* Whether the notification should be sent to the issue's watchers. */
   @nullable
   @BuiltValueField(wireName: r'watchers')
   bool get watchers;
-  /* Indicates whether the notification should be sent to the issue's voters. */
+  /* Whether the notification should be sent to the issue's voters. */
   @nullable
   @BuiltValueField(wireName: r'voters')
   bool get voters;
