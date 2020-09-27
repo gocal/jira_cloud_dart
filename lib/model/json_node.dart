@@ -44,15 +44,15 @@ abstract class JsonNode implements Built<JsonNode, JsonNodeBuilder> {
 
   @nullable
   @BuiltValueField(wireName: r'int')
-  bool get int;
+  bool get intType;
 
   @nullable
   @BuiltValueField(wireName: r'long')
-  bool get long;
+  bool get longType;
 
   @nullable
   @BuiltValueField(wireName: r'double')
-  bool get double;
+  bool get doubleType;
 
   @nullable
   @BuiltValueField(wireName: r'bigDecimal')

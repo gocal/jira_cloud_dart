@@ -32,7 +32,7 @@ abstract class ChangeDetails
   /* The details of the new value as a string. */
   @nullable
   @BuiltValueField(wireName: r'toString')
-  String get toString;
+  String get tostring;
 
   // Boilerplate code needed to wire-up generated code
   ChangeDetails._();
