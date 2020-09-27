@@ -82,9 +82,8 @@ import 'package:jira_cloud/api/workflows_api.dart';
 class JiraCloud {
   Dio dio;
   Serializers serializers;
-  String basePath = "https://your-domain.atlassian.com";
 
-  JiraCloud({this.dio, Serializers serializers}) {
+  JiraCloud({this.dio, Serializers serializers, String basePath}) {
     if (dio == null) {
       BaseOptions options = new BaseOptions(
         baseUrl: basePath,
