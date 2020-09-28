@@ -97,7 +97,7 @@ class IssuesApi {
 
     List<String> contentTypes = ["application/json"];
 
-    var serializedBody = _serializers.serialize(requestBody);
+    var serializedBody = requestBody; // MG _serializers.serialize(requestBody);
     var jsonrequestBody = json.encode(serializedBody);
     bodyData = jsonrequestBody;
 
@@ -150,7 +150,7 @@ class IssuesApi {
 
     List<String> contentTypes = ["application/json"];
 
-    var serializedBody = _serializers.serialize(requestBody);
+    var serializedBody = requestBody; // MG _serializers.serialize(requestBody);
     var jsonrequestBody = json.encode(serializedBody);
     bodyData = jsonrequestBody;
 
@@ -241,7 +241,7 @@ class IssuesApi {
 
     List<String> contentTypes = ["application/json"];
 
-    var serializedBody = _serializers.serialize(requestBody);
+    var serializedBody = requestBody; // MG _serializers.serialize(requestBody);
     var jsonrequestBody = json.encode(serializedBody);
     bodyData = jsonrequestBody;
 
@@ -302,7 +302,7 @@ class IssuesApi {
 
     List<String> contentTypes = ["application/json"];
 
-    var serializedBody = _serializers.serialize(requestBody);
+    var serializedBody = requestBody; // MG _serializers.serialize(requestBody);
     var jsonrequestBody = json.encode(serializedBody);
     bodyData = jsonrequestBody;
 
@@ -644,7 +644,7 @@ class IssuesApi {
 
     List<String> contentTypes = ["application/json"];
 
-    var serializedBody = _serializers.serialize(requestBody);
+    var serializedBody = requestBody; // MG _serializers.serialize(requestBody);
     var jsonrequestBody = json.encode(serializedBody);
     bodyData = jsonrequestBody;
 
